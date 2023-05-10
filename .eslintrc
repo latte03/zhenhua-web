@@ -1,10 +1,27 @@
 {
     "extends": [
-        "@antfu"
+        "@antfu",
+        "plugin:prettier/recommended"
     ],
+    "plugins": [
+        "prettier"
+    ],
+    "globals": {
+        "document":"readonly"
+    },
     "rules": {
         "@typescript-eslint/consistent-type-imports": "off",
         "vue/no-deprecated-slot-attribute": "off",
-        "vue/no-reserved-component-names": "off"
+        "vue/no-reserved-component-names": "off",
+        "vue/html-self-closing": [
+            "error",
+            {
+                "html": {
+                    "normal": "never",
+                    "void": "always",
+                    "component": "always"
+                }
+            }
+        ]
     }
 }
