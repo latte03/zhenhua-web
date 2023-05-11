@@ -3,7 +3,7 @@ defineOptions({ name: 'SiteHomeSectionGroup' })
 </script>
 
 <template>
-  <SiteSection class="section-group bg-slate-200">
+  <SiteSection class="section-group">
     <SiteSectionTitle
       class="mb-6"
       title="集团子公司"
@@ -16,14 +16,21 @@ defineOptions({ name: 'SiteHomeSectionGroup' })
         :loop="false"
         draggable
       >
-        <img
-          class="carousel-img"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
-        />
-        <img
-          class="carousel-img"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
-        />
+        <div class="group-item flex-center">
+          <span class="text">深圳莱昂科技公司</span>
+        </div>
+        <div class="group-item flex-center">
+          <span class="text">深圳莱昂科技公司</span>
+        </div>
+        <div class="group-item flex-center">
+          <span class="text">深圳莱昂科技公司</span>
+        </div>
+        <div class="group-item flex-center">
+          <span class="text">深圳莱昂科技公司</span>
+        </div>
+        <div class="group-item flex-center">
+          <span class="text">深圳莱昂科技公司</span>
+        </div>
       </n-carousel>
     </div>
   </SiteSection>
@@ -31,5 +38,18 @@ defineOptions({ name: 'SiteHomeSectionGroup' })
 
 <style lang="scss" scoped>
 .section-group {
+  background: var(--color-fill-light);
+}
+.group-item {
+  background-color: var(--color-fill-1);
+  height: 70px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid rgba(217, 222, 231, 0.6);
+  border-radius: 4px;
+  overflow: hidden;
+  .text {
+    opacity: 0.5;
+  }
 }
 </style>

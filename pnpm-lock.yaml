@@ -31,6 +31,9 @@ dependencies:
   '@vue-macros/nuxt':
     specifier: ^1.3.5
     version: 1.3.5(@vue-macros/reactivity-transform@0.3.6)(nuxt@3.3.3)(vite@4.2.1)(vue@3.2.47)(webpack@5.77.0)
+  numeral:
+    specifier: ^2.0.6
+    version: 2.0.6
   nuxt-icon:
     specifier: ^0.4.0
     version: 0.4.0(vue@3.2.47)
@@ -60,6 +63,9 @@ devDependencies:
   '@nuxtjs/tailwindcss':
     specifier: 6.6.5
     version: 6.6.5(webpack@5.77.0)
+  '@types/numeral':
+    specifier: ^2.0.2
+    version: 2.0.2
   '@unocss/nuxt':
     specifier: 0.50.8
     version: 0.50.8(postcss@8.4.21)(vite@4.2.1)(webpack@5.77.0)
@@ -2033,6 +2039,10 @@ packages:
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/numeral@2.0.2:
+    resolution: {integrity: sha512-A8F30k2gYJ/6e07spSCPpkuZu79LCnkPTvqmIWQzNGcrzwFKpVOydG41lNt5wZXjSI149qjyzC2L1+F2PD/NUA==}
     dev: true
 
   /@types/parse-json@4.0.0:
@@ -6332,6 +6342,10 @@ packages:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
     dependencies:
       boolbase: 1.0.0
+
+  /numeral@2.0.6:
+    resolution: {integrity: sha512-qaKRmtYPZ5qdw4jWJD6bxEf1FJEqllJrwxCLIm0sQU/A7v2/czigzOb+C2uSiFsa9lBUzeH7M1oK+Q+OLxL3kA==}
+    dev: false
 
   /nuxi@3.3.3:
     resolution: {integrity: sha512-j0wp7TS3u9DWxmSY+NHLyu5y4UkbWOhciDdc9uFdrTZKKYl7XYTAR6UoG9fpFEO7624eDqsAE0ASG4tbq6klkg==}

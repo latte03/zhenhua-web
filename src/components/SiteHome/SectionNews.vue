@@ -41,18 +41,16 @@ const swiper = ref([
       class="mb-6"
     />
     <div class="flex">
-      <Carousel
+      <SiteCarousel
         v-slot="{ record }"
-        class="relative flex-grow-0 flex-shrink-0 mr-6 section-news-carousel"
+        size="small"
+        class="relative flex-grow-0 flex-shrink-0 mr-6 overflow-hidden section-news-carousel"
         :data-source="swiper"
       >
-        <div class="w-full h-full">
-          <img
-            class="absolute top-0 w-full h-full carousel-img"
-            :src="record.img"
-          />
+        <div class="wh-full">
+          <img class="absolute top-0 wh-full carousel-img" :src="record.img" />
         </div>
-      </Carousel>
+      </SiteCarousel>
       <div class="flex-grow-1 flex-shrink-2">
         <SiteSectionTitle
           size="small"
@@ -99,8 +97,8 @@ const swiper = ref([
 .section-news {
   .section-news-carousel {
     width: 648px;
-    height: 377px;
-    border-radius: 2px;
+    height: 376px;
+    border-radius: 4px;
   }
 }
 </style>

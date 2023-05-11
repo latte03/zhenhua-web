@@ -27,13 +27,10 @@ export default defineNuxtConfig({
   // localization - i18n config
   i18n: {
     locales: [
-      {
-        code: 'en',
-        file: 'en-US.json'
-      },
-      { code: 'tr', file: 'tr-TR.json' }
+      { code: 'zh', file: 'zh-CN.json' },
+      { code: 'en', file: 'en-US.json' }
     ],
-    defaultLocale: 'tr',
+    defaultLocale: 'zh',
     lazy: true,
     langDir: 'locales/',
     strategy: 'prefix_except_default',
@@ -44,9 +41,9 @@ export default defineNuxtConfig({
     },
     vueI18n: {
       legacy: false,
-      locale: 'tr',
-      fallbackLocale: 'tr',
-      availableLocales: ['en', 'tr']
+      locale: 'zh',
+      fallbackLocale: 'zh',
+      availableLocales: ['en', 'zh']
     }
   },
 

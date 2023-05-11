@@ -3,7 +3,7 @@ import {
   Listbox,
   ListboxButton,
   ListboxLabel,
-  ListboxOptions,
+  ListboxOptions
 } from '@headlessui/vue'
 import { useI18n } from 'vue-i18n'
 import { availableLocales } from '~/locales/availableLocales'
@@ -19,19 +19,13 @@ const local = computed(() => {
 
 <template>
   <div>
-    <Listbox
-      v-model="local"
-      as="div"
-      class="relative flex items-center"
-    >
-      <ListboxLabel class="sr-only">
-        Change Language
-      </ListboxLabel>
+    <Listbox v-model="local" as="div" class="relative flex items-center">
+      <ListboxLabel class="sr-only">Change Language</ListboxLabel>
       <ListboxButton type="button" title="Change Language">
         <div
-          class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700"
+          class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-lg dark:bg-gray-700"
         >
-          <UnoIcon class="i-ph-translate-bold text-lg dark:text-white" />
+          <UnoIcon class="text-lg i-ph-translate-bold dark:text-white" />
         </div>
       </ListboxButton>
       <ListboxOptions
@@ -41,12 +35,11 @@ const local = computed(() => {
           v-for="lang in availableLocales"
           :key="lang.iso"
           :to="switchLocalePath(lang.iso)"
-          class="flex w-full cursor-pointer items-center justify-between py-2 px-3"
+          class="flex items-center justify-between w-full px-3 py-2 cursor-pointer"
           :class="{
             'text-white-500 bg-gray-200 dark:bg-gray-500/50':
               local === lang.iso,
-            'hover:bg-gray-200 dark:hover:bg-gray-700/30':
-              local !== lang.iso,
+            'hover:bg-gray-200 dark:hover:bg-gray-700/30': local !== lang.iso
           }"
         >
           <span class="truncate">

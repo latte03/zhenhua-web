@@ -12,11 +12,14 @@ import presetRemToPx from '@unocss/preset-rem-to-px'
 export default defineConfig({
   rules: [
     ['text-base-sm', { 'font-size': '15px' }],
-    ['font-mon', { 'font-family': 'Montserrat' }]
+    ['font-mon', { 'font-family': 'Montserrat' }],
+    ['transition-base', { transition: 'all 0.3s ease' }]
   ],
   shortcuts: [
     {
-      'flex-center': 'flex items-center justify-center'
+      'flex-center': 'flex items-center justify-center',
+      'wh-full': 'w-full h-full',
+      'to-left-top': 'absolute top-0 left-0'
     }
     // ...
   ],

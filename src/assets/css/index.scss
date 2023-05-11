@@ -1,21 +1,35 @@
 @import url('@unocss/reset/tailwind.css');
 
 body {
-    --white: #fff;
+    --white-text: 255, 255, 255;
+    --white: rgb(var(--white-text));
 
+    --black-text: 7, 19, 47;
+    --black: rgb(var(--black-text));
 
     --primary-color: #063190;
     --secondary-color: #F5A500;
     --primary-dark-color: #062772;
-    --black-color: #07132F;
 
-    --color-text-1: var(--black-color);
-    --color-text-2: rgba(7, 19, 47, 0.8);
-    --color-text-3: rgba(7, 19, 47, 0.6);
-    --color-text-4: rgba(7, 19, 47, 0.4);
+    --color-text-1: var(--black);
+    --color-text-2: rgba(var(--black-text), 0.8);
+    --color-text-3: rgba(var(--black-text), 0.6);
+    --color-text-4: rgba(var(--black-text), 0.4);
+
+    --color-bg-100: rgba(var(--white-text), 1);
+    --color-bg-90: rgba(var(--white-text), 0.9);
+    --color-bg-80: rgba(var(--white-text), 0.8);
+    --color-bg-30: rgba(var(--white-text), 0.3);
+    --color-bg-20: rgba(var(--white-text), 0.2);
+    --color-bg-10: rgba(var(--white-text), 0.1);
 
     --color-fill-1: var(--white);
-    font-family: Montserrat,v-sans,
+    --color-fill-light: #F1F3F7;
+
+    --color-border: rgba(var(--black-text), 0.2);
+
+
+    font-family: Montserrat, v-sans,
         system-ui,
         -apple-system,
         BlinkMacSystemFont,

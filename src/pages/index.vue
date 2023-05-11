@@ -17,7 +17,7 @@ const swiper = ref([
 
 <template>
   <div class="home-page">
-    <Carousel
+    <SiteCarousel
       v-slot="{ record }"
       :data-source="swiper"
       class="w-screen h-screen"
@@ -26,11 +26,11 @@ const swiper = ref([
         <div class="carousel-title">{{ record.title }}</div>
         <div class="carousel-desc">{{ record.desc }}</div>
       </div>
-      <img
-        class="absolute top-0 w-full h-full carousel-img"
+      <SiteCarouselImage
+        class="absolute top-0 wh-full carousel-img"
         :src="record.img"
       />
-    </Carousel>
+    </SiteCarousel>
     <SiteHomeSectionAbout />
     <SiteHomeSectionBusiness class="" />
     <SiteHomeSectionNews class="" />

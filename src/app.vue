@@ -1,17 +1,23 @@
 <script lang="ts" setup>
+import { NConfigProvider, dateZhCN, zhCN } from 'naive-ui'
 import { InitApp } from '~/utils/initApp'
 
 InitApp()
-const locale = useState<string>('locale.i18n')
-console.log('%c Line:6 🍎 locale', 'color:#3f7cff', locale.value)
+const { locale } = useI18n()
 </script>
 
 <template>
   <Html :lang="locale">
     <Body class="antialiased transition-colors duration-300 bg-white">
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
+      <NConfigProvider
+        :locale="zhCN"
+        :date-locale="dateZhCN"
+        inline-theme-disabled
+      >
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+      </NConfigProvider>
     </Body>
   </Html>
 </template>
