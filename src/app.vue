@@ -3,6 +3,7 @@ import { InitApp } from '~/utils/initApp'
 
 InitApp()
 const locale = useState<string>('locale.i18n')
+console.log('%c Line:6 🍎 locale', 'color:#3f7cff', locale.value)
 </script>
 
 <template>
@@ -18,12 +19,8 @@ const locale = useState<string>('locale.i18n')
 <style lang="postcss">
 /* @import url("./styles/index.scss"); */
 body {
-  @apply bg-gray-50 dark:bg-gray-800;
+  @apply bg-gray-50;
   color: var(--color-text-1);
-}
-
-.global-text {
-  @apply text-gray-900 dark:text-gray-50;
 }
 
 .page-enter-active,

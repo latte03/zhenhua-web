@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-defineOptions({ name: 'SiteSection' })
+defineOptions({ name: 'SiteContent' })
 </script>
 
 <template>
-  <SiteContent class="py-24 site-section">
+  <div class="site-content px-14">
     <slot></slot>
-  </SiteContent>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.site-section {
+.components {
 }
 </style>

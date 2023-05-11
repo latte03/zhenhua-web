@@ -1,5 +1,3 @@
-import presetIcons from '@unocss/preset-icons'
-
 export default defineNuxtConfig({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
@@ -12,7 +10,6 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@vueuse/nuxt',
     '@vue-macros/nuxt',
-    '@nuxtjs/tailwindcss',
     // pinia plugin - https://pinia.esm.dev
     '@pinia/nuxt',
     // unocss plugin - https://github.com/unocss/unocss
@@ -26,20 +23,6 @@ export default defineNuxtConfig({
     transpile: ['@headlessui/vue']
   },
   css: ['@/assets/css/index.scss'],
-  unocss: {
-    uno: false,
-    preflight: false,
-    icons: true,
-    presets: [
-      presetIcons({
-        scale: 1.2,
-        extraProperties: {
-          display: 'inline-block'
-        }
-      })
-    ],
-    safelist: ['i-twemoji-flag-us-outlying-islands', 'i-twemoji-flag-turkey']
-  },
 
   // localization - i18n config
   i18n: {
@@ -81,8 +64,8 @@ export default defineNuxtConfig({
     storageKey: 'color-mode'
   },
 
-  tailwindcss: {
-    configPath: './tailwind.config.ts'
+  naiveUI: {
+    // inlineThemeDisabled: true
   },
 
   vite: {

@@ -1,4 +1,7 @@
 <script lang="ts" name="Carousel" setup>
+defineProps<{
+  dataSource: any[]
+}>()
 defineOptions({
   name: 'Carousel'
 })
@@ -11,32 +14,15 @@ function onIndexChange(index: number) {
 <template>
   <div class="relative carousel">
     <n-carousel
-      class="relative banner-carousel"
+      class="relative w-full h-full"
       show-arrow
       :draggable="true"
       autoplay
       :show-dots="false"
       @update-current-index="onIndexChange"
     >
-      <div class="w-full h-full">
-        <div class="absolute z-10 text-white carousel-info">
-          <div class="carousel-title">ddd</div>
-          <div class="carousel-desc">ddd</div>
-        </div>
-        <img
-          class="absolute top-0 w-full h-full carousel-img"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
-        />
-      </div>
-      <div class="w-full h-full">
-        <div class="absolute z-10 text-white carousel-info">
-          <div class="carousel-title">ddd</div>
-          <div class="carousel-desc">ddd</div>
-        </div>
-        <img
-          class="absolute top-0 w-full h-full carousel-img"
-          src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
-        />
+      <div v-for="data in dataSource" :key="data.id" class="w-full h-full">
+        <slot :record="data"></slot>
       </div>
 
       <template #arrow="{ prev, next }">
@@ -58,24 +44,6 @@ function onIndexChange(index: number) {
 
 <style lang="scss" scoped>
 .carousel {
-  &-img {
-    object-fit: cover;
-  }
-  &-info {
-    top: calc(100vh - 256px);
-    left: 10vw;
-  }
-  &-title {
-    font-size: 40px;
-    color: #ffffff;
-    line-height: 58px;
-  }
-  &-desc {
-    font-size: 20px;
-    font-weight: 400;
-    color: #ffffff;
-    opacity: 0.7;
-  }
   &-custom-arrow {
     left: calc(100px + 10vw);
     bottom: 64px;
@@ -86,10 +54,5 @@ function onIndexChange(index: number) {
     left: 10vw;
     color: #fff;
   }
-}
-.banner-carousel,
-.carousel-img {
-  width: 100vw;
-  height: 100vh;
 }
 </style>

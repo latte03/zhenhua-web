@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-interface PropsType {}
-const props = defineProps<PropsType>()
 defineOptions({ name: 'SectionBusiness' })
 const data = ref([
   {
@@ -33,11 +31,11 @@ const data = ref([
       <div
         v-for="(d, index) in data"
         :key="d.name"
-        class="relative flex flex-col items-center justify-center px-12 text-center business-item"
+        class="relative flex-col px-12 text-center flex-center business-item"
       >
         <div class="info">
           <div class="mb-6 text-4xl font-bold inf-name">{{ d.name }}</div>
-          <div class="inf-desc text-">{{ d.desc }}</div>
+          <div class="inf-desc text-base-sm opacity-80">{{ d.desc }}</div>
         </div>
         <div class="absolute index">0{{ index + 1 }}</div>
       </div>

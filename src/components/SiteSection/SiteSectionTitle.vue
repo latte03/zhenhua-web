@@ -2,13 +2,19 @@
 interface PropsType {
   title: string
   enTitle: string
+  size?: 'default' | 'small'
 }
-const props = defineProps<PropsType>()
+withDefaults(defineProps<PropsType>(), {
+  size: 'default'
+})
 defineOptions({ name: 'SiteSectionTitle' })
 </script>
 
 <template>
-  <div class="site-section-title">
+  <div
+    class="site-section-title"
+    :class="{ 'site-section-title-small': size === 'small' }"
+  >
     <div class="title">{{ title }}</div>
     <div class="uppercase en-title">{{ enTitle }}</div>
   </div>
@@ -26,5 +32,11 @@ defineOptions({ name: 'SiteSectionTitle' })
   color: var(--text-color, --color-text-1);
   line-height: 24px;
   @apply opacity-20;
+}
+.site-section-title-small {
+  font-size: 24px;
+  .en-title {
+    font-size: 18px;
+  }
 }
 </style>

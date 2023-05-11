@@ -2,7 +2,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 function onScroll(e: Event) {
-  console.log('%c Line:5 🍔 e', 'color:#93c0a4', e)
+  // console.log('%c Line:5 🍔 e', 'color:#93c0a4', e)
 }
 
 onMounted(() => {
