@@ -19,5 +19,8 @@
     "sass",
     "scss",
     "vue"
+  ],
+  "conventionalCommits.scopes": [
+    "page"
   ] // 新增修改
 }
