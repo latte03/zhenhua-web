@@ -5,12 +5,12 @@ defineOptions({ name: 'SiteNewsCard' })
 </script>
 
 <template>
-  <div class="siteNews">
+  <div class="site-new-card cursor-pointer">
     <div class="new-img ratio-16/9 rounded mb-8">
       <img
         src="https://img.liblibai.com/web/6442628756b2c.jpg?image_process=format,webp&x-oss-process=image/resize,w_600,m_lfit/format,webp"
         alt=""
-        class="ratio-img"
+        class="ratio-img site-new-img transition-base"
       />
     </div>
     <div class="new-info">
@@ -58,7 +58,12 @@ defineOptions({ name: 'SiteNewsCard' })
   </div>
 </template>
 
-<style lang="scss" scoped>
-.siteNews {
+<style lang="scss">
+.site-new-card {
+  &:hover {
+    .site-new-img {
+      transform: scale(1.2);
+    }
+  }
 }
 </style>
