@@ -6,9 +6,8 @@ defineOptions({
 definePageMeta({
   layout: 'inner-page'
 })
-const { setState } = useInnerPageStore()!
 
-setState({
+useInnerPageContent({
   name: '业务板块',
   slogan: '123213'
 })

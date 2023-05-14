@@ -27,7 +27,7 @@ const menuData = ref([
     <div class="page-content">
       <SitePageHead :data="state" :src="src" />
       <SiteContent class="page-container--wrap relative z-10">
-        <div class="page-nav-bar flex justify-between">
+        <div v-if="state.hasPageBar" class="page-nav-bar flex justify-between">
           <SiteBreadcrumb />
 
           <SitePageMenu active-key="1" :data-source="menuData" />
