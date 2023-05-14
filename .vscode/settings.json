@@ -1,16 +1,23 @@
 {
-  "prettier.enable": false,
+  "prettier.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
   },
   "files.associations": {
     "*.css": "postcss"
   },
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "i18n-ally.localesPaths": [
     "src/locales"
   ],
   "cSpell.words": [
     "headlessui"
-  ]
+  ],
+  "stylelint.validate": [
+    "css",
+    "sass",
+    "scss",
+    "vue"
+  ] // 新增修改
 }

@@ -36,26 +36,28 @@ defineOptions({ name: 'SiteNews' })
       margin-bottom: 12px;
     }
   }
+
   .new-link {
+    position: relative;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
-    &:hover {
-      text-decoration: underline;
-      color: var(--primary-color);
-    }
+
     &::after {
-      content: '';
-      display: block;
-      height: 1px;
-      width: 0;
       position: absolute;
       bottom: -2px;
       left: 0;
-      transition: all 0.5s ease-in-out;
+      display: block;
+      width: 0;
+      height: 1px;
       background-color: var(--primary-color);
+      transition: all 0.5s ease-in-out;
+      content: '';
     }
+
     &:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+
       &::after {
         width: 100%;
       }

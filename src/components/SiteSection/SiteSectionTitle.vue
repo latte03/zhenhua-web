@@ -22,19 +22,22 @@ defineOptions({ name: 'SiteSectionTitle' })
 
 <style lang="scss" scoped>
 .site-section-title {
+  color: var(--text-color, --color-text-1);
   font-size: 32px;
-  color: var(--text-color, --color-text-1);
 }
+
 .en-title {
-  font-size: 20px;
-  font-family: Montserrat-Black, Montserrat;
-  font-weight: 900;
   color: var(--text-color, --color-text-1);
+  font-weight: 900;
+  font-size: 20px;
+  font-family: Montserrat, Arial, sans-serif;
   line-height: 24px;
   @apply opacity-20;
 }
+
 .site-section-title-small {
   font-size: 24px;
+
   .en-title {
     font-size: 18px;
   }

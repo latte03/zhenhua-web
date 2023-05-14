@@ -9,6 +9,7 @@ defineOptions({ name: 'SiteSection' })
 </template>
 
 <style lang="scss" scoped>
+/* stylelint-disable-next-line block-no-empty */
 .site-section {
 }
 </style>

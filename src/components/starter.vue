@@ -8,21 +8,23 @@ const lists = computed<ILink[]>(() => [
   { id: 1, title: t('modal'), url: 'modal', icon: 'i-carbon-collapse-all' },
   { id: 1, title: 'Menu', url: 'menu', icon: 'i-carbon-menu' },
   { id: 1, title: 'Naive UI', url: 'naive', icon: 'i-carbon-milestone' },
-  { id: 1, title: 'New soon...', url: '', icon: 'i-carbon-milestone' },
+  { id: 1, title: 'New soon...', url: '', icon: 'i-carbon-milestone' }
 ])
 </script>
 
 <template>
   <div class="max-w-sm mx-auto">
     <div class="flex items-center justify-between mb-10">
-      <a target="_blank" href="https://productdevbook.com">productdevbook.com</a>
+      <a target="_blank" href="https://productdevbook.com">
+        productdevbook.com
+      </a>
       <div class="flex space-x-2">
         <TemLanguageChange />
         <TemColorChange />
       </div>
     </div>
     <div class="flex flex-col">
-      <h1>{{ t("follow") }}</h1>
+      <h1>{{ t('follow') }}</h1>
       <div class="flex items-center justify-between w-full py-2">
         <img
           class="w-20 h-20 rounded-full"
@@ -30,7 +32,7 @@ const lists = computed<ILink[]>(() => [
           width="160"
           src="https://avatars.githubusercontent.com/u/38668796?v=4"
           alt="productdevbook"
-        >
+        />
 
         <div
           class="place-items-centerr grid grid-cols-3 justify-items-center gap-4 [&>*]:flex [&>*]:items-center [&>*]:justify-center [&>*]:rounded-md [&>*]:bg-gray-100 [&>*]:p-3 dark:[&>*]:bg-gray-600"
@@ -69,7 +71,7 @@ const lists = computed<ILink[]>(() => [
             id: item.id,
             title: item.title,
             url: item.url,
-            icon: item.icon,
+            icon: item.icon
           }"
         />
       </li>

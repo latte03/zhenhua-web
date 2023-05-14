@@ -40,14 +40,16 @@ defineOptions({ name: 'SiteHomeSectionGroup' })
 .section-group {
   background: var(--color-fill-light);
 }
+
 .group-item {
-  background-color: var(--color-fill-1);
   height: 70px;
-  font-size: 18px;
-  font-weight: bold;
-  border: 1px solid rgba(217, 222, 231, 0.6);
-  border-radius: 4px;
   overflow: hidden;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: var(--color-fill-1);
+  border: 1px solid rgb(217 222 231 / 60%);
+  border-radius: 4px;
+
   .text {
     opacity: 0.5;
   }

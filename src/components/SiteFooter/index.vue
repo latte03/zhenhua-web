@@ -50,20 +50,23 @@
 
 <style lang="postcss" scoped>
 .site-footer {
-  background-color: var(--primary-color);
-  color: var(--white);
   padding-bottom: 0;
+  color: var(--white);
   font-size: 13px;
+  background-color: var(--primary-color);
 }
+
 .emails {
   width: 720px;
 }
+
 .copy-right {
   background: var(--primary-dark-color);
 }
+
 .label {
-  width: 56px;
   display: inline-block;
+  width: 56px;
   text-align: justify;
   text-align-last: justify;
 }

@@ -61,29 +61,36 @@ function onIndexChange(index: number) {
 .carousel {
   --distance: 64px;
   --left: 10vw;
+
   &-small {
     --distance: 24px;
     --left: 56px;
+
     .custom-arrow {
       padding: 8px;
     }
   }
+
   &-custom-arrow {
-    left: var(--left);
     bottom: var(--distance);
+    left: var(--left);
     color: #fff;
   }
+
   &-dot {
-    color: #fff;
     margin-right: var(--distance);
+    color: #fff;
   }
+
   .custom-arrow {
+    margin-right: 12px;
     padding: 16px;
     transition: all 0.3s ease;
-    margin-right: 12px;
+
     &:hover {
       background-color: rgba(var(--white-text), 0.1);
     }
+
     &:active {
       background-color: rgba(var(--white-text), 0.05);
     }

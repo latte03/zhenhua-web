@@ -19,19 +19,19 @@ defineOptions({ name: 'SectionAbout' })
 
 <style lang="scss" scoped>
 .zh {
-  font-size: 120px;
+  color: transparent;
   font-weight: 900;
-  background-image: url(http://lc-yee5xnhu.cn-n1.lcfile.com/78cb08ed395dec020a3d.jpg);
+  font-size: 120px;
+  background-image: url('http://lc-yee5xnhu.cn-n1.lcfile.com/78cb08ed395dec020a3d.jpg');
   background-size: cover;
   background-clip: text;
-  color: transparent;
 }
 
 .icon-play {
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 48px;
+  transform: translate(-50%, -50%);
   cursor: pointer;
 }
 </style>

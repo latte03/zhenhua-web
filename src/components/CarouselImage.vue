@@ -2,7 +2,7 @@
 interface PropsType {
   src: string
 }
-const props = defineProps<PropsType>()
+defineProps<PropsType>()
 defineOptions({ name: 'CarouselImage' })
 </script>
 
@@ -17,9 +17,9 @@ defineOptions({ name: 'CarouselImage' })
 .image-cover {
   background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0) 62%,
-      rgba(0, 0, 0, 0.5) 100%
+      rgba(0, 0, 0, 0%) 62%,
+      rgba(0, 0, 0, 50%) 100%
     ),
-    rgba(0, 0, 0, 0.3);
+    rgba(0, 0, 0, 30%);
 }
 </style>

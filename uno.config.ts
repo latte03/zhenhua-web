@@ -13,13 +13,24 @@ export default defineConfig({
   rules: [
     ['text-base-sm', { 'font-size': '15px' }],
     ['font-mon', { 'font-family': 'Montserrat' }],
-    ['transition-base', { transition: 'all 0.3s ease' }]
+    ['transition-base', { transition: 'all 0.5s ease' }],
+    [
+      'ratio-16/9',
+      {
+        position: 'relative',
+        height: '0',
+        'padding-bottom': '56.25%',
+        overflow: 'hidden'
+      }
+    ]
   ],
   shortcuts: [
     {
       'flex-center': 'flex items-center justify-center',
+      'flex-i-center': 'flex items-center ',
       'wh-full': 'w-full h-full',
-      'to-left-top': 'absolute top-0 left-0'
+      'to-left-top': 'absolute top-0 left-0',
+      'ratio-img': 'to-left-top wh-full object-cover'
     }
     // ...
   ],
