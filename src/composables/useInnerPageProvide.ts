@@ -26,7 +26,7 @@ const [useProvideInnerPageStore, useInnerPageStore] = createInjectionState(
 
 export { useProvideInnerPageStore }
 // If you want to hide `useCounterStore` and wrap it in default value logic or throw error logic, please don't export `useCounterStore`
-export { useInnerPageStore }
+// export { useInnerPageStore }
 
 export function useInnerPageContent(value?: Partial<InnerPageState>) {
   const { state, setState } = useInnerPageStore()!
