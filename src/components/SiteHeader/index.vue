@@ -4,20 +4,18 @@ import { useMenuOptions } from './_utils'
 import { Icon, NuxtLink } from '#components'
 import { menuData } from '~/mock/menuMock'
 
-const { y } = useWindowScroll()
-
 const localePath = useLocalePath()
 
-const isScroll = computed(() => {
-  return y.value > 10
-})
+const { isScroll } = useScroll()
+
 const transform = useMenuOptions()
 </script>
 
 <template>
   <div
-    class="fixed z-50 w-screen px-10 site-header"
-    :class="{ 'is-scroll': isScroll }"
+    :class="`fixed z-50 w-screen px-10 site-header ${
+      isScroll ? 'is-scroll' : ''
+    }`"
   >
     <div class="flex items-center justify-between">
       <div class="logo">

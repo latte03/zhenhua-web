@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { LogoDefault, LogoWhite } from '#components'
+
 interface PropsType {
   white?: boolean
   size?: string
@@ -10,8 +12,10 @@ defineOptions({ name: 'SiteLogo' })
 </script>
 
 <template>
-  <Icon
-    :name="white ? 'LogoWhite' : 'LogoDefault'"
+  <LogoWhite v-show="white" key="logo-white" :width="width" :height="height" />
+  <LogoDefault
+    v-show="!white"
+    key="logo-default"
     :width="width"
     :height="height"
   />
