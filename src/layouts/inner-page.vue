@@ -63,7 +63,10 @@ const menuData = ref([
   }
 
   .page-container {
-    padding: 56px 40px;
+    --padding-y: 40px;
+    --padding-x: 56px;
+
+    padding: var(--padding-x) var(--padding-y);
     background-color: var(--color-bg-100);
   }
 }

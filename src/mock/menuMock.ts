@@ -84,7 +84,7 @@ export const menuData: Menu[] = [
       },
       {
         name: '招聘信息',
-        path: '/news/recruitment'
+        path: '/public/recruitment'
       }
     ]
   },
