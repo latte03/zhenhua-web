@@ -22,6 +22,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ['@headlessui/vue']
   },
+  sourcemap: {
+    server: false
+  },
   css: ['@/assets/css/index.scss'],
 
   // localization - i18n config
