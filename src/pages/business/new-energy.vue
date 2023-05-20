@@ -13,9 +13,11 @@ useInnerPageContent({
 </script>
 
 <template>
-  <SiteLayoutNewEnergy><SiteMap /></SiteLayoutNewEnergy>
+  <SiteLayoutNewEnergy>
+    <SiteMap />
+  </SiteLayoutNewEnergy>
 </template>
 
 <style lang="scss" scoped>
-//
+/** */
 </style>

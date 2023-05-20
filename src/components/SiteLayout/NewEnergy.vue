@@ -6,10 +6,10 @@ defineOptions({ name: 'SiteLayoutNewEnergy' })
 
 <template>
   <div class="new-energy">
-    <div class="content wh-full relative z-10">
+    <div class="relative z-10 content wh-full">
       <slot></slot>
     </div>
-    <div class="bg-effect absolute">
+    <div class="absolute bg-effect">
       <ToolBgEffect />
     </div>
   </div>
@@ -30,6 +30,7 @@ defineOptions({ name: 'SiteLayoutNewEnergy' })
   &::after {
     @apply absolute block to-left-top wh-full z-20;
 
+    z-index: 1;
     display: block;
     background: radial-gradient(
       circle at 20px 20px,
