@@ -62,5 +62,7 @@ jobs:
           connect_timeout: 10s
           scp: |
             'output.tar' => "/home/lighthouse/zhenhua-web"
+          first_ssh: |
+            rm -rf /home/lighthouse/zhenhua-web/output.tar
           last_ssh: |
-            tar -xvf output.tar .output
+            tar -xvf /home/lighthouse/zhenhua-web/output.tar
