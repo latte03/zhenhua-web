@@ -66,3 +66,4 @@ jobs:
             rm -rf /home/lighthouse/zhenhua-web/output.tar
           last_ssh: |
             tar -xvf /home/lighthouse/zhenhua-web/output.tar
+            pm2 restart 0
