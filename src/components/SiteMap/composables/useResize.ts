@@ -17,9 +17,15 @@ export function useResize(
     callBack && callBack()
   }
 
-  watch(registered, () => {
-    addResize()
-  })
+  watch(
+    registered,
+    () => {
+      addResize()
+    },
+    {
+      immediate: true
+    }
+  )
 }
 
 export default {}

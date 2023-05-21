@@ -2,6 +2,8 @@ import { ComposeOption } from 'echarts/core'
 import { EffectScatterSeriesOption, MapSeriesOption } from 'echarts/charts'
 import { GeoComponentOption, TooltipComponentOption } from 'echarts/components'
 import { ref } from 'vue'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import da from '@/assets/images/bumpy_worn_ground_albedo.png'
 
 export type ECOption = ComposeOption<

@@ -44,12 +44,18 @@ onMounted(() => {
     ]
   }, 500)
 })
-watch([registered, data], ([r, d]) => {
-  if (r && d.length > 0) {
-    // merge option
-    updateMap(d)
+watch(
+  [registered, data],
+  ([r, d]) => {
+    if (r && d.length > 0) {
+      // merge option
+      updateMap(d)
+    }
+  },
+  {
+    immediate: true
   }
-})
+)
 
 function onChatClick(e: ECElementEvent) {
   if (e.data && typeof e.data === 'object' && e.seriesType === 'map') {
