@@ -4,7 +4,9 @@ module.exports = {
       name: 'ZhenHua',
       port: '3000',
       exec_mode: 'cluster',
-      instances: 'max',
+      instances: 1,
+      // instances: 'max',
+      watch: ['./.output'],
       script: './.output/server/index.mjs'
     }
   ]

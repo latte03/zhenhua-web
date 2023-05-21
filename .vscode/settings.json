@@ -22,6 +22,7 @@
     "vue"
   ],
   "conventionalCommits.scopes": [
-    "page"
+    "page",
+    "workflow"
   ] // 新增修改
 }
