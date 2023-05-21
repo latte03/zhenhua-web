@@ -31,48 +31,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/pnpm-lock.yaml" ]; then
-            echo "manger=pnpm" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            .output
-            .nuxt
-          key: ${{ runner.os }}-nuxt-build-${{ hashFiles('.output') }}
-          restore-keys: |
-            ${{ runner.os }}-nuxt-build-
+          cache: pnpm
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: pnpm install
       - name: Static HTML export with Nuxt
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build
-      - name: Tar
-        run:
-          tar -zcvf release.tgz .output
-          # 同步server目录下的后端代码到服务器（目标路径：/home/nginx/myBlogServer）
+        run: pnpm  build
+      # 同步server目录下的后端代码到服务器（目标路径：/home/nginx/myBlogServer）
       - name: Deploy
         uses: cross-the-world/scp-pipeline@master
         with:
