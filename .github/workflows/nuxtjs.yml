@@ -31,11 +31,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.1.0
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: pnpm
+          cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
       - name: Static HTML export with Nuxt
