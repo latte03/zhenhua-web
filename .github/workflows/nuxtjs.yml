@@ -31,27 +31,36 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+
+      - name: Set pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8.1.0
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'pnpm'
+
       - name: Install dependencies
         run: pnpm install
+
       - name: Static HTML export with Nuxt
         run: pnpm  build
+
+      - name: Tar output
+        run: tar -cvf output.tar .output
       # 同步server目录下的后端代码到服务器（目标路径：/home/nginx/myBlogServer）
       - name: Deploy
-        uses: cross-the-world/scp-pipeline@master
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         with:
           host: ${{ secrets.HOST }} # 服务器IP（需要在GitHub上自行配置对应的secret）
           user: ${{ secrets.USER }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.KEY }} # 服务器用户名
           connect_timeout: 10s
-          local: './.output/*' # 源路径（工作流）
-          remote: /home/lighthouse/zhenhua-web/.output # 目标路径（服务器）
-
+          scp: |
+            'output.tar' => "/home/lighthouse/zhenhua-web"
+          last_ssh: |
+            tar -xvf output.tar .output
