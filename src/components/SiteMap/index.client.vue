@@ -23,6 +23,7 @@ const eventPos = reactive({
 })
 const show3D = ref(false)
 const currentSelect = ref<CurrentMap | undefined>(undefined)
+
 // {
 //   name: '河南省',
 //   adcode: '410000'
@@ -30,6 +31,8 @@ const currentSelect = ref<CurrentMap | undefined>(undefined)
 // provide(THEME_KEY, 'dark')
 
 onMounted(() => {
+  console.log('map mounted')
+
   setTimeout(() => {
     data.value = [
       {
@@ -99,7 +102,7 @@ async function on3DBack() {
   <div class="site-map">
     <div
       v-if="registered"
-      class="wh-full"
+      class="relative wh-full"
       :class="{ animate }"
       :style="{
         display: show3D ? 'none' : 'block',
@@ -130,8 +133,14 @@ async function on3DBack() {
 .site-map {
   @apply relative overflow-hidden;
 
-  width: var(--map-width);
-  height: var(--map-height);
+  width: var(--map-width, 100%);
+  height: var(--map-height, 900px);
+}
+
+.chart {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .animate {

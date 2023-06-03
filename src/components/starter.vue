@@ -24,7 +24,7 @@ const lists = computed<ILink[]>(() => [
       </div>
     </div>
     <div class="flex flex-col">
-      <h1>{{ t('follow') }}</h1>
+      <h1>{{ $t('follow') }}</h1>
       <div class="flex items-center justify-between w-full py-2">
         <img
           class="w-20 h-20 rounded-full"

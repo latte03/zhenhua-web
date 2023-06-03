@@ -10,14 +10,30 @@ useInnerPageContent({
   name: '业务板块',
   slogan: '123213'
 })
+const afterPageTransition = ref(false)
+
+onMounted(() => {
+  nextTick(() => {
+    setTimeout(() => {
+      afterPageTransition.value = true
+    }, 500)
+  })
+})
 </script>
 
 <template>
   <SiteLayoutNewEnergy>
-    <SiteMap />
+    <ClientOnly>
+      <SiteMap v-if="afterPageTransition" />
+    </ClientOnly>
   </SiteLayoutNewEnergy>
 </template>
 
 <style lang="scss" scoped>
 /** */
+.new-energy {
+  --map-height: 900px;
+  --map-width: 100%;
+  @apply relative;
+}
 </style>

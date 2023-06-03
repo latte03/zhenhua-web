@@ -43,6 +43,7 @@ body {
   --color-border-2: rgba(var(--black-text), 0.1);
 
   position: relative;
+  overflow-x: hidden !important;
   overflow-y: overlay !important;
   font-family: Montserrat, v-sans, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',

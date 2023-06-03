@@ -5,22 +5,30 @@ defineOptions({ name: 'PageDetail' })
 definePageMeta({
   layout: 'inner-page'
 })
-
+const { t } = useLang()
 const content =
   '  近日，由集团公司承建的220kV国投淖毛湖南汇集站扩建工程项目建设稳中有序推进中。'
+
+const route = useRoute()
+
+const id = computed(() => {
+  return route.params.id
+})
+
+const { data } = useFetch(`/api/article/detail/${id}`)
 </script>
 
 <template>
   <div class="page-detail">
     <div class="container m-auto">
-      <div class="container-head mb-6">
-        <div class="container-title text-center">
-          第六届中国国防信息化装备展2
+      <div class="mb-6 container-head">
+        <div class="text-center container-title">
+          {{ data?.title }}
         </div>
-        <NSpace class="container-extra py-4 opacity-50" justify="center">
+        <NSpace class="py-4 opacity-50 container-extra" justify="center">
           <div>
-            <span class="pr-1">发布时间:</span>
-            <span>1111</span>
+            <span class="pr-1">{{ t('release_time') }}:</span>
+            <span>{{ data?.release_time }}</span>
           </div>
         </NSpace>
       </div>

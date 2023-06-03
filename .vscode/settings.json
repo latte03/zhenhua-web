@@ -24,5 +24,6 @@
   "conventionalCommits.scopes": [
     "page",
     "workflow"
-  ] // 新增修改
+  ],
+  "i18n-ally.keystyle": "nested" // 新增修改
 }

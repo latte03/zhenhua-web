@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useChannelStore } from '~/store/channelState'
+
 interface Data {
   id: number
   img: string
@@ -25,6 +27,12 @@ function getData() {
 const { data: swiper } = await useAsyncData(getData, {
   lazy: true
 })
+
+const channelStore = useChannelStore()
+
+if (!channelStore.channel) {
+  channelStore.getChannel()
+}
 </script>
 
 <template>

@@ -31,6 +31,37 @@ const swiper = ref([
     desc: 'dddddd11d'
   }
 ])
+
+const basePageInfo = {
+  pageIndex: 1,
+  pageSize: 5
+}
+
+function getBody(id: number) {
+  return {
+    pageInfo: basePageInfo,
+    data: {
+      channel_id: id
+    }
+  }
+}
+
+const { data: zhenhua } = useFetch('/api/article/list', {
+  method: 'post',
+  body: getBody(20)
+})
+const { data: industryInformation } = useFetch('/api/article/list', {
+  method: 'post',
+  body: getBody(21)
+})
+const { data: sceneElegantDemeanor } = useFetch('/api/article/list', {
+  method: 'post',
+  body: getBody(22)
+})
+const { data: groupNotice } = useFetch('/api/article/list', {
+  method: 'post',
+  body: getBody(23)
+})
 </script>
 
 <template>
@@ -58,7 +89,7 @@ const swiper = ref([
           en-title="zhenhua NEWS"
           class="mb-4"
         />
-        <SiteNews :data-source="news" class="w-full" />
+        <SiteNews :data-source="zhenhua?.rows || []" class="w-full" />
       </div>
     </div>
     <n-row class="pt-6" :gutter="[24, 24]">
@@ -69,7 +100,10 @@ const swiper = ref([
           en-title="Industry information"
           class="mb-4"
         />
-        <SiteNews :data-source="news" class="w-full" />
+        <SiteNews
+          :data-source="industryInformation?.rows || []"
+          class="w-full"
+        />
       </n-col>
       <n-col :span="8">
         <SiteSectionTitle
@@ -78,7 +112,10 @@ const swiper = ref([
           en-title="Scene elegant demeanor"
           class="mb-4"
         />
-        <SiteNews :data-source="news" class="w-full" />
+        <SiteNews
+          :data-source="sceneElegantDemeanor?.rows || []"
+          class="w-full"
+        />
       </n-col>
       <n-col :span="8">
         <SiteSectionTitle
@@ -87,7 +124,7 @@ const swiper = ref([
           en-title="Group Notice"
           class="mb-4"
         />
-        <SiteNews :data-source="news" class="w-full" />
+        <SiteNews :data-source="groupNotice?.rows || []" class="w-full" />
       </n-col>
     </n-row>
   </SiteSection>

@@ -1,13 +1,17 @@
 <script lang="ts" setup>
+import { Attrs as ArticleAttrs } from '~/server/api/article'
+
 export interface NewsItem {
   name: string
   id: string
 }
 interface PropsType {
-  dataSource: NewsItem[]
+  dataSource: ArticleAttrs[]
 }
 defineProps<PropsType>()
 defineOptions({ name: 'SiteNews' })
+
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -18,12 +22,15 @@ defineOptions({ name: 'SiteNews' })
         :key="d.id"
         class="flex items-center justify-between w-full new-item"
       >
-        <a class="flex-grow w-0 mr-4 text-base new-link">
+        <NuxtLink
+          :to="localePath(`/detail/${d.id}`)"
+          class="flex-grow w-0 mr-4 text-base new-link"
+        >
           <n-ellipsis class="w-full">
-            {{ d.name }}
+            {{ d.title }}
           </n-ellipsis>
-        </a>
-        <span class="opacity-40 font-mon">2023-04-1</span>
+        </NuxtLink>
+        <span class="opacity-40 font-mon">{{ d.release_time }}</span>
       </li>
     </ul>
   </div>
