@@ -1,5 +1,7 @@
 {
   "hello": "hello",
   "follow": "Follow Me",
-  "modal": "Modal"
+  "modal": "Modal",
+  "release_time": "Release Time",
+  "i18n": "en-US"
 }
