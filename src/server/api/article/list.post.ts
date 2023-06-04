@@ -4,6 +4,7 @@ import { BASE_URL, PageList } from '~/utils/constant'
 export default defineEventHandler(async event => {
   const body = await readBody<
     PageList<{
+      channel_code?: string
       title?: string
       channel_id: number
     }>

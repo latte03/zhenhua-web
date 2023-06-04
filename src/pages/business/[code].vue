@@ -20,7 +20,7 @@ const { data } = useFetch('/api/article/list', {
       pageSize: 5
     },
     data: {
-      channel_code: route.params.type as string
+      channel_code: route.params.code as string
     }
   }
 })
