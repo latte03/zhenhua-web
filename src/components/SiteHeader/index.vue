@@ -2,11 +2,14 @@
 import { useMenuOptions } from './_utils'
 
 import { Icon, NuxtLink } from '#components'
-import { menuData } from '~/mock/menuMock'
+import { useChannelStore } from '~/store/channelState'
 
 const localePath = useLocalePath()
-
+const route = useRoute()
 const { isScroll } = useScroll()
+
+const channelStore = useChannelStore()
+channelStore.getChannel()
 
 const transform = useMenuOptions()
 </script>
@@ -22,20 +25,32 @@ const transform = useMenuOptions()
         <SiteLogo width="150px" height="37px" :white="!isScroll" />
       </div>
       <ul class="flex items-center head-menu">
-        <template v-for="menu in menuData" :key="menu.name">
+        <li>
+          <NuxtLink class="block head-menu-item" :to="localePath('/')">
+            首页
+          </NuxtLink>
+        </li>
+        <template v-for="menu in channelStore.channelTree" :key="menu.name">
           <n-dropdown
-            v-if="menu.children"
+            v-if="menu.children && menu.children.length > 0"
             size="large"
             trigger="click"
             :options="transform(menu.children)"
           >
             <li>
-              <div class="head-menu-item">{{ menu.name }}</div>
+              <div
+                class="head-menu-item"
+                :class="
+                  route.path.includes(menu.code) ? 'router-link-active' : ''
+                "
+              >
+                {{ menu.name }}
+              </div>
             </li>
           </n-dropdown>
 
           <li v-else>
-            <NuxtLink class="block head-menu-item" :to="localePath(menu.path)">
+            <NuxtLink class="block head-menu-item" :to="localePath(menu.link)">
               {{ menu.name }}
             </NuxtLink>
           </li>

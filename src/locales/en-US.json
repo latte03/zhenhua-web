@@ -3,5 +3,6 @@
   "follow": "Follow Me",
   "modal": "Modal",
   "release_time": "Release Time",
-  "i18n": "en-US"
+  "i18n": "en-US",
+  "no_data": "No Data"
 }

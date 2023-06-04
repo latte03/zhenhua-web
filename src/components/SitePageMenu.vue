@@ -1,14 +1,30 @@
 <script lang="ts" setup>
+import { ChannelAttrs } from '~/server/api/channel'
+
 export interface MenuItem {
   name: string
   id: string
 }
 interface PropsType {
-  dataSource: MenuItem[]
+  dataSource: ChannelAttrs[]
   activeKey: string
 }
 const props = defineProps<PropsType>()
 defineOptions({ name: 'SitePageMenu' })
+
+const router = useRouter()
+
+const localePath = useLocalePath()
+
+function onClick(d: ChannelAttrs) {
+  if (d.link_type === 'path') {
+    router.push({
+      path: localePath(d.link)
+    })
+  } else {
+    window.open(d.link, '_blank')
+  }
+}
 </script>
 
 <template>
@@ -16,8 +32,11 @@ defineOptions({ name: 'SitePageMenu' })
     <div
       v-for="d in dataSource"
       :key="d.id"
-      class="page-menu--item cursor-pointer"
-      :class="{ 'is-active': activeKey === d.id }"
+      class="cursor-pointer page-menu--item"
+      :class="{
+        'is-active': activeKey === d.code || activeKey.includes(d.link)
+      }"
+      @click="onClick(d)"
     >
       <span class="page-menu--text">{{ d.name }}</span>
     </div>

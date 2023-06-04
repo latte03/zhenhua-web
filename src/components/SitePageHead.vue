@@ -1,25 +1,32 @@
 <script lang="ts" setup>
 interface PropsType {
   data: {
-    name: string
+    name?: string
     slogan?: string
   }
-  src: string
+  src?: string
 }
 defineProps<PropsType>()
 defineOptions({ name: 'SitePageHead' })
 </script>
 
 <template>
-  <div class="site-page-head relative">
-    <div class="page-info absolute z-10">
+  <div class="relative site-page-head">
+    <div class="absolute z-10 page-info">
       <div class="page-info--title">{{ data.name }}</div>
-      <div v-if="data.slogan" class="page-info-slogan text-center">
+      <div v-if="data.slogan" class="text-center page-info-slogan">
         {{ data.slogan }}
       </div>
     </div>
     <div
-      :style="`--background-image:url('${src}')`"
+      :style="`
+      --background-image:url('${src}');
+      background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 30%),
+      rgba(0, 0, 0, 30%)
+    )${src ? ',var(--background-image)' : ''};
+      `"
       :alt="data.name"
       class="page-image"
     ></div>
@@ -47,12 +54,6 @@ defineOptions({ name: 'SitePageHead' })
 .page-image {
   width: 100vw;
   height: 568px;
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 30%),
-      rgba(0, 0, 0, 30%)
-    ),
-    var(--background-image);
   background-size: cover;
 }
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { LogoDefault, LogoWhite } from '#components'
+import { LogoDefault } from '#components'
+import LogoWiteSvg from '@/assets/images/logo-white.svg'
 
 interface PropsType {
   white?: boolean
@@ -12,7 +13,10 @@ defineOptions({ name: 'SiteLogo' })
 </script>
 
 <template>
-  <LogoWhite v-show="white" key="logo-white" :width="width" :height="height" />
+  <div v-show="white" class="" :style="{ width, height }">
+    <img class="w-full h-full" :src="LogoWiteSvg" alt="" />
+  </div>
+  <!-- <LogoWhite v-show="white" key="logo-white" :width="width" :height="height" /> -->
   <LogoDefault
     v-show="!white"
     key="logo-default"

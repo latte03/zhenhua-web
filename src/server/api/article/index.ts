@@ -1,6 +1,6 @@
 import { BASE_URL } from '~/utils/constant'
 
-export interface Attrs {
+export interface ArticleAttrs {
   /**
    * 摘要
    */
@@ -58,6 +58,8 @@ export interface Attrs {
   en_title: string
 }
 export default defineEventHandler(async event => {
-  const { data } = await $fetch<{ data: Attrs[] }>(`${BASE_URL}/site/article`)
+  const { data } = await $fetch<{ data: ArticleAttrs[] }>(
+    `${BASE_URL}/site/article`
+  )
   return data
 })

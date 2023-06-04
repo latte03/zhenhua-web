@@ -12,11 +12,12 @@ defineProps<PropsType>()
 defineOptions({ name: 'SiteNews' })
 
 const localePath = useLocalePath()
+const { t } = useLang()
 </script>
 
 <template>
-  <div>
-    <ul class="site-news">
+  <div class="pt-2">
+    <ul v-if="dataSource.length > 0" class="site-news">
       <li
         v-for="d in dataSource"
         :key="d.id"
@@ -33,6 +34,9 @@ const localePath = useLocalePath()
         <span class="opacity-40 font-mon">{{ d.release_time }}</span>
       </li>
     </ul>
+    <div v-else class="p-6">
+      <n-empty :description="t('no_data')" />
+    </div>
   </div>
 </template>
 

@@ -24,6 +24,10 @@ defineOptions({ name: 'SiteSectionTitle' })
 .site-section-title {
   color: var(--text-color, --color-text-1);
   font-size: 32px;
+
+  .title {
+    font-weight: 600;
+  }
 }
 
 .en-title {

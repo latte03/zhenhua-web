@@ -1,33 +1,18 @@
 <script setup lang="ts">
 import { useChannelStore } from '~/store/channelState'
 
-interface Data {
-  id: number
-  img: string
-  title: string
-  desc: string
-}
-
-function getData() {
-  return Promise.resolve([
-    {
-      id: 1,
-      img: 'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg',
-      title: 'dddd',
-      desc: 'ddddddd'
+const { data } = useFetch('/api/article/list', {
+  method: 'post',
+  body: {
+    pageInfo: {
+      pageSize: 10,
+      pageIndex: 1
     },
-    {
-      id: 2,
-      img: 'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel2.jpeg',
-      title: 'dddd22',
-      desc: 'dddddd11d'
+    data: {
+      channel_id: 24
     }
-  ])
-}
-const { data: swiper } = await useAsyncData(getData, {
-  lazy: true
+  }
 })
-
 const channelStore = useChannelStore()
 
 if (!channelStore.channel) {
@@ -39,17 +24,17 @@ if (!channelStore.channel) {
   <div class="home-page">
     <SiteCarousel
       v-slot="{ record }"
-      :data-source="swiper || []"
+      :data-source="data?.rows || []"
       class="w-screen h-screen"
     >
       <div class="absolute z-10 text-white carousel-info">
         <div class="carousel-title">{{ record.title }}</div>
-        <div class="carousel-desc">{{ record.desc }}</div>
+        <div class="carousel-desc">{{ record.abstract }}</div>
       </div>
 
       <div class="absolute top-0 wh-full carousel-img">
         <i class="block to-left-top wh-full image-cover z-1"></i>
-        <img class="to-left-top wh-full" :src="record.img" />
+        <img class="to-left-top wh-full" :src="record.thumbnail" />
       </div>
     </SiteCarousel>
 

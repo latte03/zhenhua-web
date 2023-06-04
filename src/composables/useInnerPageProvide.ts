@@ -2,15 +2,26 @@
 // import { createInjectionState } from '@vueuse/shared'
 
 interface InnerPageState {
-  name: string
-  slogan: string
+  topChannelCode?: string
+  pageChannelCode?: string
+  name?: string
+  slogan?: string
   hasPageBar?: boolean
+}
+
+function useInnerPageState() {
+  return useState<InnerPageState>('innerPageState', () => ({
+    hasPageBar: false
+  }))
 }
 
 const [useProvideInnerPageStore, useInnerPageStore] = createInjectionState(
   (initialValue: InnerPageState) => {
-    // state
-    const state = ref({ ...initialValue, hasPageBar: true })
+    const state = useInnerPageState()
+    state.value = {
+      ...initialValue
+    }
+    // const state = ref({ ...initialValue, hasPageBar: false })
 
     // actions
     function setState(value: Partial<InnerPageState>) {
@@ -26,7 +37,7 @@ const [useProvideInnerPageStore, useInnerPageStore] = createInjectionState(
 
 export { useProvideInnerPageStore }
 // If you want to hide `useCounterStore` and wrap it in default value logic or throw error logic, please don't export `useCounterStore`
-// export { useInnerPageStore }
+export { useInnerPageStore }
 
 export function useInnerPageContent(value?: Partial<InnerPageState>) {
   const { state, setState } = useInnerPageStore()!

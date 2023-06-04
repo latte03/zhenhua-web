@@ -7,11 +7,36 @@ definePageMeta({
   layout: 'inner-page',
   data: { name: '镇华集团', slogan: '123213' }
 })
+
+useInnerPageContent({
+  name: '关于镇华',
+  slogan: '123213',
+  topChannelCode: 'about',
+  pageChannelCode: 'culture'
+})!
+
+const { data } = useFetch('/api/article/list', {
+  method: 'post',
+  body: {
+    pageInfo: {
+      pageIndex: 1,
+      pageSize: 5
+    },
+    data: {
+      channel_code: 'culture'
+    }
+  }
+})
+
+const content = computed(() => {
+  return data.value?.rows[0].content
+})
 </script>
 
 <template>
   <div class="about-culture">
-    <div class="text-center text-2xl font-bold mb-4">
+    <div v-html="content"></div>
+    <!-- <div class="mb-4 text-2xl font-bold text-center">
       以人为本、求质量、重信誉
     </div>
     <div>
@@ -20,23 +45,23 @@ definePageMeta({
     <div>img</div>
     <ul class="mt-6">
       <li>
-        <div class="flex justify-between items-stretch">
-          <div class="fixed-with flex flex-col justify-between">
+        <div class="flex items-stretch justify-between">
+          <div class="flex flex-col justify-between fixed-with">
             <div class="title-group">
               <div class="title">集团管理方针</div>
-              <div class="desc mt-1">
+              <div class="mt-1 desc">
                 以人为本、诚信守法、和谐自然、建造精品
               </div>
             </div>
 
-            <div class="index opacity-40 text-2xl">01</div>
+            <div class="text-2xl index opacity-40">01</div>
           </div>
-          <div class="fixed-with-2 text-sm opacity-80">
+          <div class="text-sm fixed-with-2 opacity-80">
             以人为本、诚信守法、和谐自然、建造精品是镇华集团的企业管理方针，是镇华集团苦练内功增强凝聚力的指导思想，是现代企业管理思想、管理原则、管理艺术、管理目标的集中体现。“以人为本”是镇华集团管理思想的立足点；“诚信守法”是镇华集团建积极倡导和坚持的工作理念；“和谐自然”是现代电力工程企业必须坚持的理念；“建造精品电力工程”是镇华集团生产经营活动管理的根本目标和质量要求，是立足于社会、回报社会和满足用户的基本要求。
           </div>
         </div>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 

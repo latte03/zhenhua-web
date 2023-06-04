@@ -8,7 +8,33 @@ definePageMeta({
 
 useInnerPageContent({
   name: '信息公开',
-  slogan: '123213'
+  slogan: '信息公开',
+  topChannelCode: 'public',
+  pageChannelCode: 'procurement'
+})
+const biddingPage = ref(1)
+const purchasePage = ref(1)
+
+const biddingBody = computed(() => {
+  return {
+    pageInfo: { pageIndex: biddingPage.value, pageSize: 1 },
+    data: { channel_code: 'bidding' }
+  }
+})
+const purchaseBody = computed(() => {
+  return {
+    pageInfo: { pageIndex: biddingPage.value, pageSize: 1 },
+    data: { channel_code: 'purchase' }
+  }
+})
+
+const { data: biddingList } = useFetch('/api/article/list', {
+  method: 'post',
+  body: biddingBody
+})
+const { data: purchaseList } = useFetch('/api/article/list', {
+  method: 'post',
+  body: purchaseBody
 })
 </script>
 <template>
@@ -19,13 +45,21 @@ useInnerPageContent({
         :tab="PublicTab({ icon: 'Bidding', name: '招标信息' })"
         class="br"
       >
-        <SitePublicList :data="[{ id: 1 }]"></SitePublicList>
+        <SitePublicList
+          v-model="biddingPage"
+          :data="biddingList?.rows || []"
+          :total="biddingList?.count || 0"
+        ></SitePublicList>
       </n-tab-pane>
       <n-tab-pane
         name="purchase"
         :tab="PublicTab({ icon: 'Purchase', name: '采购信息' })"
       >
-        <SitePublicList :data="[]"></SitePublicList>
+        <SitePublicList
+          v-model="purchasePage"
+          :data="purchaseList?.rows || []"
+          :total="purchaseList?.count || 0"
+        ></SitePublicList>
       </n-tab-pane>
     </n-tabs>
   </div>

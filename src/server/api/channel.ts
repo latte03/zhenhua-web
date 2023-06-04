@@ -28,6 +28,8 @@ export interface Attrs {
   thumbnail: string
   icon?: string
 }
+
+export type ChannelAttrs = Attrs
 export default defineEventHandler(async event => {
   const { data } = await $fetch<{ data: Attrs[] }>(`${BASE_URL}/site/channel`)
   return data

@@ -1,41 +1,56 @@
 <script lang="ts" setup>
+import dayjs from 'dayjs'
+import { ArticleAttrs } from '~/server/api/article'
+
 interface PropsType {
-  data: any[]
+  data: ArticleAttrs[]
+  total: number
+  modelValue: number
 }
 const props = defineProps<PropsType>()
+const emit = defineEmits(['update-page'])
 defineOptions({ name: 'SitePublicBidding' })
-const page = ref(1)
+const page = useVModel(props, 'modelValue', emit)
+const localePath = useLocalePath()
+function formatToYYYY(value: string) {
+  return dayjs(value).format('YYYY')
+}
+function formatToMMDD(value: string) {
+  return dayjs(value).format('MM-DD')
+}
 </script>
 
 <template>
   <div class="site-public-bidding">
     <ul>
       <li v-for="d in data" :key="d.id" class="flex justify-start bidding-item">
-        <div class="text-right mr-6">
-          <div class="text-2xl font-bold">05-12</div>
-          <div class="opacity-50 mt-2">2023</div>
+        <div class="mr-6 text-right">
+          <div class="text-2xl font-bold">
+            {{ formatToYYYY(d.release_time) }}
+          </div>
+          <div class="mt-2 opacity-50">{{ formatToMMDD(d.release_time) }}</div>
         </div>
         <div class="flex-grow">
           <div class="mb-6">
-            <div class="font-bold mb-2">招标信息的标题</div>
+            <div class="mb-2 font-bold">{{ d.title }}</div>
             <div class="opacity-50">
-              <n-ellipsis class="w-full">
-                招标信息的一些详细的内容，招标信息的一些详细的内容等等，招标信息的一些详细的内容等招标信息的一些详细的内容等等，两行，超出两行省略...
-              </n-ellipsis>
+              <n-ellipsis class="w-full">{{ d.abstract }}</n-ellipsis>
             </div>
           </div>
-          <Icon
-            class="arrow transition-base"
-            name="solar:arrow-right-line-duotone"
-            size="16"
-          />
+          <NuxtLink :to="localePath(`/detail/${d.id}`)">
+            <Icon
+              class="arrow transition-base"
+              name="solar:arrow-right-line-duotone"
+              size="16"
+            />
+          </NuxtLink>
         </div>
       </li>
     </ul>
     <n-pagination
       v-model:page="page"
       class="mt-20"
-      :page-count="101"
+      :page-count="total"
       size="large"
     >
       <template #prev>

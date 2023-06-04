@@ -1,14 +1,22 @@
-import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { Attrs } from '~/server/api/channel'
 
 export const useChannelStore = defineStore('channel', () => {
-  const channel = ref<Attrs[] | null>(null)
+  const channel = useState<Attrs[] | null>('channel', () => null)
+
+  // ref<Attrs[] | null>(null)
+
   //   const KEY = 'value'
 
   const getChannel = async () => {
-    const { data } = await useFetch(`/api/channel`)
-    channel.value = data.value
+    if (!channel.value || channel.value.length < 1) {
+      const { data } = await useFetch(`/api/channel`)
+      channel.value = data.value
+
+      return data
+    }
+
+    return {}
   }
   const channelTree = computed(() => {
     return channel.value ? nest(channel.value) : []

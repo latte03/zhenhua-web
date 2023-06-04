@@ -2,25 +2,35 @@
 import { NCarousel } from '#components'
 import HonorBase from '@/assets/images/honor-base.svg'
 
-interface PropsType {}
-const props = defineProps<PropsType>()
 defineOptions({ name: 'AboutHonor' })
 definePageMeta({
   layout: 'inner-page',
-  data: { name: '镇华集团', slogan: '123213' }
+  data: { name: '镇华集团', slogan: '123213', code: 'about' }
 })
 
-const swiper = ref([
-  {
-    img: 'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg'
-  },
-  {
-    img: 'https://img.liblibai.com/images/eebbb93175c3aad5254cfe5cd2c4a8cd72739a73.jpeg?image_process=format,webp&x-oss-process=image/resize,w_600,m_lfit/format,webp'
-  },
-  {
-    img: 'https://img.liblibai.com/web/64382181a7973.png?image_process=format,webp&x-oss-process=image/resize,w_600,m_lfit/format,webp'
+useInnerPageContent({
+  name: '关于镇华',
+  slogan: '关于镇华',
+  topChannelCode: 'about',
+  pageChannelCode: 'honor'
+})!
+
+const { data } = useFetch('/api/article/list', {
+  method: 'post',
+  body: {
+    pageInfo: {
+      pageIndex: 1,
+      pageSize: 5
+    },
+    data: {
+      channel_code: 'honor'
+    }
   }
-])
+})
+
+const swiper = computed(() => {
+  return data.value?.rows || []
+})
 const controlRef = ref<InstanceType<typeof NCarousel> | null>(null)
 const currentIndex = ref(0)
 
@@ -60,12 +70,12 @@ function next() {
     >
       <NCarouselItem
         v-for="(s, index) in swiper"
-        :key="s.img"
+        :key="s.id"
         class="honor-carousel-item"
         @click="onCarouselItemClick(index)"
       >
         <div class="wh-full">
-          <img class="carousel-img wh-full object-cover" :src="s.img" />
+          <img class="object-cover carousel-img wh-full" :src="s.thumbnail" />
         </div>
       </NCarouselItem>
     </NCarousel>
@@ -87,15 +97,15 @@ function next() {
       >
         <NCarouselItem
           v-for="(s, index) in swiper"
-          :key="s.img"
+          :key="s.id"
           class="control-carousel--item"
           @click="onCarouselItemClick(index)"
         >
           <div
-            class="wh-full cursor-pointer"
+            class="cursor-pointer wh-full"
             :class="{ 'is-selected': currentIndex === index }"
           >
-            <img class="carousel-img wh-full object-cover" :src="s.img" />
+            <img class="object-cover carousel-img wh-full" :src="s.thumbnail" />
           </div>
         </NCarouselItem>
       </NCarousel>

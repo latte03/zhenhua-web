@@ -9,7 +9,9 @@ definePageMeta({
 
 useInnerPageContent({
   name: '信息公开',
-  slogan: '123213'
+  slogan: '信息公开',
+  topChannelCode: 'public',
+  pageChannelCode: 'recruitment'
 })
 
 const SPAN: Record<string, ColProps['span']> = {
@@ -46,7 +48,7 @@ const SPAN: Record<string, ColProps['span']> = {
         <template #header>
           <n-row class="collapse-head">
             <n-col :span="SPAN.POST">
-              <div class="header-item font-bold re-header-layout">招聘岗位</div>
+              <div class="font-bold header-item re-header-layout">招聘岗位</div>
             </n-col>
             <n-col :span="SPAN.NUM">
               <div class="header-item re-header-layout">2</div>
@@ -59,7 +61,7 @@ const SPAN: Record<string, ColProps['span']> = {
             </n-col>
             <n-col :span="SPAN.OTHER">
               <div
-                class="header-item flex items-center justify-end re-header-layout opacity-50"
+                class="flex items-center justify-end opacity-50 header-item re-header-layout"
               >
                 <div class="mr-4 text-sm">2022年12月5日</div>
                 <div><Icon name="solar:alt-arrow-up-line-duotone"></Icon></div>

@@ -1,13 +1,9 @@
 <script lang="ts" setup>
-interface PropsType {}
-const props = defineProps<PropsType>()
 defineOptions({ name: 'PageDetail' })
 definePageMeta({
   layout: 'inner-page'
 })
 const { t } = useLang()
-const content =
-  '  近日，由集团公司承建的220kV国投淖毛湖南汇集站扩建工程项目建设稳中有序推进中。'
 
 const route = useRoute()
 
@@ -15,7 +11,7 @@ const id = computed(() => {
   return route.params.id
 })
 
-const { data } = useFetch(`/api/article/detail/${id}`)
+const { data } = useFetch(`/api/article/detail/${id.value}`)
 </script>
 
 <template>
@@ -33,12 +29,15 @@ const { data } = useFetch(`/api/article/detail/${id}`)
         </NSpace>
       </div>
       <div class="container-main">
-        <div v-html="content"></div>
+        <div class="text-center">
+          <img class="w-1/2 m-auto mb-6" :src="data?.thumbnail" alt="" />
+        </div>
+        <div v-html="data?.content"></div>
       </div>
-      <div class="flex mt-8">
+      <!-- <div class="flex mt-8">
         <SiteContainerTabBtn type="prev" class="flex-grow" />
         <SiteContainerTabBtn type="next" class="flex-grow" />
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

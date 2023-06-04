@@ -1,21 +1,22 @@
 <script lang="ts" setup>
 defineOptions({ name: 'ContactPage' })
 definePageMeta({
-  layout: 'inner-page',
-  data: { name: '联系我们', slogan: '123213' }
+  layout: 'inner-page'
 })
 
 useInnerPageContent({
   name: '联系我们',
-  slogan: '112312434',
-  hasPageBar: false
+  slogan: '联系我们',
+  hasPageBar: false,
+  topChannelCode: 'contact',
+  pageChannelCode: 'contact'
 })!
 </script>
 
 <template>
-  <div class="contact-page flex">
+  <div class="flex contact-page">
     <div class="contact-section contact-section--white">
-      <div class="text-2xl font-bold mb-8 title-after">
+      <div class="mb-8 text-2xl font-bold title-after">
         镇华建设集团有限公司
       </div>
       <ul>
@@ -36,21 +37,21 @@ useInnerPageContent({
     <div class="contact-section contact-section--blue">
       <ul>
         <li class="mb-6">
-          <div class="text-sm mb-1">市场业务热线</div>
+          <div class="mb-1 text-sm">市场业务热线</div>
           <div class="text-2xl font-bold">0376-6278889</div>
         </li>
 
         <li class="mb-6">
-          <div class="text-sm mb-1">商务部邮箱</div>
+          <div class="mb-1 text-sm">商务部邮箱</div>
           <div class="text-2xl font-bold">commerce@zhenhuadl.onaliyun.com</div>
         </li>
 
         <li class="mb-6">
-          <div class="text-sm mb-1">财务部邮箱</div>
+          <div class="mb-1 text-sm">财务部邮箱</div>
           <div class="text-2xl font-bold">finance@zhenhuadl.onaliyun.com</div>
         </li>
         <li class="mb-6">
-          <div class="text-sm mb-1">人力资源部</div>
+          <div class="mb-1 text-sm">人力资源部</div>
           <div class="text-2xl font-bold">HR@zhenhuadl.onaliyun.com</div>
         </li>
       </ul>
@@ -86,9 +87,6 @@ useInnerPageContent({
   @apply p-20 flex-grow;
 
   width: 50%;
-}
-
-.contact-section-white {
 }
 
 .contact-section--blue {

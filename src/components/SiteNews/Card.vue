@@ -1,20 +1,27 @@
 <script lang="ts" setup>
-// interface PropsType {}
-// const props = defineProps<PropsType>()
+import { ArticleAttrs } from '~/server/api/article'
+import defaultImage from '@/assets/images/default-image.jpg'
+
+interface PropsType {
+  content: ArticleAttrs
+}
+defineProps<PropsType>()
 defineOptions({ name: 'SiteNewsCard' })
+
+const localePath = useLocalePath()
 </script>
 
 <template>
-  <div class="site-new-card cursor-pointer">
-    <div class="new-img ratio-16/9 rounded mb-8">
+  <div class="cursor-pointer site-new-card">
+    <div class="mb-8 rounded new-img ratio-16/9">
       <img
-        src="https://img.liblibai.com/web/6442628756b2c.jpg?image_process=format,webp&x-oss-process=image/resize,w_600,m_lfit/format,webp"
+        :src="content.thumbnail || defaultImage"
         alt=""
         class="ratio-img site-new-img transition-base"
       />
     </div>
     <div class="new-info">
-      <div class="new-title text-base font-bold mb-2">
+      <div class="mb-2 text-base font-bold new-title">
         <n-ellipsis
           class="w-full"
           :tooltip="{
@@ -23,10 +30,10 @@ defineOptions({ name: 'SiteNewsCard' })
             }
           }"
         >
-          关爱员工，体检护航—集团公司组织员工进行202.关爱员工，体检护航—集团公司组织员工进行202.
+          {{ content.title }}
         </n-ellipsis>
       </div>
-      <div class="new-desc opacity-50 text-sm mb-8">
+      <div class="mb-8 text-sm opacity-50 new-desc">
         <n-ellipsis
           class="w-full"
           :line-clamp="2"
@@ -36,7 +43,7 @@ defineOptions({ name: 'SiteNewsCard' })
             }
           }"
         >
-          为保障公司员工身体健康，持续提升员工幸福指数，使广大员工以饱满的精神状态、健康的体魄投入到工作中。为保障公司员工身体健康，持续提升员工幸福指数，使广大员工以饱满的精神状态、健康的体魄投入到工作中。
+          {{ content.abstract }}
         </n-ellipsis>
       </div>
 
@@ -47,10 +54,17 @@ defineOptions({ name: 'SiteNewsCard' })
             class="opacity-50"
             size="16px"
           />
-          <span class="font-mon opacity-40 pl-2">2023-04-06</span>
+          <span class="pl-2 font-mon opacity-40">
+            {{ content.release_time }}
+          </span>
         </div>
         <div class="new-more flex-i-center">
-          <span class="pr-2 opacity-50">查看详情</span>
+          <NuxtLink
+            :to="localePath(`/detail/${content.id}`)"
+            class="pr-2 opacity-50"
+          >
+            查看详情
+          </NuxtLink>
           <Icon name="solar:arrow-right-line-duotone" class="opacity-50" />
         </div>
       </div>

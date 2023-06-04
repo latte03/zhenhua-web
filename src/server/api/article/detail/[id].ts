@@ -1,4 +1,5 @@
-import { Attrs } from '..'
+import { ArticleAttrs } from '..'
+import { BASE_URL } from '~/utils/constant'
 
 export default defineEventHandler(async event => {
   if (!event.context.params?.id) {
@@ -7,7 +8,7 @@ export default defineEventHandler(async event => {
       statusMessage: 'ID should be required '
     })
   }
-  const { data } = await $fetch<{ data: Attrs }>(
+  const { data } = await $fetch<{ data: ArticleAttrs }>(
     `${BASE_URL}/site/article/detail/${event.context.params.id}`
   )
   return data

@@ -1,6 +1,11 @@
-<script lang="ts" name="Carousel" setup>
+<script lang="ts" setup generic="T extends Attrs | ArticleAttrs">
+// eslint-disable-next-line unused-imports/no-unused-imports
+import type { Attrs } from './type'
+// eslint-disable-next-line unused-imports/no-unused-imports
+import { ArticleAttrs } from '~/server/api/article'
+
 interface PropsType {
-  dataSource: any[]
+  dataSource: T[]
   size?: 'default' | 'small'
 }
 const props = withDefaults(defineProps<PropsType>(), {

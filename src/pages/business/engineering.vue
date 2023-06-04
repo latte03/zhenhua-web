@@ -9,7 +9,10 @@ definePageMeta({
 
 useInnerPageContent({
   name: '业务板块',
-  slogan: '123213'
+  slogan: '业务板块',
+
+  topChannelCode: 'business',
+  pageChannelCode: 'engineering'
 })
 const data = ref([
   {

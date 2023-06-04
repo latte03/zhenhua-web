@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-interface PropsType {}
-const props = defineProps<PropsType>()
 defineOptions({ name: 'NewEnergy' })
 definePageMeta({
   layout: 'inner-page'
@@ -8,7 +6,9 @@ definePageMeta({
 
 useInnerPageContent({
   name: '业务板块',
-  slogan: '123213'
+  slogan: '业务板块',
+  topChannelCode: 'business',
+  pageChannelCode: 'new-energy'
 })
 const afterPageTransition = ref(false)
 

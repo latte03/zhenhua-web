@@ -1,36 +1,105 @@
 <script lang="ts" setup>
+import { ChannelAttrs } from '~/server/api/channel'
+import { useChannelStore } from '~/store/channelState'
+
 defineOptions({ name: 'InnerPage' })
 
-const src =
-  'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg'
+/**
+ * TODO： 用路由来监管还是用页面上的code 来管理
+ */
+const route = useRoute()
 
 const { state } = useProvideInnerPageStore({
   name: '',
   slogan: ''
 })
 
-const menuData = ref([
-  {
-    name: '工程建设',
-    id: '1'
-  },
-  {
-    name: '新能源建设',
-    id: '2'
+const channelStore = useChannelStore()
+channelStore.getChannel()
+
+/**
+ * 二级栏目
+ */
+const topChannel = computed(() => {
+  const channel = channelStore.channel?.find(
+    c => c.code === state.value.topChannelCode
+  )
+  return channel
+})
+
+/**
+ * 二级栏目的状态信息
+ */
+const headState = computed(() => {
+  return {
+    name: topChannel.value?.name,
+    slogan: topChannel.value?.description
   }
-])
+})
+
+/**
+ * 二级栏目的子集栏目
+ */
+const channelChildren = computed(() => {
+  if (topChannel.value && topChannel.value.id) {
+    const children = channelStore.channel?.filter(
+      c => c.pid === topChannel.value?.id
+    )
+
+    return children || []
+  }
+
+  return []
+})
+
+/**
+ * 当前页面的栏目
+ */
+const pageChannel = computed(() => {
+  const channel = channelStore.channel?.find(
+    c => c.code === state.value.pageChannelCode
+  )
+  return channel
+})
+
+/**
+ * 当前栏目路径
+ */
+
+const breadcrumb = computed(() => {
+  return pageChannel.value ? findPath(pageChannel.value) : []
+})
+
+function findPath(channel: ChannelAttrs) {
+  const path = [channel]
+
+  let pid = channel.pid
+
+  while (pid) {
+    const findNextChannel = channelStore.channel?.find(c => c.id === pid)
+    if (findNextChannel) {
+      path.push(findNextChannel)
+      pid = findNextChannel.pid
+    }
+  }
+
+  return path.reverse()
+}
 </script>
 
 <template>
   <div class="web-site-main inner-page">
     <SiteHeader />
     <div class="page-content">
-      <SitePageHead :data="state" :src="src" />
+      <SitePageHead :data="headState" :src="topChannel?.thumbnail" />
       <SiteContent class="relative z-10 page-container--wrap">
         <div v-if="state.hasPageBar" class="flex justify-between page-nav-bar">
-          <SiteBreadcrumb />
+          <SiteBreadcrumb :data="breadcrumb" />
 
-          <SitePageMenu active-key="1" :data-source="menuData" />
+          <SitePageMenu
+            :active-key="state.pageChannelCode || ''"
+            :data-source="channelChildren"
+          />
         </div>
         <div class="page-container">
           <slot></slot>
