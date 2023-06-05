@@ -69,7 +69,7 @@ const infoOptions = computed(() => {
         :data-source="swiper"
       >
         <div class="wh-full">
-          <img class="ratio-img carousel-img" :src="record.thumbnail" />
+          <AgImage class="ratio-img carousel-img" :src="record.thumbnail" />
         </div>
       </SiteCarousel>
     </div>

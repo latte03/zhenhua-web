@@ -75,12 +75,15 @@ function next() {
         @click="onCarouselItemClick(index)"
       >
         <div class="wh-full">
-          <img class="object-cover carousel-img wh-full" :src="s.thumbnail" />
+          <AgImage
+            class="object-cover carousel-img wh-full"
+            :src="s.thumbnail"
+          />
         </div>
       </NCarouselItem>
     </NCarousel>
     <div class="honor-base">
-      <img :src="HonorBase" alt="" />
+      <AgImage :src="HonorBase" alt="" />
     </div>
 
     <div class="control-carousel--wrap">
@@ -105,7 +108,10 @@ function next() {
             class="cursor-pointer wh-full"
             :class="{ 'is-selected': currentIndex === index }"
           >
-            <img class="object-cover carousel-img wh-full" :src="s.thumbnail" />
+            <AgImage
+              class="object-cover carousel-img wh-full"
+              :src="s.thumbnail"
+            />
           </div>
         </NCarouselItem>
       </NCarousel>

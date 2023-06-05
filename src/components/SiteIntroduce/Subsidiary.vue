@@ -10,7 +10,7 @@ defineOptions({ name: 'SiteIntroduceSubsidiary' })
 
 <template>
   <div class="flex-col p-6 site-introduce flex-center">
-    <div class="mb-1 logo"><img :src="data.icon_url" alt="" /></div>
+    <div class="mb-1 logo"><AgImage :src="data.icon_url" alt="" /></div>
     <div class="mb-4 font-bold">{{ data.value }}</div>
     <div class="text-xs opacity-50">
       {{ data.desc }}

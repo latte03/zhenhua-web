@@ -66,7 +66,7 @@ const localePath = useLocalePath()
         </div>
         <div class="absolute opacity-50 index z-2">0{{ index + 1 }}</div>
         <div class="to-left-top wh-full mask-cover z-1"></div>
-        <img
+        <AgImage
           class="to-left-top wh-full transition-base img"
           :src="d.thumbnail"
           :alt="d.name"

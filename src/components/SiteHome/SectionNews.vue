@@ -63,7 +63,7 @@ const { data: groupNotice } = useFetch('/api/article/list', {
         :data-source="zhenhua?.rows || []"
       >
         <div class="wh-full">
-          <img
+          <AgImage
             class="absolute top-0 wh-full carousel-img"
             :src="record.thumbnail"
           />

@@ -30,7 +30,7 @@ const { data } = useFetch(`/api/article/detail/${id.value}`)
       </div>
       <div class="container-main">
         <div class="text-center">
-          <img class="w-1/2 m-auto mb-6" :src="data?.thumbnail" alt="" />
+          <AgImage class="w-1/2 m-auto mb-6" :src="data?.thumbnail" alt="" />
         </div>
         <div v-html="data?.content"></div>
       </div>

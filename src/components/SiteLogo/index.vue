@@ -14,7 +14,7 @@ defineOptions({ name: 'SiteLogo' })
 
 <template>
   <div v-show="white" class="" :style="{ width, height }">
-    <img class="w-full h-full" :src="LogoWiteSvg" alt="" />
+    <AgImage class="w-full h-full" :src="LogoWiteSvg" alt="" />
   </div>
   <!-- <LogoWhite v-show="white" key="logo-white" :width="width" :height="height" /> -->
   <LogoDefault

@@ -26,7 +26,7 @@ const lists = computed<ILink[]>(() => [
     <div class="flex flex-col">
       <h1>{{ $t('follow') }}</h1>
       <div class="flex items-center justify-between w-full py-2">
-        <img
+        <AgImage
           class="w-20 h-20 rounded-full"
           height="160"
           width="160"

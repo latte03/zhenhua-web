@@ -34,7 +34,7 @@ if (!channelStore.channel) {
 
       <div class="absolute top-0 wh-full carousel-img">
         <i class="block to-left-top wh-full image-cover z-1"></i>
-        <img class="to-left-top wh-full" :src="record.thumbnail" />
+        <AgImage class="to-left-top wh-full" :src="record.thumbnail" />
       </div>
     </SiteCarousel>
 

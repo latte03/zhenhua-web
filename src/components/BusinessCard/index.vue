@@ -13,26 +13,26 @@ defineOptions({ name: 'BusinessCard' })
 </script>
 
 <template>
-  <div class="gi-item cursor-pointer">
-    <div class="item-content absolute z-10">
-      <div class="item-icon absolute flex-center">
+  <div class="cursor-pointer gi-item">
+    <div class="absolute z-10 item-content">
+      <div class="absolute item-icon flex-center">
         <ClientOnly>
           <Icon name="solar:paint-roller-line-duotone" size="24px" />
         </ClientOnly>
       </div>
       <div>
-        <div class="item-title text-center text-lg">{{ data.name }}</div>
-        <div class="item-desc text-center">{{ data.desc }}</div>
+        <div class="text-lg text-center item-title">{{ data.name }}</div>
+        <div class="text-center item-desc">{{ data.desc }}</div>
       </div>
-      <div class="item-button absolute">
+      <div class="absolute item-button">
         <span class="button-text">查看更多</span>
         <ClientOnly>
           <Icon name="solar:arrow-right-broken" size="24px" />
         </ClientOnly>
       </div>
     </div>
-    <img
-      class="to-left-top wh-full object-cover"
+    <AgImage
+      class="object-cover to-left-top wh-full"
       src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
       :alt="data.name"
     />

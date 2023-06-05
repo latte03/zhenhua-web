@@ -14,7 +14,7 @@ const localePath = useLocalePath()
 <template>
   <div class="cursor-pointer site-new-card">
     <div class="mb-8 rounded new-img ratio-16/9">
-      <img
+      <AgImage
         :src="content.thumbnail || defaultImage"
         alt=""
         class="ratio-img site-new-img transition-base"

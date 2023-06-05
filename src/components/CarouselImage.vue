@@ -9,7 +9,7 @@ defineOptions({ name: 'CarouselImage' })
 <template>
   <div class="carousel-image">
     <i class="block to-left-top wh-full image-cover z-1"></i>
-    <img class="to-left-top wh-full" :src="src" />
+    <AgImage class="to-left-top wh-full" :src="src" />
   </div>
 </template>
 
