@@ -20,7 +20,7 @@ defineOptions({ name: 'SitePageHead' })
     </div>
     <div
       :style="`
-      --background-image:url('${src}');
+      --background-image:url('${src ? transformURL(src) : ''}');
       background-image: linear-gradient(
       0deg,
       rgba(0, 0, 0, 30%),
