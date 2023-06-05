@@ -1,4 +1,6 @@
-export const BASE_URL = 'http://localhost:5810'
+export const BASE_URL = import.meta.env.DEV
+  ? 'http://localhost:5810'
+  : '/cms-api'
 
 interface PageInfo {
   pageSize?: number
