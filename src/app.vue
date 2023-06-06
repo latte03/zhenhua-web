@@ -7,10 +7,27 @@ InitApp()
 const { locale } = useI18n()
 
 const themeOverrides = lightTheme
+
+const { data } = useFetch('/api/site-info')
+
+const title = computed(() => {
+  return data.value?.title.value || ''
+})
+const description = computed(() => {
+  return data.value?.description.value || ''
+})
+const keywords = computed(() => {
+  return data.value?.keywords.value || ''
+})
 </script>
 
 <template>
   <Html :lang="locale">
+    <Head>
+      <Title>{{ title }}</Title>
+      <Meta name="description" :content="description" />
+      <Meta name="keywords" :content="keywords" />
+    </Head>
     <Body class="antialiased transition-colors duration-300 bg-white">
       <NConfigProvider
         :locale="zhCN"

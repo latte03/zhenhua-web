@@ -1,21 +1,6 @@
 <script lang="ts" setup>
 defineOptions({ name: 'SectionNews' })
 
-const swiper = ref([
-  {
-    id: 1,
-    img: 'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg',
-    title: 'dddd',
-    desc: 'ddddddd'
-  },
-  {
-    id: 2,
-    img: 'https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg',
-    title: 'dddd22',
-    desc: 'dddddd11d'
-  }
-])
-
 const basePageInfo = {
   pageIndex: 1,
   pageSize: 5
@@ -46,6 +31,12 @@ const { data: groupNotice } = useFetch('/api/article/list', {
   method: 'post',
   body: getBody(23)
 })
+
+const swiper = computed(() => {
+  return zhenhua.value?.rows.filter(z => {
+    return !!z.thumbnail
+  })
+})
 </script>
 
 <template>
@@ -60,7 +51,7 @@ const { data: groupNotice } = useFetch('/api/article/list', {
         v-slot="{ record }"
         size="small"
         class="relative flex-grow-0 flex-shrink-0 mr-6 overflow-hidden section-news-carousel"
-        :data-source="zhenhua?.rows || []"
+        :data-source="swiper || []"
       >
         <div class="wh-full">
           <AgImage

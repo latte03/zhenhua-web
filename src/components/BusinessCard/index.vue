@@ -3,37 +3,42 @@ interface Data {
   name: string
   icon: string
   desc: string
-  id: string
+  id: number
+  thumbnail: string
+  link: string
+  link_type: string
+  code: string
 }
 interface PropsType {
   data: Data
 }
-const props = defineProps<PropsType>()
+defineProps<PropsType>()
 defineOptions({ name: 'BusinessCard' })
 </script>
 
 <template>
   <div class="cursor-pointer gi-item">
+    <div class="absolute item-icon flex-center">
+      <AgImage :src="data.icon" class="w-6 h-6" />
+    </div>
     <div class="absolute z-10 item-content">
-      <div class="absolute item-icon flex-center">
-        <ClientOnly>
-          <Icon name="solar:paint-roller-line-duotone" size="24px" />
-        </ClientOnly>
-      </div>
       <div>
         <div class="text-lg text-center item-title">{{ data.name }}</div>
         <div class="text-center item-desc">{{ data.desc }}</div>
       </div>
-      <div class="absolute item-button">
+      <NuxtLink
+        :to="`/business/engineering/${data.code}`"
+        class="absolute item-button"
+      >
         <span class="button-text">查看更多</span>
         <ClientOnly>
           <Icon name="solar:arrow-right-broken" size="24px" />
         </ClientOnly>
-      </div>
+      </NuxtLink>
     </div>
     <AgImage
-      class="object-cover to-left-top wh-full"
-      src="https://naive-ui.oss-cn-beijing.aliyuncs.com/carousel-img/carousel1.jpeg"
+      class="object-cover bg-img to-left-top wh-full"
+      :src="data.thumbnail"
       :alt="data.name"
     />
   </div>
@@ -61,13 +66,15 @@ defineOptions({ name: 'BusinessCard' })
   }
 
   .item-icon {
-    @apply transition-base z-1 w-14 h-14 opacity-100;
+    @apply z-12 w-14 h-14 opacity-100;
 
-    top: -28px;
+    bottom: 0;
     left: calc(50% - 28px);
     color: var(--black);
     background-color: var(--white);
     border-radius: 50%;
+    transform: translateY(-70px);
+    transition: all 0.6s ease;
   }
 
   .item-button {
@@ -96,6 +103,10 @@ defineOptions({ name: 'BusinessCard' })
     transition: all 0.3s ease;
   }
 
+  .bg-img {
+    @apply transition-base;
+  }
+
   &:hover {
     .item-content {
       @apply h-full;
@@ -104,8 +115,10 @@ defineOptions({ name: 'BusinessCard' })
     }
 
     .item-icon {
-      top: 3.8vw;
-      transition: all 0.6s 0.2s ease-in;
+      // top: 3.8vw;
+
+      transform: translateY(calc(-24vw));
+      transition: all 0.6s ease;
     }
 
     .item-desc {
@@ -133,6 +146,10 @@ defineOptions({ name: 'BusinessCard' })
           transition: transform 1s 0.2s ease, opacity 1s 0.2s ease;
         }
       }
+    }
+
+    .bg-img {
+      transform: scale(1.2);
     }
   }
 }

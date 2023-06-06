@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-defineOptions({ name: 'BusinessList' })
+defineOptions({ name: 'BusinessEngineeringList' })
 definePageMeta({
   layout: 'inner-page'
 })

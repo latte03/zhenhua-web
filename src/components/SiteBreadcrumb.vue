@@ -4,7 +4,7 @@ import { ChannelAttrs } from '~/server/api/channel'
 interface PropsType {
   data: ChannelAttrs[]
 }
-const props = defineProps<PropsType>()
+defineProps<PropsType>()
 defineOptions({ name: 'SiteBreadcrumb' })
 </script>
 

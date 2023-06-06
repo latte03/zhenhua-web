@@ -12,30 +12,17 @@ useInnerPageContent({
   topChannelCode: 'public',
   pageChannelCode: 'procurement'
 })
-const biddingPage = ref(1)
-const purchasePage = ref(1)
 
-const biddingBody = computed(() => {
-  return {
-    pageInfo: { pageIndex: biddingPage.value, pageSize: 1 },
-    data: { channel_code: 'bidding' }
-  }
-})
-const purchaseBody = computed(() => {
-  return {
-    pageInfo: { pageIndex: biddingPage.value, pageSize: 1 },
-    data: { channel_code: 'purchase' }
-  }
-})
-
-const { data: biddingList } = useFetch('/api/article/list', {
-  method: 'post',
-  body: biddingBody
-})
-const { data: purchaseList } = useFetch('/api/article/list', {
-  method: 'post',
-  body: purchaseBody
-})
+const {
+  content: biddingList,
+  page: biddingPage,
+  count: biddingCount
+} = useListByCode({ code: 'bidding' })
+const {
+  content: purchaseList,
+  page: purchasePage,
+  count: purchaseCount
+} = useListByCode({ code: 'purchase' })
 </script>
 <template>
   <div class="public-procurement">
@@ -47,8 +34,8 @@ const { data: purchaseList } = useFetch('/api/article/list', {
       >
         <SitePublicList
           v-model="biddingPage"
-          :data="biddingList?.rows || []"
-          :total="biddingList?.count || 0"
+          :data="biddingList || []"
+          :total="biddingCount || 0"
         ></SitePublicList>
       </n-tab-pane>
       <n-tab-pane
@@ -57,8 +44,8 @@ const { data: purchaseList } = useFetch('/api/article/list', {
       >
         <SitePublicList
           v-model="purchasePage"
-          :data="purchaseList?.rows || []"
-          :total="purchaseList?.count || 0"
+          :data="purchaseList || []"
+          :total="purchaseCount || 0"
         ></SitePublicList>
       </n-tab-pane>
     </n-tabs>
