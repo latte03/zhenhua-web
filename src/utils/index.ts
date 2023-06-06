@@ -20,9 +20,11 @@ export function transformURL(url: string | number) {
   if (typeof url !== 'string') {
     return url.toString()
   }
-  return url.includes('http') || url.includes('nuxt')
-    ? url
-    : `${
-        import.meta.env.DEV ? 'http://localhost:5810/assets' : '/assets'
-      }/${url}`
+  if (url.startsWith('data') || url.includes('http') || url.includes('nuxt')) {
+    return url
+  }
+
+  return `${
+    import.meta.env.DEV ? 'http://localhost:5810/assets' : '/assets'
+  }/${url}`
 }
