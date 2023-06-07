@@ -12,10 +12,8 @@ useInnerPageContent({
   pageChannelCode: route.params.type as string
 })!
 
-const { content, page, count } = useListByRouteCode({
-  props: {
-    code: 'type'
-  }
+const { content, page, count } = useListByCode({
+  code: route.params.type as string
 })
 </script>
 

@@ -10,6 +10,7 @@ interface PropsType {
   activeKey: string
 }
 const props = defineProps<PropsType>()
+const { activeKey } = toRefs(props)
 defineOptions({ name: 'SitePageMenu' })
 
 const router = useRouter()
@@ -28,24 +29,20 @@ async function onClick(d: ChannelAttrs) {
   } else {
     window.open(d.link, '_blank')
   }
-
-  // const dd = pageMenu?.clientWidth
-  // const d = pageMenu?.clientWidth
 }
 
-watchEffect(async () => {
-  if (props.activeKey) {
-    await nextTick()
-    const pageMenu = document.querySelector(
-      '.page-menu--item.is-active'
-    ) as HTMLDivElement
-    console.log('%c Line:29 🍰 pageMenu', 'color:#e41a6a', { pageMenu })
-    lineState.value = {
-      width: `${(pageMenu?.clientWidth || 0) - 48}px`,
-      x: `${pageMenu?.offsetLeft + 24}px`
-    }
-  }
-})
+// watchEffect(async () => {
+//   if (activeKey.value) {
+//     await nextTick()
+//     const pageMenu = document.querySelector(
+//       '.page-menu--item.is-active'
+//     ) as HTMLDivElement
+//     lineState.value = {
+//       width: `${(pageMenu?.clientWidth || 0) - 48}px`,
+//       x: `${pageMenu?.offsetLeft + 24}px`
+//     }
+//   }
+// })
 </script>
 
 <template>
