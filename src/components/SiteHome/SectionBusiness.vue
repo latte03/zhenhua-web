@@ -1,30 +1,7 @@
 <script lang="ts" setup>
-import Business1 from '@/assets/images/business-1.png'
 import { useChannelStore } from '~/store/channelState'
 
 defineOptions({ name: 'SectionBusiness' })
-const data = ref([
-  {
-    name: '工程建设',
-    desc: '关于工程建设等相关的描述词语，可以两到三行的样子就行。',
-    img: Business1
-  },
-  {
-    name: '新能源建设',
-    desc: '关于工程建设等相关的描述词语，可以两到三行的样子就行。',
-    img: Business1
-  },
-  {
-    name: '智能装备制造',
-    desc: '关于工程建设等相关的描述词语，可以两到三行的样子就行。',
-    img: Business1
-  },
-  {
-    name: '设备生产',
-    desc: '关于工程建设等相关的描述词语，可以两到三行的样子就行。',
-    img: Business1
-  }
-])
 
 const channelStore = useChannelStore()
 
@@ -88,7 +65,7 @@ const localePath = useLocalePath()
 }
 
 .section-business {
-  height: 650px;
+  height: 45vw;
 
   &-title {
     top: 72px;
