@@ -52,29 +52,6 @@ const eventPos = reactive({
 const show3D = ref(false)
 const currentSelect = ref<CurrentMap | undefined>(undefined)
 
-// {
-//   name: '河南省',
-//   adcode: '410000'
-// }
-// provide(THEME_KEY, 'dark')
-
-// onMounted(() => {
-//   console.log('map mounted')
-
-//   setTimeout(() => {
-//     data.value = [
-//       {
-//         name: '河南省',
-//         value: [113.665412, 34.757975],
-
-//         data: {
-//           adcode: '410000',
-//           value: 1
-//         }
-//       }
-//     ]
-//   }, 500)
-// })
 watch(
   [registered, energyData],
   async ([r, d]) => {
@@ -127,32 +104,18 @@ async function on3DBack() {
 </script>
 
 <template>
-  <div class="site-map">
-    <div
-      v-if="registered"
-      class="relative wh-full"
-      :class="{ animate }"
-      :style="{
-        display: show3D ? 'none' : 'block',
-        '--click-x': `${eventPos.x}px`,
-        '--click-y': `${eventPos.y}px`
-      }"
-    >
-      <SiteMapTooltip v-for="tool in toolTips" :key="tool.name" :data="tool" />
-      <VChart
-        ref="chatRef"
-        class="chart"
-        :option="option"
-        @click="onChatClick"
-      />
-    </div>
-
-    <SiteMapThreeMap
-      v-if="currentSelect"
-      :value="currentSelect"
-      class="client"
-      @back="on3DBack"
-    />
+  <div
+    v-if="registered && !show3D"
+    class="relative wh-full"
+    :class="{ animate }"
+    :style="{
+      display: show3D ? 'none' : 'block',
+      '--click-x': `${eventPos.x}px`,
+      '--click-y': `${eventPos.y}px`
+    }"
+  >
+    <SiteMapTooltip v-for="tool in toolTips" :key="tool.name" :data="tool" />
+    <VChart ref="chatRef" class="chart" :option="option" @click="onChatClick" />
   </div>
 </template>
 

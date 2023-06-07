@@ -19,12 +19,14 @@ onMounted(() => {
     }, 500)
   })
 })
+
+const { data } = useFetch('/api/new-energy')
 </script>
 
 <template>
   <SiteLayoutNewEnergy>
     <ClientOnly>
-      <SiteMap v-if="afterPageTransition" />
+      <SiteMap v-if="afterPageTransition" :data="data" />
     </ClientOnly>
   </SiteLayoutNewEnergy>
 </template>

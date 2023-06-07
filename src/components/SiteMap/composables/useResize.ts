@@ -3,7 +3,7 @@ import { EChartVC } from '../type'
 export function useResize(
   chatRef: Ref<EChartVC | null>,
   registered: Ref<boolean>,
-  callBack: () => void
+  callBack?: () => void
 ) {
   function addResize() {
     window.addEventListener('resize', resize)

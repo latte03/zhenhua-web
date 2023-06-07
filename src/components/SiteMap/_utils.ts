@@ -4,7 +4,7 @@ import { GeoComponentOption, TooltipComponentOption } from 'echarts/components'
 import { ref } from 'vue'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-import da from '@/assets/images/bumpy_worn_ground_albedo.png'
+import da from '@/assets/images/bumpy_worn_ground_albedo.jpg'
 
 export type ECOption = ComposeOption<
   | MapSeriesOption

@@ -63,12 +63,19 @@ export function use2DMap() {
 
 export function useRegister() {
   const registered = ref(false)
-
   onMounted(async () => {
+    const storage = window.localStorage
+    let chinaMap = storage.getItem('chinaMap')
     registered.value = false
-    const data = await $fetch<string>('/china.json')
+    if (!chinaMap || chinaMap === 'undefined') {
+      const data = await $fetch<string>('/china.json', {
+        parseResponse: text => text
+      })
+      chinaMap = data
+      storage.setItem('chinaMap', chinaMap)
+    }
+    registerMap('china', chinaMap)
 
-    registerMap('china', data)
     registered.value = true
   })
 

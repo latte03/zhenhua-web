@@ -1,10 +1,12 @@
 import VChart from 'vue-echarts'
+import { EnergyAttrs } from '~/server/api/new-energy'
 
 export type EChartVC = InstanceType<typeof VChart>
 
 export interface CurrentMap {
   name: string
   adcode: string
+  list: EnergyAttrs[]
 }
 export interface MapData {
   name: string

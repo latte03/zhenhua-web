@@ -12,18 +12,9 @@ const props = defineProps<PropsType>()
 const emit = defineEmits(['back'])
 defineOptions({ name: 'SiteMapThreeMap' })
 useECharts()
-const { chatRef, option, chargingData } = use3DMap(props.value)
+const { chatRef, option } = use3DMap(() => props.value)
 const { registered } = useRegister(props.value)
 useResize(chatRef, registered)
-
-setTimeout(() => {
-  chargingData.value = [
-    {
-      name: '南阳市',
-      value: [112.540918, 32.999082, 0]
-    }
-  ]
-}, 3000)
 </script>
 
 <template>
@@ -52,5 +43,31 @@ setTimeout(() => {
 
 .n-divider.custom-color {
   background-color: var(--color-black-bg-20);
+}
+</style>
+
+<style lang="scss">
+.charging-title {
+  padding: 0 8px;
+  color: var(--color-text-1);
+  font-size: 16px;
+}
+
+.charging-address {
+  @apply mb-1;
+
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  color: var(--color-text-1);
+  font-style: normal;
+}
+
+.icon-charge {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: url('~/assets/images/icon-charge.svg');
+  background-size: 100%;
 }
 </style>
