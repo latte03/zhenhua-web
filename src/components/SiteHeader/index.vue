@@ -75,12 +75,18 @@ const transform = useMenuOptions()
         <LanguageSwitch>
           <li>
             <div class="head-menu-item head-menu-icon-item">
-              <Icon name="bi:translate" />
+              <n-button class="head-button" round quaternary>
+                <Icon name="bi:translate" />
+              </n-button>
             </div>
           </li>
         </LanguageSwitch>
 
-        <li class="head-menu-item">search</li>
+        <li class="head-menu-item head-menu-icon-item">
+          <n-button class="head-button" round quaternary>
+            <Icon name="solar:rounded-magnifer-linear" />
+          </n-button>
+        </li>
       </ul>
     </div>
   </div>
@@ -137,7 +143,11 @@ const transform = useMenuOptions()
   }
 
   .head-menu-icon-item {
-    padding: 32px 16px;
+    padding: 8px 2px;
+  }
+
+  .head-button {
+    color: var(--text-color);
   }
 
   &.is-scroll {
@@ -154,7 +164,7 @@ const transform = useMenuOptions()
     }
 
     .head-menu-icon-item {
-      padding: 16px;
+      padding: 6px 2px;
     }
   }
 }
