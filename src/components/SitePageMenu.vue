@@ -16,7 +16,11 @@ const router = useRouter()
 
 const localePath = useLocalePath()
 
-function onClick(d: ChannelAttrs) {
+const lineState = ref({
+  width: '0px',
+  x: '0'
+})
+async function onClick(d: ChannelAttrs) {
   if (d.link_type === 'path') {
     router.push({
       path: localePath(d.link)
@@ -24,23 +28,49 @@ function onClick(d: ChannelAttrs) {
   } else {
     window.open(d.link, '_blank')
   }
+
+  // const dd = pageMenu?.clientWidth
+  // const d = pageMenu?.clientWidth
 }
+
+watchEffect(async () => {
+  if (props.activeKey) {
+    await nextTick()
+    const pageMenu = document.querySelector(
+      '.page-menu--item.is-active'
+    ) as HTMLDivElement
+    console.log('%c Line:29 🍰 pageMenu', 'color:#e41a6a', { pageMenu })
+    lineState.value = {
+      width: `${(pageMenu?.clientWidth || 0) - 48}px`,
+      x: `${pageMenu?.offsetLeft + 24}px`
+    }
+  }
+})
 </script>
 
 <template>
-  <n-space class="site-page-menu" :size="16">
+  <div class="relative">
+    <n-space class="site-page-menu" :size="16">
+      <div
+        v-for="d in dataSource"
+        :key="d.id"
+        class="cursor-pointer page-menu--item"
+        :class="{
+          'is-active': activeKey === d.code || activeKey.includes(d.link)
+        }"
+        @click="onClick(d)"
+      >
+        <span class="page-menu--text">{{ d.name }}</span>
+      </div>
+    </n-space>
     <div
-      v-for="d in dataSource"
-      :key="d.id"
-      class="cursor-pointer page-menu--item"
-      :class="{
-        'is-active': activeKey === d.code || activeKey.includes(d.link)
+      class="absolute page-menu-line"
+      :style="{
+        '--line-width': lineState.width,
+        '--line-x': lineState.x
       }"
-      @click="onClick(d)"
-    >
-      <span class="page-menu--text">{{ d.name }}</span>
-    </div>
-  </n-space>
+    ></div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -59,6 +89,7 @@ function onClick(d: ChannelAttrs) {
 
       /* stylelint-disable-next-line selector-class-pattern */
       .page-menu--text {
+        font-weight: 700;
         opacity: 1;
       }
     }
@@ -67,5 +98,14 @@ function onClick(d: ChannelAttrs) {
       background-color: var(--color-fill-light);
     }
   }
+}
+
+.page-menu-line {
+  @apply transition-base bottom-0 left-0;
+
+  width: var(--line-width);
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: translateX(var(--line-x));
 }
 </style>
