@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NCarousel } from '#components'
+// import { NCarousel } from '#components'
 import HonorBase from '@/assets/images/honor-base.svg'
 
 defineOptions({ name: 'AboutHonor' })
@@ -31,7 +31,7 @@ const { data } = useFetch('/api/article/list', {
 const swiper = computed(() => {
   return data.value?.rows || []
 })
-const controlRef = ref<InstanceType<typeof NCarousel> | null>(null)
+const controlRef = ref<InstanceType<any> | null>(null)
 const currentIndex = ref(0)
 
 function onCurrenChange(index: number) {
@@ -53,9 +53,9 @@ function next() {
 </script>
 
 <template>
-  <div class="about-honor">
+  <div class="about-honor min-h-100">
     <!--  -->
-    <NCarousel
+    <n-carousel
       effect="card"
       :space-between="30"
       :loop="false"
@@ -81,13 +81,13 @@ function next() {
           />
         </div>
       </NCarouselItem>
-    </NCarousel>
+    </n-carousel>
     <div class="honor-base">
       <AgImage :src="HonorBase" alt="" />
     </div>
 
     <div class="control-carousel--wrap">
-      <NCarousel
+      <n-carousel
         ref="controlRef"
         draggable
         centered-slides
@@ -114,7 +114,7 @@ function next() {
             />
           </div>
         </NCarouselItem>
-      </NCarousel>
+      </n-carousel>
       <button
         type="button"
         class="custom-arrow--left"
@@ -149,11 +149,11 @@ function next() {
 
   .control-carousel {
     margin-top: 160px;
-  }
 
-  .control-carousel--item {
-    width: 160px;
-    height: 114px;
+    .control-carousel--item {
+      width: 160px;
+      height: 114px;
+    }
   }
 
   .custom-arrow--left,
