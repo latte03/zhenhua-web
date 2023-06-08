@@ -20,7 +20,7 @@ const { data } = useFetch('/api/article/list', {
   body: {
     pageInfo: {
       pageIndex: 1,
-      pageSize: 5
+      pageSize: 1
     },
     data: {
       channel_code: 'culture'

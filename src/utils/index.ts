@@ -24,7 +24,5 @@ export function transformURL(url: string | number) {
     return url
   }
 
-  return `${
-    import.meta.env.DEV ? 'http://localhost:5810/assets' : '/assets'
-  }/${url}`
+  return `${import.meta.env.DEV ? `${BASE_URL}/assets` : '/assets'}/${url}`
 }

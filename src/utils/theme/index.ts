@@ -13,6 +13,10 @@ export const lightTheme: GlobalThemeOverrides = {
   Button: {
     textColor: theme.primary
   },
+  Input: {
+    borderHover: theme.primaryHover,
+    borderFocus: `2px solid ${theme.primary}`
+  },
   Select: {
     peers: {
       InternalSelection: {
