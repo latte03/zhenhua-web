@@ -31,18 +31,18 @@ async function onClick(d: ChannelAttrs) {
   }
 }
 
-// watchEffect(async () => {
-//   if (activeKey.value) {
-//     await nextTick()
-//     const pageMenu = document.querySelector(
-//       '.page-menu--item.is-active'
-//     ) as HTMLDivElement
-//     lineState.value = {
-//       width: `${(pageMenu?.clientWidth || 0) - 48}px`,
-//       x: `${pageMenu?.offsetLeft + 24}px`
-//     }
-//   }
-// })
+watchEffect(async () => {
+  if (activeKey.value) {
+    await nextTick()
+    const pageMenu = document.querySelector(
+      '.page-menu--item.is-active'
+    ) as HTMLDivElement
+    lineState.value = {
+      width: `${(pageMenu?.clientWidth || 0) - 48}px`,
+      x: `${pageMenu?.offsetLeft + 24}px`
+    }
+  }
+})
 </script>
 
 <template>
