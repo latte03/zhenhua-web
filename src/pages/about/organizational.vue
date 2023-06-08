@@ -1,15 +1,13 @@
 <script lang="ts" setup>
 defineOptions({ name: 'AboutOrganizational' })
 definePageMeta({
-  layout: 'inner-page',
-  data: { name: '镇华集团', slogan: '123213' }
+  layout: 'inner-page'
 })
 
-const { setState } = useInnerPageStore()!
-
-setState({
+useInnerPageContent({
   name: '关于镇华',
   slogan: '关于镇华',
+  hasPageBar: true,
   topChannelCode: 'about',
   pageChannelCode: 'organizational'
 })!
@@ -33,5 +31,5 @@ const content = computed(() => {
 </script>
 
 <template>
-  <div class="AboutOrganizational" v-html="content"></div>
+  <div class="AboutOrganizational rich-content" v-html="content"></div>
 </template>

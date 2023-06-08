@@ -32,7 +32,7 @@ const { data } = useFetch(`/api/article/detail/${id.value}`)
         <div class="text-center">
           <AgImage class="w-1/2 m-auto mb-6" :src="data?.thumbnail" alt="" />
         </div>
-        <div v-html="data?.content"></div>
+        <div class="rich-content" v-html="data?.content"></div>
       </div>
       <!-- <div class="flex mt-8">
         <SiteContainerTabBtn type="prev" class="flex-grow" />

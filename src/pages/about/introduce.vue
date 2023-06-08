@@ -8,11 +8,13 @@ defineOptions({ name: 'AboutIntroducePage' })
 definePageMeta({
   layout: 'inner-page'
 })
+
+const PAGE_CHANNEL_CODE = 'introduce'
 useInnerPageContent({
   name: '关于镇华',
-  slogan: '123213',
+  // slogan: '123213',
   topChannelCode: 'about',
-  pageChannelCode: 'introduce'
+  pageChannelCode: PAGE_CHANNEL_CODE
 })!
 
 const groupStore = useGroupState()
@@ -20,6 +22,24 @@ groupStore.getGroupInfo()
 const { data: subsidiaries } = useFetch('/api/subsidiaries', {
   default: () => [] as KeyValue[]
 })
+
+const { data } = useFetch('/api/article/list', {
+  method: 'post',
+  body: {
+    pageInfo: {
+      pageIndex: 1,
+      pageSize: 1
+    },
+    data: {
+      channel_code: PAGE_CHANNEL_CODE
+    }
+  }
+})
+
+const content = computed(() => {
+  return data.value?.rows[0]
+})
+
 const swiper = computed(() => {
   return (groupStore.groupInfo.groupPic || []).map(i => {
     return {
@@ -68,9 +88,7 @@ const infoOptions = computed(() => {
         class="overflow-hidden about-carousel"
         :data-source="swiper"
       >
-        <div class="wh-full">
-          <AgImage class="ratio-img carousel-img" :src="record.thumbnail" />
-        </div>
+        <AgImage class="ratio-img carousel-img" :src="record.thumbnail" />
       </SiteCarousel>
     </div>
     <div class="mt-6">
@@ -89,12 +107,12 @@ const infoOptions = computed(() => {
             </div>
             <div class="opacity-50 info-label">{{ info.label }}</div>
           </div>
-          <Icon name="solar:home-2-linear" size="40px" />
+          <Icon :name="info.icon" size="40px" />
         </div>
       </div>
     </div>
     <div class="opacity-75">
-      <div v-html="groupStore.groupInfo.groupMemo"></div>
+      <div class="rich-content" v-html="content?.content"></div>
     </div>
     <div class="mt-6">
       <div class="text-center">
@@ -146,7 +164,7 @@ const infoOptions = computed(() => {
     align-items: start;
 
     &--unit {
-      margin-top: 12px;
+      // margin-top: 12px;
       margin-left: 8px;
       opacity: 0.6;
     }

@@ -35,7 +35,7 @@ const content = computed(() => {
 
 <template>
   <div class="about-culture">
-    <div v-html="content"></div>
+    <div class="rich-content" v-html="content"></div>
     <!-- <div class="mb-4 text-2xl font-bold text-center">
       以人为本、求质量、重信誉
     </div>
