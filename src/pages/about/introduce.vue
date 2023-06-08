@@ -36,24 +36,24 @@ const infoOptions = computed(() => {
         ? dayjs(groupStore.groupInfo.buildTime).format('YYYY')
         : '',
       label: '成立时间',
-      icon: ''
+      icon: 'BuildTime'
     },
     {
       value: numeral(groupStore.groupInfo.registeredCapital).format('0,000'),
       unit: '万元',
       label: '注册资金',
-      icon: ''
+      icon: 'RegisteredCapital'
     },
     {
       value: groupStore.groupInfo.qualificationNum,
       label: '国家级资质',
-      icon: ''
+      icon: 'QualificationNum'
     },
     {
       value: groupStore.groupInfo.staffNum,
       unit: '+',
       label: '现有员工',
-      icon: ''
+      icon: 'Staff'
     }
   ]
 })
@@ -110,7 +110,7 @@ const infoOptions = computed(() => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .about-introduce {
   font-size: 15px;
   line-height: 1.7;
@@ -119,7 +119,7 @@ const infoOptions = computed(() => {
     @apply -mt-14 -mx-10 ratio-16/9;
 
     height: 0;
-    padding-bottom: 50%;
+    padding-bottom: 36%;
   }
 
   .about-carousel {
@@ -155,6 +155,7 @@ const infoOptions = computed(() => {
   .info-value--value {
     font-weight: bold;
     font-size: 40px;
+    line-height: 40px;
   }
 
   .subsidiary {
