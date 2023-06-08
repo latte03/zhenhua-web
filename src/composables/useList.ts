@@ -17,23 +17,33 @@ export function useListByRouteCode(option?: Option) {
 export function useListByCode(option: { code: string }) {
   const { code } = option
 
+  const { content, page, count } = useListByAny({
+    channel_code: code
+  })
+
+  return { content, page, count }
+}
+
+export function useListByAny(_data: any) {
+  const page = ref(1)
+  const body = computed(() => {
+    return {
+      pageInfo: {
+        pageIndex: page.value,
+        pageSize: 10
+      },
+      data: _data
+    }
+  })
   const { data } = useFetch('/api/article/list', {
     method: 'post',
-    body: {
-      pageInfo: {
-        pageIndex: 1,
-        pageSize: 5
-      },
-      data: {
-        channel_code: code
-      }
-    }
+    body
   })
 
   const content = computed(() => {
     return data.value?.rows || []
   })
-  const page = ref(1)
+
   const count = computed(() => {
     return data.value?.count || 0
   })
