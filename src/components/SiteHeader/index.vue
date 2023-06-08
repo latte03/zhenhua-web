@@ -12,6 +12,11 @@ const channelStore = useChannelStore()
 channelStore.getChannel()
 
 const transform = useMenuOptions()
+
+const [showSearch, toggleSearch] = useToggle()
+function onSearchClick() {
+  toggleSearch(true)
+}
 </script>
 
 <template>
@@ -83,12 +88,15 @@ const transform = useMenuOptions()
         </LanguageSwitch>
 
         <li class="head-menu-item head-menu-icon-item">
-          <n-button class="head-button" round quaternary>
+          <n-button class="head-button" round quaternary @click="onSearchClick">
             <Icon name="solar:rounded-magnifer-linear" />
           </n-button>
         </li>
       </ul>
     </div>
+    <Teleport to="body">
+      <SiteSearch v-model:show="showSearch" />
+    </Teleport>
   </div>
 </template>
 
