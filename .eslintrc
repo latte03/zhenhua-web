@@ -7,7 +7,7 @@
         "prettier"
     ],
     "globals": {
-        "document":"readonly"
+        "document": "readonly"
     },
     "rules": {
         "@typescript-eslint/consistent-type-imports": "off",
@@ -21,6 +21,14 @@
                     "void": "always",
                     "component": "always"
                 }
+            }
+        ],
+        "vue/component-name-in-template-casing": [
+            "off",
+            "kebab-case",
+            {
+                "registeredComponentsOnly": true,
+                "ignores": []
             }
         ]
     }

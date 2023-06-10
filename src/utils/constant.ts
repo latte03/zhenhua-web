@@ -1,4 +1,5 @@
 export const BASE_URL = 'http://localhost:5810'
+// export const BASE_URL = 'http://106.14.27.158:5810'
 // ? 'http://localhost:5810'
 // : 'http://106.14.27.158/cms-api'
 

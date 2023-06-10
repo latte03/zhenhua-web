@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import dayjs from 'dayjs'
 import { ColProps } from 'naive-ui'
 interface PropsType {}
 const props = defineProps<PropsType>()
@@ -21,6 +22,8 @@ const SPAN: Record<string, ColProps['span']> = {
   EXP: 4,
   OTHER: 4
 }
+
+const { data } = useFetch('/api/recruitment')
 </script>
 <template>
   <div class="public-recruitment">
@@ -44,33 +47,39 @@ const SPAN: Record<string, ColProps['span']> = {
       </n-row>
     </div>
     <n-collapse>
-      <n-collapse-item name="3">
+      <n-collapse-item name="3" v-for="d in data" :key="d.id">
         <template #header>
           <n-row class="collapse-head">
             <n-col :span="SPAN.POST">
-              <div class="font-bold header-item re-header-layout">招聘岗位</div>
+              <div class="font-bold header-item re-header-layout">
+                {{ d.title }}
+              </div>
             </n-col>
             <n-col :span="SPAN.NUM">
-              <div class="header-item re-header-layout">2</div>
+              <div class="header-item re-header-layout">{{ d.num }}人</div>
             </n-col>
             <n-col :span="SPAN.EDU">
-              <div class="header-item re-header-layout">本科</div>
+              <div class="header-item re-header-layout">{{ d.education }}</div>
             </n-col>
             <n-col :span="SPAN.EXP">
-              <div class="header-item re-header-layout">2年</div>
+              <div class="header-item re-header-layout">
+                {{ d.experience }}年
+              </div>
             </n-col>
             <n-col :span="SPAN.OTHER">
               <div
                 class="flex items-center justify-end opacity-50 header-item re-header-layout"
               >
-                <div class="mr-4 text-sm">2022年12月5日</div>
+                <div class="mr-4 text-sm">
+                  {{ dayjs(d.create_time).format('YYYY-MM-DD') }}
+                </div>
                 <div><Icon name="solar:alt-arrow-up-line-duotone"></Icon></div>
               </div>
             </n-col>
           </n-row>
         </template>
         <div class="content">
-          <div class="content-body">11</div>
+          <div class="content-body" v-html="d.cn_content"></div>
         </div>
       </n-collapse-item>
     </n-collapse>
