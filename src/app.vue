@@ -19,16 +19,25 @@ const description = computed(() => {
 const keywords = computed(() => {
   return data.value?.keywords.value || ''
 })
+
+useSeoMeta({
+  titleTemplate(_title) {
+    return _title ? `${_title} | ${title.value} ` : title.value
+  },
+  description
+})
 </script>
 
 <template>
   <Html :lang="locale">
     <Head>
-      <Title>{{ title }}</Title>
-      <Meta name="description" :content="description" />
+      <!-- <Title>{{ title }}</Title> -->
+
+      <!-- <Meta name="description" :content="description" /> -->
       <Meta name="keywords" :content="keywords" />
     </Head>
     <Body class="antialiased transition-colors duration-300 bg-white">
+      <NuxtLoadingIndicator />
       <NConfigProvider
         :locale="zhCN"
         :date-locale="dateZhCN"
