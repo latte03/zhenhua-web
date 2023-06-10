@@ -4,9 +4,10 @@ definePageMeta({
   layout: 'inner-page'
 })
 
+const { t } = useLang()
 useInnerPageContent({
-  name: '关于镇华',
-  slogan: '关于镇华',
+  name: t('about.name'),
+  slogan: t('about.name'),
   hasPageBar: true,
   topChannelCode: 'about',
   pageChannelCode: 'organizational'

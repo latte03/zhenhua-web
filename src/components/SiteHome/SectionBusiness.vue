@@ -37,7 +37,7 @@ const localePath = useLocalePath()
             :to="localePath(d.link || '')"
             class="px-6 py-2 mt-8 info-button flex-center transition-base"
           >
-            <span class="mr-2 transition-base">查看详情</span>
+            <span class="mr-2 transition-base">{{ $t('view-details') }}</span>
             <Icon size="20px" name="solar:arrow-right-line-duotone" />
           </NuxtLink>
         </div>
@@ -106,7 +106,7 @@ const localePath = useLocalePath()
       bottom: 48px;
       font-weight: 700;
       font-size: 36px;
-      font-family: Montserrat-Bold, Montserrat;
+      font-family: Montserrat-Bold, Montserrat, Arial, Helvetica, sans-serif;
       line-height: 44px;
       transition: all 0.3s ease;
     }

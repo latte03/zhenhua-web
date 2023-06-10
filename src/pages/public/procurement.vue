@@ -5,10 +5,10 @@ defineOptions({ name: 'PublicProcurement' })
 definePageMeta({
   layout: 'inner-page'
 })
-
+const { t } = useLang()
 useInnerPageContent({
-  name: '信息公开',
-  slogan: '信息公开',
+  name: t('public.procurment_name'),
+  slogan: t('public.procurment_name'),
   topChannelCode: 'public',
   pageChannelCode: 'procurement'
 })
@@ -23,13 +23,27 @@ const {
   page: purchasePage,
   count: purchaseCount
 } = useListByCode({ code: 'purchase' })
+
+useSeoMeta({
+  title: `${t('public.procurment_name')} 
+  ｜
+  ${t('public.information_disclosure')}`,
+  description: `${t('public.information_disclosure')},
+  ${t('public.bidding')}${t('public.information')},
+${t('public.purchase')}${t('public.information')}`
+})
 </script>
 <template>
   <div class="public-procurement">
     <n-tabs type="segment" :bar-width="100" animated>
       <n-tab-pane
         name="bidding"
-        :tab="PublicTab({ icon: 'Bidding', name: '招标信息' })"
+        :tab="
+          PublicTab({
+            icon: 'Bidding',
+            name: `${t('public.bidding')}${t('public.information')}`
+          })
+        "
         class="br"
       >
         <SitePublicList
@@ -40,7 +54,12 @@ const {
       </n-tab-pane>
       <n-tab-pane
         name="purchase"
-        :tab="PublicTab({ icon: 'Purchase', name: '采购信息' })"
+        :tab="
+          PublicTab({
+            icon: 'Purchase',
+            name: `${t('public.purchase')}${t('public.information')}`
+          })
+        "
       >
         <SitePublicList
           v-model="purchasePage"

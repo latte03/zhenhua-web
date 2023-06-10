@@ -10,9 +10,10 @@ definePageMeta({
 })
 
 const PAGE_CHANNEL_CODE = 'introduce'
+const { t } = useLang()
 useInnerPageContent({
-  name: '关于镇华',
-  // slogan: '123213',
+  name: t('about.name'),
+  slogan: t('about.name'),
   topChannelCode: 'about',
   pageChannelCode: PAGE_CHANNEL_CODE
 })!

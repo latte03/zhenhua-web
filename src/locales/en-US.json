@@ -4,5 +4,45 @@
   "modal": "Modal",
   "release_time": "Release Time",
   "i18n": "en-US",
-  "no_data": "No Data"
+  "no_data": "No Data",
+  "public": {
+    "recruitment_positions": "Recruitment Positions",
+    "number": "Number",
+    "education": "Education",
+    "experience": "Experience",
+    "years": "years",
+    "recruitment_info": "Recruitment Info",
+    "recruitment": "Recruitment",
+    "information_disclosure": "Information Disclosure",
+    "procurment_name": "Bidding and  Procurement",
+    "information": "information",
+    "purchase": "purchase",
+    "bidding": "bidding"
+  },
+  "contract": {
+    "contract_us": "Contract Us",
+    "company": "ZhenHua Construction Group Co., Ltd",
+    "address": "address",
+    "address_detail": "Floor 9, Building 7, Tianxi, Longfeishan City Phase II, Xinqi Avenue, Yangshan New District, Xinyang City",
+    "phone": "phone",
+    "emil": "emil",
+    "hotline": "Market Business Hotline",
+    "commerce": "Commerce",
+    "finance": "Finance",
+    "hr": "HR"
+  },
+  "view-details": "View-Details",
+  "site": {
+    "your_location": "Your Location",
+    "home": "Home"
+  },
+  "news": {
+    "name": "news"
+  },
+  "business": {
+    "name": "business block"
+  },
+  "about": {
+    "name": "About ZhenHua"
+  }
 }

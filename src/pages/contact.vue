@@ -4,32 +4,39 @@ definePageMeta({
   layout: 'inner-page'
 })
 
+const { t } = useLang()
 useInnerPageContent({
-  name: '联系我们',
-  slogan: '联系我们',
+  name: t('contract.contract_us'),
+  slogan: t('contract.contract_us'),
   hasPageBar: false,
   topChannelCode: 'contact',
   pageChannelCode: 'contact'
 })!
+
+useSeoMeta({
+  title: t('contract.contract_us'),
+  description:
+    '镇华建设集团有限公司,地址：信阳市羊山新区新七大道龙飞山城二期.天玺7号楼9层'
+})
 </script>
 
 <template>
   <div class="flex contact-page">
     <div class="contact-section contact-section--white">
       <div class="mb-8 text-2xl font-bold title-after">
-        镇华建设集团有限公司
+        {{ t('contract.company') }}
       </div>
       <ul>
         <li class="mb-3">
-          <span class="opacity-60">地址：</span>
-          <span>信阳市羊山新区新七大道龙飞山城二期.天玺7号楼9层</span>
+          <span class="opacity-60">{{ t('contract.address') }}：</span>
+          <span>{{ t('contract.address_detail') }}</span>
         </li>
         <li class="mb-3">
-          <span class="opacity-60">电话：</span>
+          <span class="opacity-60">{{ t('contract.phone') }}：</span>
           <span>0376-6278889 0376-6177919</span>
         </li>
         <li class="mb-3">
-          <span class="opacity-60">邮箱：</span>
+          <span class="opacity-60">{{ t('contract.emil') }}：</span>
           <span>info@zhenhuadl.onaliyun.com</span>
         </li>
       </ul>
@@ -37,21 +44,27 @@ useInnerPageContent({
     <div class="contact-section contact-section--blue">
       <ul>
         <li class="mb-6">
-          <div class="mb-1 text-sm">市场业务热线</div>
+          <div class="mb-1 text-sm">{{ t('contract.hotline') }}</div>
           <div class="text-2xl font-bold">0376-6278889</div>
         </li>
 
         <li class="mb-6">
-          <div class="mb-1 text-sm">商务部邮箱</div>
+          <div class="mb-1 text-sm">
+            {{ t('contract.commerce') }} {{ t('contract.emil') }}
+          </div>
           <div class="text-2xl font-bold">commerce@zhenhuadl.onaliyun.com</div>
         </li>
 
         <li class="mb-6">
-          <div class="mb-1 text-sm">财务部邮箱</div>
+          <div class="mb-1 text-sm">
+            {{ t('contract.finance') }} {{ t('contract.emil') }}
+          </div>
           <div class="text-2xl font-bold">finance@zhenhuadl.onaliyun.com</div>
         </li>
         <li class="mb-6">
-          <div class="mb-1 text-sm">人力资源部</div>
+          <div class="mb-1 text-sm">
+            {{ t('contract.hr') }} {{ t('contract.emil') }}
+          </div>
           <div class="text-2xl font-bold">HR@zhenhuadl.onaliyun.com</div>
         </li>
       </ul>

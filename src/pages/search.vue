@@ -14,6 +14,10 @@ const searchValue = route.query.q
 const { content, page, count } = useListByAny({
   title: searchValue
 })
+
+useSeoMeta({
+  title: '内容搜索'
+})
 </script>
 
 <template>

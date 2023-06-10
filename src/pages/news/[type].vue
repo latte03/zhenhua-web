@@ -3,9 +3,10 @@ defineOptions({ name: 'NewsPage' })
 definePageMeta({
   layout: 'inner-page'
 })
+const { t } = useLang()
 const route = useRoute()
 useInnerPageContent({
-  name: '新闻资讯',
+  name: t('news.name'),
   slogan: '新闻资讯',
   hasPageBar: true,
   topChannelCode: 'news',

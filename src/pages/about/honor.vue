@@ -8,9 +8,10 @@ definePageMeta({
   data: { name: '镇华集团', slogan: '123213', code: 'about' }
 })
 
+const { t } = useLang()
 useInnerPageContent({
-  name: '关于镇华',
-  slogan: '关于镇华',
+  name: t('about.name'),
+  slogan: t('about.name'),
   topChannelCode: 'about',
   pageChannelCode: 'honor'
 })!

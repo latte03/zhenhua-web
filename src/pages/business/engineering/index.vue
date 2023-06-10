@@ -9,19 +9,20 @@ definePageMeta({
   layout: 'inner-page'
 })
 
+const { t } = useLang()
 useInnerPageContent({
-  name: '业务板块',
-  slogan: '业务板块',
+  name: t('business.name'),
+  slogan: t('business.name'),
 
   topChannelCode: 'business',
   pageChannelCode: 'engineering'
 })
 
-const route = useRoute()
+const routePath = useBaseRoutePath()
 const channelStore = useChannelStore()
 
 const channels = computed(() => {
-  const channel = channelStore.channel?.find(c => c.link === route.path)
+  const channel = channelStore.channel?.find(c => c.link === routePath.value)
 
   const channels = channelStore.channel?.filter(c => c.pid === channel?.id)
 

@@ -1,18 +1,24 @@
-<script lang="ts" name="SiteFooter" setup></script>
+<script lang="ts" name="SiteFooter" setup>
+const { t } = useLang()
+
+const d = useI18n()
+</script>
 
 <template>
-  <div class="site-footer">
+  <div class="site-footer" :class="d.locale.value">
     <SiteContent class="flex justify-between pt-12 pb-8">
       <div class="opacity-80">
         <ul class="mb-6">
           <li class="mb-2">
-            <span class="text-justify opacity-50 label">地 址:</span>
+            <span class="text-justify opacity-50 label">
+              {{ t('contract.address') }}:
+            </span>
             <span class="pl-2">
-              信阳市羊山新区新七大道龙飞山城二期.天玺7号楼9层
+              {{ t('contract.address_detail') }}
             </span>
           </li>
           <li>
-            <span class="opacity-50 label">联系电话:</span>
+            <span class="opacity-50 label">{{ t('contract.phone') }}:</span>
             <span class="pl-2 font-mon">
               <span>0376-6278889</span>
               <span class="pl-6">0376-6177919</span>
@@ -21,19 +27,25 @@
         </ul>
         <ul class="flex flex-wrap emails">
           <li class="w-1/2 mb-2">
-            <span class="opacity-50 label">公司邮箱:</span>
+            <span class="opacity-50 label">{{ t('contract.emil') }}:</span>
             <span class="pl-2 font-mon">info@zhenhuadl.onaliyun.com</span>
           </li>
           <li class="w-1/2 mb-2">
-            <span class="opacity-50 label">商务邮箱:</span>
+            <span class="opacity-50 label">
+              {{ t('contract.commerce') }} {{ t('contract.emil') }}:
+            </span>
             <span class="pl-2 font-mon">commerce@zhenhuadl.onaliyun.com</span>
           </li>
           <li class="w-1/2 mb-2">
-            <span class="opacity-50 label">财务邮箱:</span>
+            <span class="opacity-50 label">
+              {{ t('contract.finance') }} {{ t('contract.emil') }}:
+            </span>
             <span class="pl-2 font-mon">finance@zhenhuadl.onaliyun.com</span>
           </li>
           <li class="w-1/2">
-            <span class="opacity-50 label">人力资源:</span>
+            <span class="opacity-50 label">
+              {{ t('contract.hr') }} {{ t('contract.emil') }}:
+            </span>
             <span class="pl-2 font-mon">HR@zhenhuadl.onaliyun.com</span>
           </li>
         </ul>
@@ -48,26 +60,32 @@
   </div>
 </template>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .site-footer {
   padding-bottom: 0;
   color: var(--white);
   font-size: 13px;
   background-color: var(--primary-color);
-}
 
-.emails {
-  width: 720px;
-}
+  .label {
+    display: inline-block;
+    width: 56px;
+    text-align: justify;
+    text-align-last: justify;
+  }
 
-.copy-right {
-  background: var(--primary-dark-color);
-}
+  &.en {
+    .label {
+      width: auto;
+    }
+  }
 
-.label {
-  display: inline-block;
-  width: 56px;
-  text-align: justify;
-  text-align-last: justify;
+  .emails {
+    width: 720px;
+  }
+
+  .copy-right {
+    background: var(--primary-dark-color);
+  }
 }
 </style>

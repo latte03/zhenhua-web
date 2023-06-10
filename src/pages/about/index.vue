@@ -5,6 +5,5 @@
 </template>
 
 <style lang="scss" scoped>
-.about {
-}
+// **
 </style>

@@ -4,9 +4,10 @@ definePageMeta({
   layout: 'inner-page'
 })
 const route = useRoute()
+const { t } = useLang()
 useInnerPageContent({
-  name: '业务板块',
-  slogan: '业务板块',
+  name: t('business.name'),
+  slogan: t('business.name'),
   topChannelCode: 'business',
   pageChannelCode: route.params.code as string,
   hasPageBar: true

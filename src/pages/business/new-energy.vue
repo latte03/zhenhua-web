@@ -3,10 +3,10 @@ defineOptions({ name: 'NewEnergy' })
 definePageMeta({
   layout: 'inner-page'
 })
-
+const { t } = useLang()
 useInnerPageContent({
-  name: '业务板块',
-  slogan: '业务板块',
+  name: t('business.name'),
+  slogan: t('business.name'),
   topChannelCode: 'business',
   pageChannelCode: 'new-energy'
 })

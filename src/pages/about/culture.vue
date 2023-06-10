@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-interface PropsType {}
-const props = defineProps<PropsType>()
 defineOptions({ name: 'AboutCulture' })
 
 definePageMeta({
@@ -8,9 +6,10 @@ definePageMeta({
   data: { name: '镇华集团', slogan: '123213' }
 })
 
+const { t } = useLang()
 useInnerPageContent({
-  name: '关于镇华',
-  slogan: '123213',
+  name: t('about.name'),
+  slogan: t('about.name'),
   topChannelCode: 'about',
   pageChannelCode: 'culture'
 })!

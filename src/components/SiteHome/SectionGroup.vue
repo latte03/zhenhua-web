@@ -22,18 +22,6 @@ const { data } = useFetch('/api/subsidiaries')
         <div v-for="d in data" :key="d.id" class="group-item flex-center">
           <span class="text">{{ d.value }}</span>
         </div>
-        <!-- <div class="group-item flex-center">
-          <span class="text">深圳莱昂科技公司</span>
-        </div>
-        <div class="group-item flex-center">
-          <span class="text">深圳莱昂科技公司</span>
-        </div>
-        <div class="group-item flex-center">
-          <span class="text">深圳莱昂科技公司</span>
-        </div>
-        <div class="group-item flex-center">
-          <span class="text">深圳莱昂科技公司</span>
-        </div> -->
       </n-carousel>
     </div>
   </SiteSection>

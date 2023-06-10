@@ -1,6 +1,6 @@
 <script lang="ts" name="About" setup>
 interface PropsType {}
-const props = defineProps<PropsType>()
+defineProps<PropsType>()
 </script>
 
 <template>
@@ -8,6 +8,5 @@ const props = defineProps<PropsType>()
 </template>
 
 <style lang="scss" scoped>
-.about {
-}
+// **
 </style>

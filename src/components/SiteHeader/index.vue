@@ -5,7 +5,7 @@ import { Icon, NuxtLink } from '#components'
 import { useChannelStore } from '~/store/channelState'
 
 const localePath = useLocalePath()
-const route = useRoute()
+const routePath = useBaseRoutePath()
 const { isScroll } = useScroll()
 
 const channelStore = useChannelStore()
@@ -32,7 +32,7 @@ function onSearchClick() {
       <ul class="flex items-center head-menu">
         <li>
           <NuxtLink class="block head-menu-item" :to="localePath('/')">
-            首页
+            {{ $t('site.home') }}
           </NuxtLink>
         </li>
         <template v-for="menu in channelStore.channelTree" :key="menu.name">
@@ -46,7 +46,7 @@ function onSearchClick() {
               <div
                 class="head-menu-item"
                 :class="
-                  route.path.includes(menu.code) ? 'router-link-active' : ''
+                  routePath.includes(menu.code) ? 'router-link-active' : ''
                 "
               >
                 {{ menu.name }}
@@ -60,22 +60,6 @@ function onSearchClick() {
             </NuxtLink>
           </li>
         </template>
-        <!-- <li>
-          <NuxtLink class="block head-menu-item" :to="localePath('/')">
-            首页
-          </NuxtLink>
-        </li>
-        <n-dropdown size="large" trigger="click" :options="aboutOptions">
-          <li>
-            <div class="head-menu-item">镇华集团</div>
-          </li>
-        </n-dropdown>
-
-        <n-dropdown size="large" trigger="click" :options="options">
-          <li>
-            <div class="head-menu-item">业务板块</div>
-          </li>
-        </n-dropdown> -->
 
         <LanguageSwitch>
           <li>

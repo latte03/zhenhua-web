@@ -8,9 +8,12 @@ definePageMeta({
   layout: 'inner-page'
 })
 
+const { t } = useLang()
+
 useInnerPageContent({
-  name: '信息公开',
-  slogan: '信息公开',
+  // 保底信息
+  name: t('public.information_disclosure'),
+  slogan: t('public.information_disclosure'),
   topChannelCode: 'public',
   pageChannelCode: 'recruitment'
 })
@@ -24,22 +27,37 @@ const SPAN: Record<string, ColProps['span']> = {
 }
 
 const { data } = useFetch('/api/recruitment')
+
+useSeoMeta({
+  title: `${t('public.recruitment_info')} 
+  ｜
+  ${t('public.information_disclosure')}`,
+  description: `${t('public.information_disclosure')}`
+})
 </script>
 <template>
   <div class="public-recruitment">
     <div class="mb-6">
       <n-row class="re-header">
         <n-col :span="SPAN.POST">
-          <div class="header-item re-header-layout">招聘岗位</div>
+          <div class="header-item re-header-layout">
+            {{ t('public.recruitment_positions') }}
+          </div>
         </n-col>
         <n-col :span="SPAN.NUM">
-          <div class="header-item re-header-layout">人数</div>
+          <div class="header-item re-header-layout">
+            {{ t('public.number') }}
+          </div>
         </n-col>
         <n-col :span="SPAN.EDU">
-          <div class="header-item re-header-layout">学历</div>
+          <div class="header-item re-header-layout">
+            {{ t('public.education') }}
+          </div>
         </n-col>
         <n-col :span="SPAN.EXP">
-          <div class="header-item re-header-layout">经验要求</div>
+          <div class="header-item re-header-layout">
+            {{ t('public.experience') }}
+          </div>
         </n-col>
         <n-col :span="SPAN.OTHER">
           <div class="header-item re-header-layout"></div>
@@ -63,7 +81,7 @@ const { data } = useFetch('/api/recruitment')
             </n-col>
             <n-col :span="SPAN.EXP">
               <div class="header-item re-header-layout">
-                {{ d.experience }}年
+                {{ d.experience }} {{ t('public.years') }}
               </div>
             </n-col>
             <n-col :span="SPAN.OTHER">

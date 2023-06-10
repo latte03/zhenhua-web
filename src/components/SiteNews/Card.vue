@@ -63,7 +63,7 @@ const localePath = useLocalePath()
             :to="localePath(`/detail/${content.id}`)"
             class="pr-2 opacity-50"
           >
-            查看详情
+            {{ $t('view-details') }}
           </NuxtLink>
           <Icon name="solar:arrow-right-line-duotone" class="opacity-50" />
         </div>

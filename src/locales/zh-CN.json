@@ -4,5 +4,44 @@
   "follow": "关注",
   "hello": "你好",
   "modal": "模型",
-  "no_data": "暂无数据"
+  "no_data": "暂无数据",
+  "public": {
+    "recruitment_positions": "招聘岗位",
+    "number": "人数",
+    "education": "学历",
+    "experience": "经验要求",
+    "years": "年",
+    "information_disclosure": "信息公开",
+    "recruitment": "招聘信息",
+    "recruitment_info": "招聘信息",
+    "bidding": "招标",
+    "purchase": "采购",
+    "information": "信息"
+  },
+  "contract": {
+    "contract_us": "联系我们",
+    "company": "镇华建设集团有限公司",
+    "address": "地址",
+    "address_detail": "信阳市羊山新区新七大道龙飞山城二期.天玺7号楼9层",
+    "phone": "电话",
+    "emil": "邮箱",
+    "hotline": "市场业务热线",
+    "commerce": "商务部",
+    "finance": "财务",
+    "hr": "人力资源"
+  },
+  "view-details": "查看详情",
+  "site": {
+    "home": "首页",
+    "your_location": "您的位置"
+  },
+  "news": {
+    "name": "新闻资讯"
+  },
+  "business": {
+    "name": "业务板块"
+  },
+  "about": {
+    "name": "关于镇华"
+  }
 }
