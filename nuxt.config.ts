@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     '@huntersofbook/naive-ui-nuxt'
   ],
   build: {
-    transpile: ['@headlessui/vue', /echarts/, 'claygl']
+    transpile: [/echarts/, 'claygl']
   },
   sourcemap: {
     server: false
