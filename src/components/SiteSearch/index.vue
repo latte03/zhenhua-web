@@ -11,12 +11,14 @@ const value = ref('')
 const localPath = useLocalePath()
 
 function onSearch() {
+  console.log('object')
   router.push({
     path: localPath('/search'),
     query: {
       q: value.value
     }
   })
+  showSearch.value = false
 }
 </script>
 
@@ -28,6 +30,7 @@ function onSearch() {
         class="search-input"
         placeholder="搜索相关资讯"
         size="large"
+        @keyup.enter="onSearch"
       >
         <template #suffix>
           <n-button class="-mr-1" quaternary @click="onSearch">

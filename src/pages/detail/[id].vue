@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 defineOptions({ name: 'PageDetail' })
 definePageMeta({
-  layout: 'inner-page'
+  layout: 'comm-page'
 })
 const { t, locale } = useLang()
 
@@ -10,9 +10,21 @@ const route = useRoute()
 const id = computed(() => {
   return route.params.id
 })
-
+const { state } = useCommonPageStore()!
 const { data } = useFetch(`/api/article/detail/${id.value}`, {
   query: { locale }
+})
+
+const stateName = computed(() => {
+  return data.value?.title || ''
+})
+
+onMounted(() => {
+  state.value.topChannelCode = 'news'
+})
+
+useSeoMeta({
+  title: stateName
 })
 </script>
 
@@ -34,7 +46,7 @@ const { data } = useFetch(`/api/article/detail/${id.value}`, {
         <div class="text-center">
           <AgImage class="w-1/2 m-auto mb-6" :src="data?.thumbnail" alt="" />
         </div>
-        <div class="rich-content" v-html="data?.content"></div>
+        <div class="rich-content new-detail" v-html="data?.content"></div>
       </div>
       <!-- <div class="flex mt-8">
         <SiteContainerTabBtn type="prev" class="flex-grow" />
@@ -48,7 +60,7 @@ const { data } = useFetch(`/api/article/detail/${id.value}`, {
 .page-detail {
   // @apply pb-14 pt-20;
   margin-bottom: -24px;
-  background-color: var(--color-fill-light);
+  background-color: var(--color-fill-1);
 }
 
 .container-head {
@@ -62,5 +74,10 @@ const { data } = useFetch(`/api/article/detail/${id.value}`, {
 .container-title {
   font-weight: bold;
   font-size: 24px;
+}
+
+.new-detail {
+  max-width: 720px;
+  margin: 0 auto;
 }
 </style>

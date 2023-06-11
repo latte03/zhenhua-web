@@ -7,6 +7,7 @@ interface InnerPageState {
   name?: string
   slogan?: string
   hasPageBar?: boolean
+  src?: string
 }
 
 function useInnerPageState() {

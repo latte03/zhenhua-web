@@ -89,6 +89,8 @@ function findPath(channel: ChannelAttrs) {
 
 <template>
   <div class="web-site-main inner-page">
+    <NuxtLoadingIndicator />
+
     <SiteHeader />
     <div class="page-content">
       <SitePageHead :data="headState" :src="topChannel?.thumbnail" />

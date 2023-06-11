@@ -7,15 +7,19 @@ interface PropsType {
 const props = defineProps<PropsType>()
 const emit = defineEmits(['update:page'])
 defineOptions({ name: 'SiteList' })
-
+const router = useRouter()
+const localePath = useLocalePath()
 const modelPage = useVModel(props, 'page', emit)
+function onBackHome() {
+  router.push(localePath('/'))
+}
 </script>
 
 <template>
   <div class="site-list">
     <template v-if="data?.length > 0">
       <n-row>
-        <n-col v-for="d in data" :key="d.title" :span="8" class="site-new--col">
+        <n-col v-for="d in data" :key="d.id" :span="8" class="site-new--col">
           <SiteNewsCard :content="d" class="p-6" />
         </n-col>
       </n-row>
@@ -35,8 +39,14 @@ const modelPage = useVModel(props, 'page', emit)
       </n-pagination>
     </template>
 
-    <div v-else class="px-5">
-      <n-empty />
+    <div v-else class="px-5 py-8">
+      <n-empty size="huge">
+        <template #extra>
+          <n-button type="primary" tertiary @click="onBackHome">
+            返回首页
+          </n-button>
+        </template>
+      </n-empty>
     </div>
   </div>
 </template>

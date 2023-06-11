@@ -37,16 +37,15 @@ useSeoMeta({
     <Head>
       <!-- <Title>{{ title }}</Title> -->
 
-      <!-- <Meta name="description" :content="description" /> -->
       <Meta name="keywords" :content="keywords" />
     </Head>
     <Body class="antialiased transition-colors duration-300 bg-white">
-      <NuxtLoadingIndicator />
       <NConfigProvider
         :locale="zhCN"
         :date-locale="dateZhCN"
         :theme-overrides="themeOverrides"
         inline-theme-disabled
+        preflight-style-disabled
       >
         <NuxtLayout>
           <NuxtPage />

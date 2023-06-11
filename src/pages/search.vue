@@ -1,22 +1,29 @@
 <script lang="ts" setup>
 import { useListByAny } from '~/composables/useList'
 
-interface PropsType {}
-const props = defineProps<PropsType>()
 defineOptions({ name: 'SearchPages' })
 definePageMeta({
-  layout: 'inner-page'
+  layout: 'comm-page'
 })
 const route = useRoute()
 
-const searchValue = route.query.q
-
-const { content, page, count } = useListByAny({
-  title: searchValue
+const searchValue = computed(() => {
+  return {
+    q: route.query.q
+  }
+})
+const { content, page, count } = useListByAny(
+  searchValue,
+  '/api/article/search'
+)
+const { state } = useCommonPageStore()!
+onMounted(() => {
+  state.value.topChannelCode = 'news'
+  state.value.name = `搜索：${route.query.q}`
 })
 
 useSeoMeta({
-  title: '内容搜索'
+  title: state.value.name
 })
 </script>
 

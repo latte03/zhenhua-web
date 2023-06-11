@@ -1,3 +1,5 @@
+import { MaybeRefOrGetter } from 'nuxt/dist/app/compat/capi'
+
 interface Option {
   props?: {
     code?: string
@@ -24,19 +26,25 @@ export function useListByCode(option: { code: string }) {
   return { content, page, count }
 }
 
-export function useListByAny(_data: any) {
+type URL = '/api/article/list' | '/api/article/search'
+export function useListByAny(
+  _data: MaybeRefOrGetter<any>,
+  url: URL = '/api/article/list'
+) {
   const page = ref(1)
   const { locale } = useI18n()
+
+  const dataRef = toRef(_data)
   const body = computed(() => {
     return {
       pageInfo: {
         pageIndex: page.value,
         pageSize: 10
       },
-      data: _data
+      data: dataRef.value
     }
   })
-  const { data } = useFetch('/api/article/list', {
+  const { data } = useFetch(url, {
     method: 'post',
     body,
     query: {
