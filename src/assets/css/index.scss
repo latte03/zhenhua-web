@@ -1,5 +1,5 @@
 @import '@unocss/reset/tailwind.css';
-@import './default.scss';
+@import './default';
 
 body {
   // 基础颜色配置
@@ -130,4 +130,26 @@ button,
       rgba(0, 0, 0, 50%) 100%
     ),
     rgba(0, 0, 0, 30%);
+}
+
+.web-site-main {
+  @apply flex justify-between min-h-screen flex-col;
+
+  .page-content {
+    @apply flex  flex-col;
+
+    flex-grow: 1;
+  }
+
+  .page-container--wrap {
+    flex-grow: 1;
+
+    .page-container {
+      height: 100%;
+    }
+  }
+
+  .site-footer {
+    flex-grow: 0;
+  }
 }
