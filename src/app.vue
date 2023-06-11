@@ -8,7 +8,11 @@ const { locale } = useI18n()
 
 const themeOverrides = lightTheme
 
-const { data } = useFetch('/api/site-info')
+const { data } = useFetch('/api/site-info', {
+  query: {
+    locale
+  }
+})
 
 const title = computed(() => {
   return data.value?.title.value || ''

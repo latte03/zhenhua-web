@@ -8,8 +8,7 @@ definePageMeta({
   layout: 'inner-page'
 })
 
-const { t } = useLang()
-
+const { t, locale } = useLang()
 useInnerPageContent({
   // 保底信息
   name: t('public.information_disclosure'),
@@ -26,7 +25,11 @@ const SPAN: Record<string, ColProps['span']> = {
   OTHER: 4
 }
 
-const { data } = useFetch('/api/recruitment')
+const { data } = useFetch('/api/recruitment', {
+  params: {
+    locale
+  }
+})
 
 useSeoMeta({
   title: `${t('public.recruitment_info')} 
@@ -74,7 +77,9 @@ useSeoMeta({
               </div>
             </n-col>
             <n-col :span="SPAN.NUM">
-              <div class="header-item re-header-layout">{{ d.num }}人</div>
+              <div class="header-item re-header-layout">
+                {{ d.num }} {{ t('public.people') }}
+              </div>
             </n-col>
             <n-col :span="SPAN.EDU">
               <div class="header-item re-header-layout">{{ d.education }}</div>
@@ -97,7 +102,7 @@ useSeoMeta({
           </n-row>
         </template>
         <div class="content">
-          <div class="content-body" v-html="d.cn_content"></div>
+          <div class="content-body" v-html="d.content"></div>
         </div>
       </n-collapse-item>
     </n-collapse>

@@ -1,4 +1,5 @@
 import { BASE_URL } from '~/utils/constant'
+import { LocaleCode, getLocaleData } from '~/utils/getLocaleData'
 /**
  * 招聘
  */
@@ -24,6 +25,10 @@ export interface RecruitMentModel {
   /**
    * 具体内容
    */
+  content: string
+  /**
+   * 具体内容
+   */
   cn_content: string
   /**
    * 具体内容
@@ -45,8 +50,15 @@ export interface RecruitMentModel {
 }
 
 export default defineEventHandler(async event => {
+  const query = getQuery(event)
+
+  const getDataByLocale = getLocaleData(query.locale as LocaleCode)
+
   const { data } = await $fetch<{ data: RecruitMentModel[] }>(
     `${BASE_URL}/site/recruitment/all`
   )
-  return data
+
+  return data.map(d => {
+    return getDataByLocale(d)
+  })
 })

@@ -1,4 +1,5 @@
 import { ArticleAttrs } from '.'
+import { LocaleCode, getLocaleData } from '~/utils/getLocaleData'
 import { BASE_URL, PageList } from '~/utils/constant'
 
 export default defineEventHandler(async event => {
@@ -16,5 +17,15 @@ export default defineEventHandler(async event => {
     method: 'post',
     body
   })
-  return data
+
+  const query = getQuery(event)
+
+  const getDataByLocale = getLocaleData(query.locale as LocaleCode)
+  const rows = data.rows.map(d => {
+    return getDataByLocale(d)
+  })
+  return {
+    ...data,
+    rows
+  }
 })

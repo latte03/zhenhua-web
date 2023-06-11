@@ -105,7 +105,4 @@ function onCanPlay() {
     transform: translateY(-25%);
   }
 }
-
-.video-body {
-}
 </style>

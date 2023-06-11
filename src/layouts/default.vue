@@ -1,7 +1,9 @@
 <template>
-  <div class="web-site-main">
+  <div class="min-h-screen web-site-main">
     <SiteHeader />
-    <slot></slot>
+    <div class="min-h-screen">
+      <slot></slot>
+    </div>
     <SiteFooter />
   </div>
 </template>

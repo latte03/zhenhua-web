@@ -9,6 +9,7 @@ definePageMeta({
 })
 
 const { t } = useLang()
+const { locale } = useI18n()
 useInnerPageContent({
   name: t('about.name'),
   slogan: t('about.name'),
@@ -26,6 +27,9 @@ const { data } = useFetch('/api/article/list', {
     data: {
       channel_code: 'honor'
     }
+  },
+  query: {
+    locale
   }
 })
 

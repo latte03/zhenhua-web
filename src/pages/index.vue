@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useChannelStore } from '~/store/channelState'
 
+const { locale } = useI18n()
 const { data } = useFetch('/api/article/list', {
   method: 'post',
   body: {
@@ -11,6 +12,9 @@ const { data } = useFetch('/api/article/list', {
     data: {
       channel_id: 24
     }
+  },
+  query: {
+    locale
   }
 })
 const channelStore = useChannelStore()

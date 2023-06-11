@@ -26,6 +26,7 @@ export function useListByCode(option: { code: string }) {
 
 export function useListByAny(_data: any) {
   const page = ref(1)
+  const { locale } = useI18n()
   const body = computed(() => {
     return {
       pageInfo: {
@@ -37,7 +38,10 @@ export function useListByAny(_data: any) {
   })
   const { data } = useFetch('/api/article/list', {
     method: 'post',
-    body
+    body,
+    query: {
+      locale
+    }
   })
 
   const content = computed(() => {

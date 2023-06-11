@@ -8,6 +8,8 @@ withDefaults(defineProps<PropsType>(), {
   size: 'default'
 })
 defineOptions({ name: 'SiteSectionTitle' })
+
+const { locale } = useI18n()
 </script>
 
 <template>
@@ -15,8 +17,8 @@ defineOptions({ name: 'SiteSectionTitle' })
     class="site-section-title"
     :class="{ 'site-section-title-small': size === 'small' }"
   >
-    <div class="title">{{ title }}</div>
-    <div class="uppercase en-title">{{ enTitle }}</div>
+    <div class="uppercase title">{{ locale === 'en' ? enTitle : title }}</div>
+    <div v-if="locale !== 'en'" class="uppercase en-title">{{ enTitle }}</div>
   </div>
 </template>
 

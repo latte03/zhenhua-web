@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 defineOptions({ name: 'SiteHomeSectionGroup' })
-
-const { data } = useFetch('/api/subsidiaries')
+const { locale } = useI18n()
+const { data } = useFetch('/api/subsidiaries', {
+  query: {
+    locale
+  }
+})
 </script>
 
 <template>

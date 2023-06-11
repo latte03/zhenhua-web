@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   // @ts-expect-error
   srcDir: 'src',
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
+    // pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       meta: [
         // <meta name="viewport" content="width=device-width, initial-scale=1">

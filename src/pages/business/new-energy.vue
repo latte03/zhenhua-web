@@ -3,7 +3,7 @@ defineOptions({ name: 'NewEnergy' })
 definePageMeta({
   layout: 'inner-page'
 })
-const { t } = useLang()
+const { t, locale } = useLang()
 useInnerPageContent({
   name: t('business.name'),
   slogan: t('business.name'),
@@ -20,7 +20,7 @@ onMounted(() => {
   })
 })
 
-const { data } = useFetch('/api/new-energy')
+const { data } = useFetch('/api/new-energy', { query: { locale } })
 </script>
 
 <template>

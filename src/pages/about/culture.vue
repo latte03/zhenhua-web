@@ -6,7 +6,7 @@ definePageMeta({
   data: { name: '镇华集团', slogan: '123213' }
 })
 
-const { t } = useLang()
+const { t, locale } = useLang()
 useInnerPageContent({
   name: t('about.name'),
   slogan: t('about.name'),
@@ -24,6 +24,9 @@ const { data } = useFetch('/api/article/list', {
     data: {
       channel_code: 'culture'
     }
+  },
+  query: {
+    locale
   }
 })
 

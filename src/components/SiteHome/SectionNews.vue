@@ -5,7 +5,7 @@ const basePageInfo = {
   pageIndex: 1,
   pageSize: 5
 }
-
+const { locale } = useI18n()
 function getBody(id: number) {
   return {
     pageInfo: basePageInfo,
@@ -17,19 +17,31 @@ function getBody(id: number) {
 
 const { data: zhenhua } = useFetch('/api/article/list', {
   method: 'post',
-  body: getBody(20)
+  body: getBody(20),
+  query: {
+    locale
+  }
 })
 const { data: industryInformation } = useFetch('/api/article/list', {
   method: 'post',
-  body: getBody(21)
+  body: getBody(21),
+  query: {
+    locale
+  }
 })
 const { data: sceneElegantDemeanor } = useFetch('/api/article/list', {
   method: 'post',
-  body: getBody(22)
+  body: getBody(22),
+  query: {
+    locale
+  }
 })
 const { data: groupNotice } = useFetch('/api/article/list', {
   method: 'post',
-  body: getBody(23)
+  body: getBody(23),
+  query: {
+    locale
+  }
 })
 
 const swiper = computed(() => {

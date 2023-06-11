@@ -1,4 +1,5 @@
 import { BASE_URL } from '~/utils/constant'
+import { LocaleCode, getLocaleData } from '~/utils/getLocaleData'
 
 export type LinkType = 'link' | 'path'
 export type TemplateType = 'list' | 'page'
@@ -32,5 +33,9 @@ export interface Attrs {
 export type ChannelAttrs = Attrs
 export default defineEventHandler(async event => {
   const { data } = await $fetch<{ data: Attrs[] }>(`${BASE_URL}/site/channel`)
-  return data
+  const query = getQuery(event)
+  const getDataByLocale = getLocaleData(query.locale as LocaleCode)
+  return data.map(d => {
+    return getDataByLocale(d)
+  })
 })

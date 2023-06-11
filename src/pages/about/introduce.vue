@@ -10,7 +10,7 @@ definePageMeta({
 })
 
 const PAGE_CHANNEL_CODE = 'introduce'
-const { t } = useLang()
+const { t, locale } = useLang()
 useInnerPageContent({
   name: t('about.name'),
   slogan: t('about.name'),
@@ -21,7 +21,8 @@ useInnerPageContent({
 const groupStore = useGroupState()
 groupStore.getGroupInfo()
 const { data: subsidiaries } = useFetch('/api/subsidiaries', {
-  default: () => [] as KeyValue[]
+  default: () => [] as KeyValue[],
+  query: { locale }
 })
 
 const { data } = useFetch('/api/article/list', {
@@ -34,7 +35,8 @@ const { data } = useFetch('/api/article/list', {
     data: {
       channel_code: PAGE_CHANNEL_CODE
     }
-  }
+  },
+  query: { locale }
 })
 
 const content = computed(() => {

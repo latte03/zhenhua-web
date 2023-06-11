@@ -13,6 +13,7 @@ export interface GroupInfo {
   /** 员工数量 */
   staff_num: KeyValue
 }
+// 多语言在store 处理了
 export default defineEventHandler(async event => {
   const { data } = await $fetch<{ data: GroupInfo }>(
     `${BASE_URL}/comm/group-info`

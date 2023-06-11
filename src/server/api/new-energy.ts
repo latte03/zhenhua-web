@@ -1,4 +1,5 @@
 import { BASE_URL } from '~/utils/constant'
+import { LocaleCode, getLocaleData } from '~/utils/getLocaleData'
 
 export interface EnergyAttrs {
   id: number
@@ -35,8 +36,12 @@ export interface EnergyAttrs {
 }
 
 export default defineEventHandler(async event => {
+  const query = getQuery(event)
+  const getDataByLocale = getLocaleData(query.locale as LocaleCode)
   const { data } = await $fetch<{ data: EnergyAttrs[] }>(
     `${BASE_URL}/site/new-energy/all`
   )
-  return data
+  return data.map(d => {
+    return getDataByLocale(d)
+  })
 })

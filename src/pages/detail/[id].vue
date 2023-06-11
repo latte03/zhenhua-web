@@ -3,7 +3,7 @@ defineOptions({ name: 'PageDetail' })
 definePageMeta({
   layout: 'inner-page'
 })
-const { t } = useLang()
+const { t, locale } = useLang()
 
 const route = useRoute()
 
@@ -11,7 +11,9 @@ const id = computed(() => {
   return route.params.id
 })
 
-const { data } = useFetch(`/api/article/detail/${id.value}`)
+const { data } = useFetch(`/api/article/detail/${id.value}`, {
+  query: { locale }
+})
 </script>
 
 <template>

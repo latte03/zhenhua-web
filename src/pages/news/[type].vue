@@ -7,7 +7,7 @@ const { t } = useLang()
 const route = useRoute()
 useInnerPageContent({
   name: t('news.name'),
-  slogan: '新闻资讯',
+  slogan: t('news.name'),
   hasPageBar: true,
   topChannelCode: 'news',
   pageChannelCode: route.params.type as string

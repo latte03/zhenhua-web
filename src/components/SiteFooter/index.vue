@@ -1,11 +1,9 @@
 <script lang="ts" name="SiteFooter" setup>
-const { t } = useLang()
-
-const d = useI18n()
+const { t, locale } = useLang()
 </script>
 
 <template>
-  <div class="site-footer" :class="d.locale.value">
+  <div class="site-footer" :class="locale">
     <SiteContent class="flex justify-between pt-12 pb-8">
       <div class="opacity-80">
         <ul class="mb-6">
