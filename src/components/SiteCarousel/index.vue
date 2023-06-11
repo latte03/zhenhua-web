@@ -36,6 +36,7 @@ function onIndexChange(index: number) {
       show-arrow
       :draggable="true"
       autoplay
+      :loop="false"
       :show-dots="false"
       @update-current-index="onIndexChange"
     >
