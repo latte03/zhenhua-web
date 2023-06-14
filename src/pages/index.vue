@@ -64,6 +64,9 @@ if (!channelStore.channel) {
     color: var(--white);
     font-size: 40px;
     line-height: 58px;
+    @media screen and (width <= 767px) {
+      font-size: 24px;
+    }
   }
 
   &-desc {
@@ -71,6 +74,9 @@ if (!channelStore.channel) {
     font-weight: 400;
     font-size: 20px;
     opacity: 0.7;
+    @media screen and (width <= 767px) {
+      font-size: 16px;
+    }
   }
 }
 </style>

@@ -35,13 +35,13 @@ ${t('public.purchase')}${t('public.information')}`
 </script>
 <template>
   <div class="public-procurement">
-    <n-tabs type="segment" :bar-width="100" animated>
+    <n-tabs type="segment" animated justify-content="space-evenly">
       <n-tab-pane
         name="bidding"
         :tab="
           PublicTab({
             icon: 'Bidding',
-            name: `${t('public.bidding')}${t('public.information')}`
+            name: `${t('public.bidding_information')}`
           })
         "
         class="br"
@@ -57,7 +57,7 @@ ${t('public.purchase')}${t('public.information')}`
         :tab="
           PublicTab({
             icon: 'Purchase',
-            name: `${t('public.purchase')}${t('public.information')}`
+            name: `${t('public.purchase_information')}`
           })
         "
       >
@@ -85,10 +85,13 @@ ${t('public.purchase')}${t('public.information')}`
     --n-tab-color-segment: transparent;
 
     width: 400px;
+    @media screen and (width <= 767px) {
+      width: auto;
+    }
   }
 
   .public-tab {
-    @apply flex-center py-3 px-6 rounded;
+    @apply flex-center py-3 md:px-6 px-3 rounded;
 
     --font-size: 16px;
 

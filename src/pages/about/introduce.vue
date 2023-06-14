@@ -95,7 +95,7 @@ const infoOptions = computed(() => {
       </SiteCarousel>
     </div>
     <div class="mt-6">
-      <div class="flex w-full">
+      <div class="flex flex-wrap w-full">
         <div
           v-for="info in infoOptions"
           :key="info.label"
@@ -124,7 +124,7 @@ const infoOptions = computed(() => {
       </div>
       <ul class="flex-wrap gap-6 subsidiary flex-center">
         <li v-for="sub in subsidiaries" :key="sub.value">
-          <SiteIntroduceSubsidiary :data="sub" class="logo" />
+          <SiteIntroduceSubsidiary :data="sub" />
         </li>
       </ul>
     </div>
@@ -137,10 +137,13 @@ const infoOptions = computed(() => {
   line-height: 1.7;
 
   .swiper {
-    @apply -mt-14 -mx-10 ratio-16/9;
+    @apply md:-mt-14 md:-mx-10 -m-4 ratio-16/9;
 
     height: 0;
     padding-bottom: 36%;
+    @media screen and (width <= 767px) {
+      padding-bottom: 56%;
+    }
   }
 
   .about-carousel {
@@ -151,6 +154,10 @@ const infoOptions = computed(() => {
     @apply relative;
 
     padding: 24px 32px;
+    @media screen and (width <= 767px) {
+      width: 100%;
+      padding: 12px 8px;
+    }
 
     &:not(:last-child) {
       &::after {
@@ -159,6 +166,9 @@ const infoOptions = computed(() => {
         width: 1px;
         background-color: var(--color-border);
         content: '';
+        @media screen and (width <= 767px) {
+          display: none;
+        }
       }
     }
   }

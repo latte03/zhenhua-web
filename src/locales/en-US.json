@@ -18,6 +18,8 @@
     "information": "information",
     "purchase": "purchase",
     "bidding": "bidding",
+    "bidding_information": "bidding",
+    "purchase_information": "purchase",
     "people": "people"
   },
   "contract": {

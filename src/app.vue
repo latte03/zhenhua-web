@@ -46,6 +46,7 @@ useSeoMeta({
         :theme-overrides="themeOverrides"
         inline-theme-disabled
         preflight-style-disabled
+        :breakpoints="{ xs: 0, s: 640, m: 768, l: 1024, xl: 1280, xxl: 1536 }"
       >
         <NuxtLayout>
           <NuxtPage />

@@ -20,7 +20,7 @@ useInnerPageContent({
 
 const routePath = useBaseRoutePath()
 const channelStore = useChannelStore()
-
+const isLargeScreen = useMediaQuery('(min-width: 768px)')
 const channels = computed(() => {
   const channel = channelStore.channel?.find(c => c.link === routePath.value)
 
@@ -32,7 +32,12 @@ const channels = computed(() => {
 
 <template>
   <div class="business-page">
-    <n-grid x-gap="32" y-gap="48" :layout-shift-disabled="true" :cols="4">
+    <n-grid
+      :x-gap="isLargeScreen ? 32 : 16"
+      :y-gap="isLargeScreen ? 48 : 16"
+      :layout-shift-disabled="true"
+      :cols="isLargeScreen ? 4 : 2"
+    >
       <n-gi v-for="d in channels" :key="d.id">
         <BusinessCard
           :data="{

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs'
-import { ColProps } from 'naive-ui'
+import { GridItemProps } from 'naive-ui'
 interface PropsType {}
 const props = defineProps<PropsType>()
 defineOptions({ name: 'PublicRecruitment' })
@@ -16,14 +16,16 @@ useInnerPageContent({
   topChannelCode: 'public',
   pageChannelCode: 'recruitment'
 })
-
-const SPAN: Record<string, ColProps['span']> = {
-  POST: 8,
-  NUM: 4,
-  EDU: 4,
-  EXP: 4,
-  OTHER: 4
-}
+const isLargeScreen = useMediaQuery('(min-width: 768px)')
+const SPAN = computed<Record<string, GridItemProps['span']>>(() => {
+  return {
+    POST: isLargeScreen.value ? 8 : 10,
+    NUM: isLargeScreen.value ? 4 : 6,
+    EDU: isLargeScreen.value ? 4 : 8,
+    EXP: isLargeScreen.value ? 4 : 0,
+    OTHER: isLargeScreen.value ? 4 : 0
+  }
+})
 
 const { data } = useFetch('/api/recruitment', {
   params: {
@@ -41,65 +43,65 @@ useSeoMeta({
 <template>
   <div class="public-recruitment">
     <div class="mb-6">
-      <n-row class="re-header">
-        <n-col :span="SPAN.POST">
+      <n-grid class="re-header">
+        <n-gi :span="SPAN.POST">
           <div class="header-item re-header-layout">
             {{ t('public.recruitment_positions') }}
           </div>
-        </n-col>
-        <n-col :span="SPAN.NUM">
+        </n-gi>
+        <n-gi :span="SPAN.NUM">
           <div class="header-item re-header-layout">
             {{ t('public.number') }}
           </div>
-        </n-col>
-        <n-col :span="SPAN.EDU">
+        </n-gi>
+        <n-gi :span="SPAN.EDU">
           <div class="header-item re-header-layout">
             {{ t('public.education') }}
           </div>
-        </n-col>
-        <n-col :span="SPAN.EXP">
+        </n-gi>
+        <n-gi :span="SPAN.EXP">
           <div class="header-item re-header-layout">
             {{ t('public.experience') }}
           </div>
-        </n-col>
-        <n-col :span="SPAN.OTHER">
+        </n-gi>
+        <n-gi :span="SPAN.OTHER">
           <div class="header-item re-header-layout"></div>
-        </n-col>
-      </n-row>
+        </n-gi>
+      </n-grid>
     </div>
     <n-collapse>
       <n-collapse-item name="3" v-for="d in data" :key="d.id">
         <template #header>
-          <n-row class="collapse-head">
-            <n-col :span="SPAN.POST">
+          <n-grid class="collapse-head">
+            <n-gi :span="SPAN.POST">
               <div class="font-bold header-item re-header-layout">
                 {{ d.title }}
               </div>
-            </n-col>
-            <n-col :span="SPAN.NUM">
+            </n-gi>
+            <n-gi :span="SPAN.NUM">
               <div class="header-item re-header-layout">
                 {{ d.num }} {{ t('public.people') }}
               </div>
-            </n-col>
-            <n-col :span="SPAN.EDU">
+            </n-gi>
+            <n-gi :span="SPAN.EDU">
               <div class="header-item re-header-layout">{{ d.education }}</div>
-            </n-col>
-            <n-col :span="SPAN.EXP">
+            </n-gi>
+            <n-gi :span="SPAN.EXP">
               <div class="header-item re-header-layout">
                 {{ d.experience }} {{ t('public.years') }}
               </div>
-            </n-col>
-            <n-col :span="SPAN.OTHER">
+            </n-gi>
+            <n-gi :span="SPAN.OTHER">
               <div
                 class="flex items-center justify-end opacity-50 header-item re-header-layout"
               >
-                <div class="mr-4 text-sm">
+                <div class="mr-4 text-xs md:text-sm">
                   {{ dayjs(d.create_time).format('YYYY-MM-DD') }}
                 </div>
                 <div><Icon name="solar:alt-arrow-up-line-duotone"></Icon></div>
               </div>
-            </n-col>
-          </n-row>
+            </n-gi>
+          </n-grid>
         </template>
         <div class="content">
           <div class="content-body" v-html="d.content"></div>
@@ -114,9 +116,12 @@ useSeoMeta({
 }
 
 .re-header-layout {
-  @apply py-3 px-8;
+  @apply md:py-3 md:px-8 py-2 px-2;
 
   font-size: 15px;
+  @media screen and (width <= 767px) {
+    font-size: 13px;
+  }
 }
 
 .re-header {

@@ -10,6 +10,8 @@ defineOptions({ name: 'SiteList' })
 const router = useRouter()
 const localePath = useLocalePath()
 const modelPage = useVModel(props, 'page', emit)
+const isLargeScreen = useMediaQuery('(min-width: 768px)')
+const span = computed(() => (isLargeScreen.value ? 8 : 24))
 function onBackHome() {
   router.push(localePath('/'))
 }
@@ -19,7 +21,7 @@ function onBackHome() {
   <div class="site-list">
     <template v-if="data?.length > 0">
       <n-row>
-        <n-col v-for="d in data" :key="d.id" :span="8" class="site-new--col">
+        <n-col v-for="d in data" :key="d.id" :span="span" class="site-new--col">
           <SiteNewsCard :content="d" class="p-6" />
         </n-col>
       </n-row>
@@ -54,8 +56,12 @@ function onBackHome() {
 <style lang="scss" scoped>
 .site-new-card {
   border: 1px solid transparent;
-  border-right-color: #ddd;
-  border-bottom-color: #ddd;
+  border-right-color: #f5f5f5;
+  border-bottom-color: #f5f5f5;
+  @media screen and (width <= 767px) {
+    border: 0;
+    border-bottom: 1px solid #f5f5f5 !important;
+  }
 }
 
 .site-new--col {
@@ -63,7 +69,7 @@ function onBackHome() {
   &:nth-child(2),
   &:nth-child(3) {
     .site-new-card {
-      border-bottom-color: #ddd !important;
+      border-bottom-color: #f5f5f5 !important;
     }
   }
 
@@ -84,7 +90,7 @@ function onBackHome() {
 
   &:nth-child(n + 4) {
     .site-new-card {
-      border-right-color: #ddd !important;
+      border-right-color: #f5f5f5 !important;
     }
   }
 }

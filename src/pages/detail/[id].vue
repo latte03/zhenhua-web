@@ -37,8 +37,8 @@ useSeoMeta({
         </div>
         <NSpace class="py-4 opacity-50 container-extra" justify="center">
           <div>
-            <span class="pr-1">{{ t('release_time') }}:</span>
-            <span>{{ data?.release_time }}</span>
+            <span class="pr-1 text-sm">{{ t('release_time') }}:</span>
+            <span class="text-sm">{{ data?.release_time }}</span>
           </div>
         </NSpace>
       </div>
@@ -48,10 +48,6 @@ useSeoMeta({
         </div>
         <div class="rich-content new-detail" v-html="data?.content"></div>
       </div>
-      <!-- <div class="flex mt-8">
-        <SiteContainerTabBtn type="prev" class="flex-grow" />
-        <SiteContainerTabBtn type="next" class="flex-grow" />
-      </div> -->
     </div>
   </div>
 </template>
@@ -72,8 +68,9 @@ useSeoMeta({
 }
 
 .container-title {
+  @apply md:text-2xl text-xl;
+
   font-weight: bold;
-  font-size: 24px;
 }
 
 .new-detail {

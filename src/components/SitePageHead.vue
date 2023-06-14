@@ -35,19 +35,27 @@ defineOptions({ name: 'SitePageHead' })
 
 <style lang="scss" scoped>
 .page-info {
+  --large-font-size: 32px;
+  --base-font-size: 20px;
+
   top: 50%;
   left: 50%;
   color: var(--white);
   transform: translate(-50%, -50%);
 
+  @media screen and (width <= 600px) {
+    --large-font-size: 24px;
+    --base-font-size: 16px;
+  }
+
   &--title {
     font-weight: 600;
-    font-size: 32px;
+    font-size: var(--large-font-size);
   }
 
   &--slogan {
     margin-top: 16px;
-    font-size: 20px;
+    font-size: var(--base-font-size);
   }
 }
 
@@ -55,5 +63,8 @@ defineOptions({ name: 'SitePageHead' })
   width: 100vw;
   height: 39vw;
   background-size: cover;
+  @media screen and (width <= 600px) {
+    height: 50vh;
+  }
 }
 </style>

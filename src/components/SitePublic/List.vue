@@ -25,16 +25,20 @@ function formatToMMDD(value: string) {
     <ul>
       <li v-for="d in data" :key="d.id" class="flex justify-start bidding-item">
         <div class="mr-6 text-right">
-          <div class="text-2xl font-bold">
+          <div class="font-bold md:text-2xl">
             {{ formatToYYYY(d.release_time) }}
           </div>
-          <div class="mt-2 opacity-50">{{ formatToMMDD(d.release_time) }}</div>
+          <div class="mt-2 text-sm opacity-50 md:text-base">
+            {{ formatToMMDD(d.release_time) }}
+          </div>
         </div>
         <div class="flex-grow">
-          <div class="mb-6">
-            <div class="mb-2 font-bold">{{ d.title }}</div>
+          <div class="mb-4 md:mb-6">
+            <div class="mb-1 font-bold md:mb-2">{{ d.title }}</div>
             <div class="opacity-50">
-              <n-ellipsis class="w-full">{{ d.abstract }}</n-ellipsis>
+              <n-ellipsis class="w-full text-sm md:text-base">
+                {{ d.abstract }}
+              </n-ellipsis>
             </div>
           </div>
           <NuxtLink :to="localePath(`/detail/${d.id}`)">
@@ -65,7 +69,7 @@ function formatToMMDD(value: string) {
 
 <style lang="scss" scoped>
 .bidding-item {
-  @apply py-4 px-4 cursor-pointer transition-base;
+  @apply md:py-4  py-3 md:px-4 cursor-pointer transition-base;
 
   border-bottom: 1px solid var(--color-border-2);
 

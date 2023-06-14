@@ -1,27 +1,17 @@
 <script lang="tsx" name="SiteHeader" setup>
-import { useMenuOptions } from './_utils'
-
-import { Icon, NuxtLink } from '#components'
 import { useChannelStore } from '~/store/channelState'
 
-const localePath = useLocalePath()
-const routePath = useBaseRoutePath()
 const { isScroll } = useScroll()
 
 const channelStore = useChannelStore()
 channelStore.getChannel()
 
-const transform = useMenuOptions()
-
-const [showSearch, toggleSearch] = useToggle()
-function onSearchClick() {
-  toggleSearch(true)
-}
+const isLargeScreen = useMediaQuery('(min-width: 768px)')
 </script>
 
 <template>
   <div
-    :class="`fixed z-50 w-screen px-10 site-header ${
+    :class="`fixed z-50 w-screen  px-6 md:px-10 py-4 md:py-0 site-header ${
       isScroll ? 'is-scroll' : ''
     }`"
   >
@@ -29,62 +19,20 @@ function onSearchClick() {
       <div class="logo">
         <SiteLogo width="150px" height="37px" :white="!isScroll" />
       </div>
-      <ul class="flex items-center head-menu">
-        <li>
-          <NuxtLink class="block head-menu-item" :to="localePath('/')">
-            {{ $t('site.home') }}
-          </NuxtLink>
-        </li>
-        <template v-for="menu in channelStore.channelTree" :key="menu.name">
-          <n-dropdown
-            v-if="menu.children && menu.children.length > 0"
-            size="large"
-            trigger="click"
-            :options="transform(menu.children)"
-          >
-            <li>
-              <div
-                class="head-menu-item"
-                :class="
-                  routePath.includes(menu.code) ? 'router-link-active' : ''
-                "
-              >
-                {{ menu.name }}
-              </div>
-            </li>
-          </n-dropdown>
-
-          <li v-else>
-            <NuxtLink class="block head-menu-item" :to="localePath(menu.link)">
-              {{ menu.name }}
-            </NuxtLink>
-          </li>
-        </template>
-
-        <LanguageSwitch>
-          <li>
-            <div class="head-menu-item head-menu-icon-item">
-              <n-button class="head-button" round quaternary>
-                <Icon name="bi:translate" />
-              </n-button>
-            </div>
-          </li>
-        </LanguageSwitch>
-
-        <li class="head-menu-item head-menu-icon-item">
-          <n-button class="head-button" round quaternary @click="onSearchClick">
-            <Icon name="solar:rounded-magnifer-linear" />
-          </n-button>
-        </li>
-      </ul>
+      <SiteHeaderMenu
+        v-if="isLargeScreen"
+        :channel-tree="channelStore.channelTree"
+      />
+      <SiteHeaderMobileExtra
+        v-else
+        :channel-tree="channelStore.channelTree"
+        class="flex items-center"
+      />
     </div>
-    <Teleport to="body">
-      <SiteSearch v-model:show="showSearch" />
-    </Teleport>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .site-header {
   --text-color: var(--white);
   --border-color: var(--color-bg-20);
@@ -140,6 +88,10 @@ function onSearchClick() {
 
   .head-button {
     color: var(--text-color);
+
+    &:hover {
+      color: var(--text-color);
+    }
   }
 
   &.is-scroll {

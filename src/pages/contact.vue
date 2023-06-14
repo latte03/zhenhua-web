@@ -45,27 +45,31 @@ useSeoMeta({
       <ul>
         <li class="mb-6">
           <div class="mb-1 text-sm">{{ t('contract.hotline') }}</div>
-          <div class="text-2xl font-bold">0376-6278889</div>
+          <div class="font-bold md:text-2xl">0376-6278889</div>
         </li>
 
         <li class="mb-6">
           <div class="mb-1 text-sm">
             {{ t('contract.commerce') }} {{ t('contract.emil') }}
           </div>
-          <div class="text-2xl font-bold">commerce@zhenhuadl.onaliyun.com</div>
+          <div class="font-bold md:text-2xl">
+            commerce@zhenhuadl.onaliyun.com
+          </div>
         </li>
 
         <li class="mb-6">
           <div class="mb-1 text-sm">
             {{ t('contract.finance') }} {{ t('contract.emil') }}
           </div>
-          <div class="text-2xl font-bold">finance@zhenhuadl.onaliyun.com</div>
+          <div class="font-bold md:text-2xl">
+            finance@zhenhuadl.onaliyun.com
+          </div>
         </li>
         <li class="mb-6">
           <div class="mb-1 text-sm">
             {{ t('contract.hr') }} {{ t('contract.emil') }}
           </div>
-          <div class="text-2xl font-bold">HR@zhenhuadl.onaliyun.com</div>
+          <div class="font-bold md:text-2xl">HR@zhenhuadl.onaliyun.com</div>
         </li>
       </ul>
     </div>
@@ -74,7 +78,17 @@ useSeoMeta({
 
 <style lang="scss">
 .contact-page {
+  @apply md:flex-row flex-col;
+
+  --item-width: 50%;
+
   margin: -56px -40px;
+
+  @media screen and (width <= 767px) {
+    --item-width: 100%;
+
+    margin: -16px;
+  }
 }
 
 .title-after {
@@ -97,9 +111,9 @@ useSeoMeta({
 }
 
 .contact-section {
-  @apply p-20 flex-grow;
+  @apply lg:p-20 md:p-10  p-6 flex-grow;
 
-  width: 50%;
+  width: var(--item-width);
 }
 
 .contact-section--blue {

@@ -54,14 +54,14 @@ const localePath = useLocalePath()
             class="opacity-50"
             size="16px"
           />
-          <span class="pl-2 font-mon opacity-40">
+          <span class="pl-2 text-sm font-mon opacity-40">
             {{ content.release_time }}
           </span>
         </div>
         <div class="new-more flex-i-center">
           <NuxtLink
             :to="localePath(`/detail/${content.id}`)"
-            class="pr-2 opacity-50"
+            class="pr-2 text-sm opacity-50 md:text-base"
           >
             {{ $t('view-details') }}
           </NuxtLink>

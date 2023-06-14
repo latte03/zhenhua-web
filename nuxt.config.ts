@@ -5,9 +5,19 @@ export default defineNuxtConfig({
   app: {
     // pageTransition: { name: 'page', mode: 'out-in' },
     head: {
+      link: [
+        {
+          rel: 'shortcut icon',
+          href: '/favicon.ico'
+        }
+      ],
       meta: [
         // <meta name="viewport" content="width=device-width, initial-scale=1">
-        { name: 'referrer', content: 'no-referrer' }
+        { name: 'referrer', content: 'no-referrer' },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1'
+        }
       ]
     }
   },

@@ -22,11 +22,7 @@ const localePath = useLocalePath()
       class="absolute z-10 section-business-title text-color"
     />
     <div class="flex h-full business-body">
-      <div
-        v-for="(d, index) in business"
-        :key="d.name"
-        class="relative flex-col overflow-hidden text-center cursor-pointer transition-base flex-center business-item"
-      >
+      <div v-for="(d, index) in business" :key="d.name" class="business-item">
         <div class="relative z-10 transition-base info">
           <div class="mb-6 text-4xl font-bold inf-name">{{ d.name }}</div>
           <div class="info-desc text-base-sm opacity-80">
@@ -65,8 +61,6 @@ const localePath = useLocalePath()
 }
 
 .section-business {
-  height: 45vw;
-
   &-title {
     top: 72px;
     left: 50%;
@@ -74,11 +68,28 @@ const localePath = useLocalePath()
     transform: translateX(-50%);
   }
 
-  .business-item {
-    --blur: 0px;
+  .business-body {
+    @media screen and (width <= 767px) {
+      flex-wrap: wrap;
+    }
+  }
 
-    width: 25%;
+  .business-item {
+    @apply relative flex-col overflow-hidden text-center cursor-pointer transition-base flex-center;
+
+    --blur: 0px;
+    --height: 45vw;
+    --width: 25vw;
+    --info-width: 20vw;
+
+    width: var(--width);
+    height: var(--height);
     background-color: #000;
+    @media screen and (width <= 767px) {
+      --height: 70vh;
+      --width: 100vw;
+      --info-width: 80vw;
+    }
 
     .info-button {
       display: inline-block;
@@ -93,7 +104,7 @@ const localePath = useLocalePath()
     }
 
     .info {
-      width: 20vw;
+      width: var(--info-width);
     }
 
     .mask-cover {
@@ -111,10 +122,12 @@ const localePath = useLocalePath()
       transition: all 0.3s ease;
     }
 
+    .img {
+      object-fit: cover;
+    }
+
     &:hover {
       --blur: 5px;
-
-      width: 26%;
 
       .mask-cover {
         background-color: rgb(0 0 0 / 70%);

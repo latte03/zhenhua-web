@@ -6,6 +6,7 @@ const { data } = useFetch('/api/subsidiaries', {
     locale
   }
 })
+const isLargeScreen = useMediaQuery('(min-width: 768px)')
 </script>
 
 <template>
@@ -17,7 +18,7 @@ const { data } = useFetch('/api/subsidiaries', {
     />
     <div>
       <n-carousel
-        :slides-per-view="4"
+        :slides-per-view="isLargeScreen ? 4 : 2"
         :space-between="20"
         :loop="false"
         :show-dots="false"

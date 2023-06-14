@@ -95,7 +95,7 @@ function findPath(channel: ChannelAttrs) {
     <div class="page-content">
       <SitePageHead :data="headState" :src="topChannel?.thumbnail" />
       <SiteContent class="relative z-10 page-container--wrap">
-        <div v-if="state.hasPageBar" class="flex justify-between page-nav-bar">
+        <div v-if="state.hasPageBar" class="page-nav-bar">
           <SiteBreadcrumb :data="breadcrumb" />
 
           <SitePageMenu
@@ -122,15 +122,25 @@ function findPath(channel: ChannelAttrs) {
   }
 
   .page-nav-bar {
+    @apply flex justify-between;
+
     padding: 0 40px;
     background-color: var(--color-bg-100);
     border-bottom: 1px solid var(--color-border-2);
+    @media screen and (width <= 767px) {
+      @apply flex-col;
+
+      padding: 16px 16px 0;
+    }
   }
 
   .page-container--wrap {
     --menu-height: 74px;
 
     margin-top: calc(0px - var(--menu-height));
+    @media screen and (width <= 767px) {
+      --menu-height: 56px;
+    }
   }
 
   .page-container {
@@ -139,6 +149,11 @@ function findPath(channel: ChannelAttrs) {
 
     padding: var(--padding-x) var(--padding-y);
     background-color: var(--color-bg-100);
+
+    @media screen and (width <= 767px) {
+      --padding-y: 16px;
+      --padding-x: 16px;
+    }
   }
 }
 </style>

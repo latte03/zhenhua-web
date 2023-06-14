@@ -20,8 +20,8 @@ function onCanPlay() {
 <template>
   <SiteSection class="about">
     <SiteSectionTitle title="集团介绍" en-title="ABOUT" />
-    <div class="flex justify-between mt-6">
-      <div class="max-w-2xl mr-6 opacity-50">
+    <div class="about-container">
+      <div class="max-w-2xl opacity-50 md:mr-6">
         {{ groupState.groupInfo?.groupMemo }}
       </div>
       <div class="relative">
@@ -46,6 +46,18 @@ function onCanPlay() {
             </clipPath>
           </defs>
         </svg>
+        <svg height="0px" width="0px">
+          <defs>
+            <clipPath id="svgMobilePath">
+              <path
+                d="M36.5397,64.9285L74.6292,17.9418L74.6292,0L1.2012,0L1.2012,22.6485L38.0896,22.6485L0,69.6352L0,87.5368L76.5279,87.5368L76.5279,64.9285L36.5397,64.9285ZM138.835,0L138.835,30.8953L112.913,30.8953L112.913,0L84.8201,0L84.8201,87.5368L112.913,87.5368L112.913,54.9116L138.835,54.9116L138.835,87.5368L166.928,87.5368L166.928,0L138.835,0ZM209.125,65.5721L209.125,54.0668L244.386,54.0668L244.386,33.0676L209.125,33.0676L209.125,22.0049L249.268,22.0049L249.268,0L181.536,0L181.536,87.5368L250.818,87.5368L250.818,65.5721L209.125,65.5721ZM315.644,0L315.644,39.7858L283.986,0L260.892,0L260.892,87.5368L288.249,87.5368L288.249,47.7912L319.906,87.5368L343,87.5368L343,0L315.644,0ZM126.506,93.8887L126.506,142.686C126.506,169.075,141.501,184,167.114,184C192.688,184,207.684,169.075,207.684,142.686L207.684,93.8887L180.095,93.8887L180.095,141.801C180.095,155.357,175.213,160.426,167.347,160.426C159.481,160.426,154.598,155.357,154.598,141.801L154.598,93.8887L126.506,93.8887ZM30.5264,93.8887L30.5264,181.425L58.6188,181.425L58.6188,148.8L84.5415,148.8L84.5415,181.425L112.634,181.425L112.634,93.8887L84.5415,93.8887L84.5415,124.784L58.6188,124.784L58.6188,93.8887L30.5264,93.8887ZM212.411,181.425L240.968,181.425L246.587,165.978L278.244,165.978L283.824,181.425L312.885,181.425L276.462,93.8887L248.834,93.8887L212.411,181.425Z"
+                fill="#FFFFFF"
+                fill-opacity="1"
+              />
+            </clipPath>
+          </defs>
+        </svg>
+
         <!-- SVG Reference -->
         <Icon name="Play" class="absolute icon-play" @click="doVideoPlay" />
       </div>
@@ -85,6 +97,9 @@ function onCanPlay() {
   font-weight: 900;
   font-size: 120px;
   clip-path: url('#svgPath');
+  @media screen and (width <= 767px) {
+    clip-path: url('#svgMobilePath');
+  }
 }
 
 .icon-play {
@@ -97,12 +112,33 @@ function onCanPlay() {
   cursor: pointer;
 }
 
+.about-container {
+  @apply flex justify-between mt-6;
+  @media screen and (width <= 767px) {
+    flex-wrap: wrap;
+  }
+}
+
+.video-body {
+  transform: translateY(-25%);
+
+  video {
+    @apply wh-full;
+  }
+}
+
 .video-wrap {
   width: 160px * 3.7;
   height: 90px * 1.85;
+  @media screen and (width <= 767px) {
+    @apply mt-6;
 
-  .video-body {
-    transform: translateY(-25%);
+    width: calc(100vw - 50px);
+    height: calc((100vw - 50px) * 0.56);
+
+    .video-body {
+      transform: translateY(0%);
+    }
   }
 }
 </style>

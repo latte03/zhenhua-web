@@ -24,8 +24,19 @@ const { locale } = useI18n()
 
 <style lang="scss" scoped>
 .site-section-title {
+  --large-font-size: 32px;
+  --md-font-size: 24px;
+  --base-font-size: 20px;
+  --sm-font-size: 16px;
+
   color: var(--text-color, --color-text-1);
-  font-size: 32px;
+  font-size: var(--large-font-size);
+  @media screen and (width <= 767px) {
+    --large-font-size: 24px;
+    --md-font-size: 20px;
+    --base-font-size: 18px;
+    --sm-font-size: 14px;
+  }
 
   .title {
     font-weight: 600;
@@ -35,17 +46,17 @@ const { locale } = useI18n()
 .en-title {
   color: var(--text-color, --color-text-1);
   font-weight: 900;
-  font-size: 20px;
+  font-size: var(--base-font-size);
   font-family: Montserrat, Arial, sans-serif;
   line-height: 24px;
   @apply opacity-20;
 }
 
 .site-section-title-small {
-  font-size: 24px;
+  font-size: var(--md-font-size);
 
   .en-title {
-    font-size: 18px;
+    font-size: var(--sm-font-size);
   }
 }
 </style>

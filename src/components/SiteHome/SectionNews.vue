@@ -58,7 +58,7 @@ const swiper = computed(() => {
       en-title="NEWS AND INFORMATION"
       class="mb-6"
     />
-    <div class="flex">
+    <div class="flex news-container">
       <SiteCarousel
         v-slot="{ record }"
         size="small"
@@ -72,7 +72,7 @@ const swiper = computed(() => {
           />
         </div>
       </SiteCarousel>
-      <div class="flex-grow-1 flex-shrink-2">
+      <div class="mt-6 flex-grow-1 flex-shrink-2 md:mt-0">
         <SiteSectionTitle
           size="small"
           title="镇华动态"
@@ -82,8 +82,14 @@ const swiper = computed(() => {
         <SiteNews :data-source="zhenhua?.rows || []" class="w-full" />
       </div>
     </div>
-    <n-row class="pt-12" :gutter="[24, 24]">
-      <n-col :span="8">
+    <n-grid
+      class="pt-12"
+      :x-gap="24"
+      :y-gap="24"
+      cols="1 s:1 m:1 l:2 xl:3 2xl:3"
+      responsive="screen"
+    >
+      <n-grid-item>
         <SiteSectionTitle
           size="small"
           title="行业资讯"
@@ -94,8 +100,8 @@ const swiper = computed(() => {
           :data-source="industryInformation?.rows || []"
           class="w-full"
         />
-      </n-col>
-      <n-col :span="8">
+      </n-grid-item>
+      <n-grid-item>
         <SiteSectionTitle
           size="small"
           title="现场风采"
@@ -106,8 +112,8 @@ const swiper = computed(() => {
           :data-source="sceneElegantDemeanor?.rows || []"
           class="w-full"
         />
-      </n-col>
-      <n-col :span="8">
+      </n-grid-item>
+      <n-grid-item>
         <SiteSectionTitle
           size="small"
           title="集团告示"
@@ -115,8 +121,8 @@ const swiper = computed(() => {
           class="mb-4"
         />
         <SiteNews :data-source="groupNotice?.rows || []" class="w-full" />
-      </n-col>
-    </n-row>
+      </n-grid-item>
+    </n-grid>
   </SiteSection>
 </template>
 
@@ -126,6 +132,16 @@ const swiper = computed(() => {
     width: 648px;
     height: 376px;
     border-radius: 4px;
+    @media screen and (width <= 767px) {
+      width: 100%;
+      height: calc((100vw - 48px) * 0.56);
+    }
+  }
+}
+
+.news-container {
+  @media screen and (width <= 767px) {
+    flex-wrap: wrap;
   }
 }
 </style>

@@ -142,7 +142,7 @@ function next() {
 
 <style lang="scss" scoped>
 .about-honor {
-  @apply -mx-10 -my-14 py-14 px-10;
+  @apply md:-mx-10 md:-my-14 -m-4 md:py-14 md:px-10 py-4 px-4;
 
   background: #f8f9fb;
 }
@@ -158,6 +158,10 @@ function next() {
     .control-carousel--item {
       width: 160px;
       height: 114px;
+      @media screen and (width <= 767px) {
+        width: 100px;
+        height: 68px;
+      }
     }
   }
 
@@ -191,12 +195,19 @@ function next() {
 }
 
 .honor-carousel {
-  height: 300px;
+  --carousel-width: 420px;
+  --carousel-height: 300px;
+
+  height: var(--carousel-height);
+  @media screen and (width <= 767px) {
+    --carousel-height: 190px;
+    --carousel-width: 280px;
+  }
 }
 
 .honor-carousel-item {
-  width: 420px !important;
-  height: 300px !important;
+  width: var(--carousel-width) !important;
+  height: var(--carousel-height) !important;
 }
 
 .honor-base {

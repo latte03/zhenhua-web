@@ -47,39 +47,54 @@ watchEffect(async () => {
 
 <template>
   <div class="relative">
-    <n-space class="site-page-menu" :size="16">
-      <div
-        v-for="d in dataSource"
-        :key="d.id"
-        class="cursor-pointer page-menu--item"
-        :class="{
-          'is-active': activeKey === d.code || activeKey.includes(d.link)
-        }"
-        @click="onClick(d)"
-      >
-        <span class="page-menu--text">{{ d.name }}</span>
-      </div>
-    </n-space>
-    <div
-      class="absolute page-menu-line"
-      :style="{
-        '--line-width': lineState.width,
-        '--line-x': lineState.x
+    <n-config-provider
+      abstract
+      :theme-overrides="{
+        Tabs: {
+          tabBorderColor: 'transparent',
+          tabPaddingMediumLine: '0px'
+        }
       }"
-    ></div>
+    >
+      <n-tabs type="line" animated pane-style="display:none">
+        <n-tab v-for="d in dataSource" :key="d.id" :name="d.id" :tab="d.name">
+          <div
+            class="cursor-pointer page-menu--item"
+            :class="{
+              'is-active': activeKey === d.code || activeKey.includes(d.link)
+            }"
+            @click="onClick(d)"
+          >
+            <span class="page-menu--text">{{ d.name }}</span>
+          </div>
+        </n-tab>
+      </n-tabs>
+    </n-config-provider>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.site-page-menu {
+  @media screen and (width <= 767px) {
+    @apply mt-4;
+  }
+}
+
 .page-menu {
   &--text {
     opacity: 0.5;
+    @media screen and (width <= 767px) {
+      font-size: 14px;
+    }
   }
 
   &--item {
     height: var(--menu-height);
     padding: 0 24px;
     line-height: var(--menu-height);
+    @media screen and (width <= 767px) {
+      padding: 0 12px;
+    }
 
     &.is-active {
       color: var(--primary-color);

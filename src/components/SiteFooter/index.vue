@@ -4,7 +4,7 @@ const { t, locale } = useLang()
 
 <template>
   <div class="site-footer" :class="locale">
-    <SiteContent class="flex justify-between pt-12 pb-8">
+    <SiteContent class="site-footer-content">
       <div class="opacity-80">
         <ul class="mb-6">
           <li class="mb-2">
@@ -24,26 +24,20 @@ const { t, locale } = useLang()
           </li>
         </ul>
         <ul class="flex flex-wrap emails">
-          <li class="w-1/2 mb-2">
+          <li class="mb-2 md:w-1/2 w-1/1">
             <span class="opacity-50 label">{{ t('contract.emil') }}:</span>
             <span class="pl-2 font-mon">info@zhenhuadl.onaliyun.com</span>
           </li>
-          <li class="w-1/2 mb-2">
-            <span class="opacity-50 label">
-              {{ t('contract.commerce') }} {{ t('contract.emil') }}:
-            </span>
+          <li class="mb-2 md:w-1/2 w-1/1">
+            <span class="opacity-50 label">{{ t('contract.commerce') }}:</span>
             <span class="pl-2 font-mon">commerce@zhenhuadl.onaliyun.com</span>
           </li>
-          <li class="w-1/2 mb-2">
-            <span class="opacity-50 label">
-              {{ t('contract.finance') }} {{ t('contract.emil') }}:
-            </span>
+          <li class="mb-2 md:w-1/2 w-1/1">
+            <span class="opacity-50 label">{{ t('contract.finance') }}:</span>
             <span class="pl-2 font-mon">finance@zhenhuadl.onaliyun.com</span>
           </li>
-          <li class="w-1/2">
-            <span class="opacity-50 label">
-              {{ t('contract.hr') }} {{ t('contract.emil') }}:
-            </span>
+          <li class="md:w-1/2 w-1/1">
+            <span class="opacity-50 label">{{ t('contract.hr') }}:</span>
             <span class="pl-2 font-mon">HR@zhenhuadl.onaliyun.com</span>
           </li>
         </ul>
@@ -65,6 +59,13 @@ const { t, locale } = useLang()
   font-size: 13px;
   background-color: var(--primary-color);
 
+  .site-footer-content {
+    @apply flex justify-between pt-12 pt-12 pb-8;
+    @media screen and (width <= 767px) {
+      flex-wrap: wrap-reverse;
+    }
+  }
+
   .label {
     display: inline-block;
     width: 56px;
@@ -80,10 +81,20 @@ const { t, locale } = useLang()
 
   .emails {
     width: 720px;
+    @media screen and (width <= 767px) {
+      flex-wrap: wrap;
+      width: 100%;
+    }
   }
 
   .copy-right {
     background: var(--primary-dark-color);
+  }
+
+  .logo {
+    @media screen and (width <= 767px) {
+      margin-bottom: 24px;
+    }
   }
 }
 </style>
