@@ -7,10 +7,13 @@ export const useChannelStore = defineStore('channel', () => {
   // ref<Attrs[] | null>(null)
 
   //   const KEY = 'value'
+  const { locale } = useLang()
 
   const getChannel = async () => {
     if (!channel.value || channel.value.length < 1) {
-      const { data } = await useFetch(`/api/channel`)
+      const { data } = await useFetch(`/api/channel`, {
+        query: { locale }
+      })
       channel.value = data.value
 
       return data
