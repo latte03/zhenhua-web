@@ -29,7 +29,7 @@ function onCanPlay() {
           <!-- <span class="font-mon">ZHENHUA</span> -->
           <video
             class="absolute video-body"
-            :src="groupState.groupInfo.groupVideo"
+            :src="transformURL(groupState.groupInfo.groupVideo || '')"
             controls
           ></video>
         </div>
