@@ -19,8 +19,8 @@ function onCanPlay() {
 
 <template>
   <SiteSection class="about">
-    <SiteSectionTitle title="集团介绍" en-title="ABOUT" />
-    <div class="about-container">
+    <SiteSectionTitle v-motion title="集团介绍" en-title="ABOUT" />
+    <div v-motion class="about-container">
       <div class="max-w-2xl opacity-50 md:mr-6">
         {{ groupState.groupInfo?.groupMemo }}
       </div>

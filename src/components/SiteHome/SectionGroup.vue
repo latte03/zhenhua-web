@@ -12,11 +12,12 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
 <template>
   <SiteSection class="section-group">
     <SiteSectionTitle
+      v-motion
       class="mb-6"
       title="集团子公司"
       en-title="GROUP SUBSIDIARY"
     />
-    <div>
+    <div v-motion>
       <n-carousel
         :slides-per-view="isLargeScreen ? 4 : 2"
         :space-between="20"

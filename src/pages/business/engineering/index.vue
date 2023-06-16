@@ -20,7 +20,12 @@ useInnerPageContent({
 
 const routePath = useBaseRoutePath()
 const channelStore = useChannelStore()
-const isLargeScreen = useMediaQuery('(min-width: 768px)')
+const query = ref('')
+const isLargeScreen = useMediaQuery(query)
+onMounted(() => {
+  query.value = '(min-width: 768px)'
+})
+console.log('%c Line:24 🍫 isLargeScreen', 'color:#3f7cff', isLargeScreen)
 const channels = computed(() => {
   const channel = channelStore.channel?.find(c => c.link === routePath.value)
 
@@ -36,10 +41,14 @@ const channels = computed(() => {
       :x-gap="isLargeScreen ? 32 : 16"
       :y-gap="isLargeScreen ? 48 : 16"
       :layout-shift-disabled="true"
-      :cols="isLargeScreen ? 4 : 2"
     >
-      <n-gi v-for="d in channels" :key="d.id">
+      <n-gi
+        v-for="(d, index) in channels"
+        :key="d.id"
+        :span="isLargeScreen ? 6 : 12"
+      >
         <BusinessCard
+          v-motion="{ delay: index + 1 }"
           :data="{
             icon: d.icon!,
             name: d.name,

@@ -13,8 +13,14 @@ defineOptions({ name: 'SitePageHead' })
 <template>
   <div class="relative site-page-head">
     <div class="absolute z-10 page-info">
-      <div class="page-info--title">{{ data.name }}</div>
-      <div v-if="data.slogan" class="text-center page-info-slogan opacity-70">
+      <div v-motion="{ delay: 1 }" class="page-info--title">
+        {{ data.name }}
+      </div>
+      <div
+        v-if="data.slogan"
+        v-motion="{ delay: 2 }"
+        class="text-center page-info-slogan opacity-70"
+      >
         {{ data.slogan }}
       </div>
     </div>

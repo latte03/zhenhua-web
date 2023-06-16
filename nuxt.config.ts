@@ -21,6 +21,16 @@ export default defineNuxtConfig({
       ]
     }
   },
+  vue: {
+    compilerOptions: {
+      directiveTransforms: {
+        motion: () => ({
+          props: [],
+          needRuntime: true
+        })
+      }
+    }
+  },
   modules: [
     // https://github.com/nuxt-modules/icon https://icones.js.org/
     'nuxt-icon',
@@ -35,6 +45,7 @@ export default defineNuxtConfig({
     // https://github.com/huntersofbook/huntersofbook/tree/main/packages/naive-ui-nuxt
     '@huntersofbook/naive-ui-nuxt'
   ],
+
   build: {
     transpile: [/echarts/, 'claygl']
   },

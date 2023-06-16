@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import numeral from 'numeral'
 
 export function formatNumber(value: string | number) {
@@ -25,4 +26,8 @@ export function transformURL(url: string | number) {
   }
 
   return `${import.meta.env.DEV ? `${BASE_URL}/assets` : '/assets'}/${url}`
+}
+
+export function formatDate(value: string) {
+  return dayjs(value).format('YYYY-MM-DD')
 }

@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { ArticleAttrs } from '~/server/api/article'
 import defaultImage from '@/assets/images/default-image.jpg'
+import { formatDate } from '~/utils'
 
 interface PropsType {
   content: ArticleAttrs
 }
 defineProps<PropsType>()
 defineOptions({ name: 'SiteNewsCard' })
-
 const localePath = useLocalePath()
 </script>
 
@@ -55,7 +55,7 @@ const localePath = useLocalePath()
             size="16px"
           />
           <span class="pl-2 text-sm font-mon opacity-40">
-            {{ content.release_time }}
+            {{ formatDate(content.release_time) }}
           </span>
         </div>
         <div class="new-more flex-i-center">

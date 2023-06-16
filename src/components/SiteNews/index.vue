@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { Attrs as ArticleAttrs } from '~/server/api/article'
+import { ArticleAttrs } from '~/server/api/article'
+import { formatDate } from '~/utils'
 
 export interface NewsItem {
   name: string
@@ -31,7 +32,9 @@ const { t } = useLang()
             {{ d.title }}
           </n-ellipsis>
         </NuxtLink>
-        <span class="opacity-40 font-mon">{{ d.release_time }}</span>
+        <span class="opacity-40 font-mon">
+          {{ formatDate(d.release_time) }}
+        </span>
       </li>
     </ul>
     <div v-else class="p-6">

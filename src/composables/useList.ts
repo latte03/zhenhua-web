@@ -15,22 +15,28 @@ export function useListByRouteCode(option?: Option) {
 
   return { content, page, count }
 }
+interface Option {
+  url?: URL
+  pageSize?: number
+}
 
-export function useListByCode(option: { code: string }) {
-  const { code } = option
+export function useListByCode(option: Option & { code: string }) {
+  const { code, ...rest } = option
 
-  const { content, page, count } = useListByAny({
-    channel_code: code
-  })
+  const { content, page, count } = useListByAny(
+    {
+      channel_code: code
+    },
+    rest
+  )
 
   return { content, page, count }
 }
 
 type URL = '/api/article/list' | '/api/article/search'
-export function useListByAny(
-  _data: MaybeRefOrGetter<any>,
-  url: URL = '/api/article/list'
-) {
+
+export function useListByAny(_data: MaybeRefOrGetter<any>, option: Option) {
+  const { pageSize = 10, url = '/api/article/list' } = option
   const page = ref(1)
   const { locale } = useI18n()
 
@@ -39,7 +45,7 @@ export function useListByAny(
     return {
       pageInfo: {
         pageIndex: page.value,
-        pageSize: 10
+        pageSize
       },
       data: dataRef.value
     }

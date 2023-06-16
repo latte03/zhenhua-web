@@ -12,10 +12,9 @@ const searchValue = computed(() => {
     q: route.query.q
   }
 })
-const { content, page, count } = useListByAny(
-  searchValue,
-  '/api/article/search'
-)
+const { content, page, count } = useListByAny(searchValue, {
+  url: '/api/article/search'
+})
 const { state } = useCommonPageStore()!
 onMounted(() => {
   state.value.topChannelCode = 'news'

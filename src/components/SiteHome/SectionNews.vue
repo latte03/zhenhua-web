@@ -17,7 +17,15 @@ function getBody(id: number) {
 
 const { data: zhenhua } = useFetch('/api/article/list', {
   method: 'post',
-  body: getBody(20),
+  body: {
+    pageInfo: {
+      pageIndex: 1,
+      pageSize: 8
+    },
+    data: {
+      channel_id: 20
+    }
+  },
   query: {
     locale
   }
@@ -49,16 +57,19 @@ const swiper = computed(() => {
     return !!z.thumbnail
   })
 })
+
+const isLargeScreen = useMediaQuery('(min-width: 768px)')
 </script>
 
 <template>
   <SiteSection class="relative section-news">
     <SiteSectionTitle
+      v-motion
       title="新闻资讯"
       en-title="NEWS AND INFORMATION"
       class="mb-6"
     />
-    <div class="flex news-container">
+    <div v-motion class="flex news-container">
       <SiteCarousel
         v-slot="{ record }"
         size="small"
@@ -72,7 +83,10 @@ const swiper = computed(() => {
           />
         </div>
       </SiteCarousel>
-      <div class="mt-6 flex-grow-1 flex-shrink-2 md:mt-0">
+      <div
+        v-motion="{ delay: 2 }"
+        class="mt-6 flex-grow-1 flex-shrink-2 md:mt-0"
+      >
         <SiteSectionTitle
           size="small"
           title="镇华动态"
@@ -82,14 +96,8 @@ const swiper = computed(() => {
         <SiteNews :data-source="zhenhua?.rows || []" class="w-full" />
       </div>
     </div>
-    <n-grid
-      class="pt-12"
-      :x-gap="24"
-      :y-gap="24"
-      cols="1 s:1 m:1 l:2 xl:3 2xl:3"
-      responsive="screen"
-    >
-      <n-grid-item>
+    <n-grid class="pt-12" :x-gap="24" :y-gap="24" responsive="screen">
+      <n-grid-item v-motion="{ delay: 1 }" :span="isLargeScreen ? 8 : 24">
         <SiteSectionTitle
           size="small"
           title="行业资讯"
@@ -101,7 +109,7 @@ const swiper = computed(() => {
           class="w-full"
         />
       </n-grid-item>
-      <n-grid-item>
+      <n-grid-item v-motion="{ delay: 2 }" :span="isLargeScreen ? 8 : 24">
         <SiteSectionTitle
           size="small"
           title="现场风采"
@@ -113,7 +121,7 @@ const swiper = computed(() => {
           class="w-full"
         />
       </n-grid-item>
-      <n-grid-item>
+      <n-grid-item v-motion="{ delay: 3 }" :span="isLargeScreen ? 8 : 24">
         <SiteSectionTitle
           size="small"
           title="集团告示"

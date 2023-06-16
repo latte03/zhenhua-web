@@ -13,6 +13,13 @@ defineOptions({
 const localePath = useLocalePath()
 const routePath = useBaseRoutePath()
 const transform = useMenuOptions()
+
+const isActive = computed(() => {
+  const routeArray = routePath.value.split('/')
+  return (code: string) => {
+    return routeArray.includes(code)
+  }
+})
 </script>
 
 <template>
@@ -32,7 +39,7 @@ const transform = useMenuOptions()
         <li>
           <div
             class="head-menu-item"
-            :class="routePath.includes(menu.code) ? 'router-link-active' : ''"
+            :class="isActive(menu.code) ? 'router-link-active' : ''"
           >
             {{ menu.name }}
           </div>

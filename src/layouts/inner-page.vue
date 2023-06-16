@@ -103,7 +103,7 @@ function findPath(channel: ChannelAttrs) {
             :data-source="channelChildren"
           />
         </div>
-        <div class="page-container">
+        <div v-motion class="page-container">
           <slot></slot>
         </div>
       </SiteContent>

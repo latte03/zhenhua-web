@@ -15,14 +15,21 @@ const localePath = useLocalePath()
 </script>
 
 <template>
-  <div class="relative section-business text-color">
+  <div v-motion class="relative section-business text-color">
     <SiteSectionTitle
       title="业务模块"
       en-title="Business SECTOR"
       class="absolute z-10 section-business-title text-color"
     />
     <div class="flex h-full business-body">
-      <div v-for="(d, index) in business" :key="d.name" class="business-item">
+      <div
+        v-for="(d, index) in business"
+        :key="d.name"
+        v-motion="{
+          delay: index + 1
+        }"
+        class="business-item"
+      >
         <div class="relative z-10 transition-base info">
           <div class="mb-6 text-4xl font-bold inf-name">{{ d.name }}</div>
           <div class="info-desc text-base-sm opacity-80">

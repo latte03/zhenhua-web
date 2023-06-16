@@ -14,7 +14,8 @@ useInnerPageContent({
 })!
 
 const { content, page, count } = useListByCode({
-  code: route.params.type as string
+  code: route.params.type as string,
+  pageSize: 12
 })
 </script>
 

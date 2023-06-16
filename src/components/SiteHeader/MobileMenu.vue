@@ -10,16 +10,20 @@ defineOptions({
 })
 const localePath = useLocalePath()
 const routePath = useBaseRoutePath()
-function onMenuClick(e) {
-  console.log(e)
-}
+
+const isActive = computed(() => {
+  const routeArray = routePath.value.split('/')
+  return (code: string) => {
+    return routeArray.includes(code)
+  }
+})
 </script>
 
 <template>
   <ul class="items-center head-mobile-menu">
     <li>
       <NuxtLink class="block head-menu-item" :to="localePath('/')">
-        <span @click="onMenuClick">{{ $t('site.home') }}</span>
+        <span>{{ $t('site.home') }}</span>
       </NuxtLink>
     </li>
     <n-config-provider
@@ -40,9 +44,7 @@ function onMenuClick(e) {
             <template #header>
               <span
                 class="head-menu-item"
-                :class="
-                  routePath.includes(menu.code) ? 'router-link-active' : ''
-                "
+                :class="isActive(menu.code) ? 'router-link-active' : ''"
               >
                 {{ menu.name }}
               </span>

@@ -33,7 +33,7 @@ const headState = computed(() => {
     <div class="page-content">
       <SitePageHead :data="headState" :src="topChannel?.thumbnail" />
       <SiteContent class="relative z-10 page-container--wrap">
-        <div class="page-container">
+        <div v-motion class="page-container">
           <slot></slot>
         </div>
       </SiteContent>
