@@ -9,6 +9,7 @@ const emit = defineEmits(['update:page'])
 defineOptions({ name: 'SiteList' })
 const router = useRouter()
 const localePath = useLocalePath()
+const { t } = useLang()
 const modelPage = useVModel(props, 'page', emit)
 function onBackHome() {
   router.push(localePath('/'))
@@ -51,7 +52,7 @@ function onBackHome() {
           </template>
           <template #extra>
             <n-button type="primary" tertiary @click="onBackHome">
-              返回首页
+              {{ t('back-home') }}
             </n-button>
           </template>
         </n-empty>

@@ -18,11 +18,10 @@ const topChannel = computed(() => {
 })
 
 const currentChannel = computed(() => {
-  console.log('%c Line:22 🥤', 'color:#4fff4B', state.value)
   const channel = channelStore.channel?.find(
     c => c.id === state.value.channel_id
   )
-  console.log('%c Line:25 🥔 channel', 'color:#93c0a4', channel)
+
   return channel
 })
 

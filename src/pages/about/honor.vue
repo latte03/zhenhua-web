@@ -22,7 +22,7 @@ const { data } = useFetch('/api/article/list', {
   body: {
     pageInfo: {
       pageIndex: 1,
-      pageSize: 5
+      pageSize: 100
     },
     data: {
       channel_code: 'honor'
@@ -114,7 +114,7 @@ function next() {
             :class="{ 'is-selected': currentIndex === index }"
           >
             <AgImage
-              class="object-cover carousel-img wh-full"
+              class="object-contain carousel-img wh-full"
               :src="s.thumbnail"
             />
           </div>

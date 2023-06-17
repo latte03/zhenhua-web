@@ -81,7 +81,7 @@ function onCanPlay() {
           <video
             v-show="canPlay"
             class="video-body"
-            :src="groupState.groupInfo.groupVideo"
+            :src="transformURL(groupState.groupInfo.groupVideo || '')"
             controls
             @canplay="onCanPlay"
           ></video>

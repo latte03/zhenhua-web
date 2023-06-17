@@ -90,7 +90,7 @@ function findPath(channel: ChannelAttrs) {
 <template>
   <div class="web-site-main inner-page">
     <SiteHeader />
-    <div>
+    <div class="page-content">
       <SitePageHead :data="headState" :src="topChannel?.thumbnail" />
       <SiteContent class="relative z-10 page-container--wrap">
         <div v-if="state.hasPageBar" class="page-nav-bar">
