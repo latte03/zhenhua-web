@@ -1,9 +1,11 @@
+import { toString } from 'lodash-es'
+
 export type LocaleCode = 'zh' | 'en'
+const localeMap = {
+  zh: 'cn',
+  en: 'en'
+}
 export function getLocaleData(locale: LocaleCode) {
-  const localeMap = {
-    zh: 'cn',
-    en: 'en'
-  }
   const localePrefix = localeMap[locale]
 
   /**
@@ -14,7 +16,7 @@ export function getLocaleData(locale: LocaleCode) {
    * @param {keyof T} key
    */
   function getValue<T extends Record<string, any>>(data: T, key: keyof T) {
-    const value = data[`${localePrefix}_${key}`] as T[keyof T]
+    const value = data[`${localePrefix}_${toString(key)}`] as T[keyof T]
     return value || data[key]
   }
 
@@ -24,9 +26,8 @@ export function getLocaleData(locale: LocaleCode) {
    * @param {object} data
    */
   function getDataByLocale<T extends object>(data: T) {
-    const cloneData = { ...data }
-    const keys = getMutilateKey(cloneData)
-
+    const keys = getMutilateKey(data)
+    const cloneData = cloneAndSetCN(data, keys)
     keys.forEach(key => {
       const value = getValue(cloneData, key)
       cloneData[key] = value
@@ -35,6 +36,23 @@ export function getLocaleData(locale: LocaleCode) {
     return cloneData
   }
   return getDataByLocale
+}
+
+function cloneAndSetCN<T extends Record<string, any>>(
+  data: T,
+  keys: Array<keyof T>
+) {
+  const _data = { ...data }
+  keys.forEach(k => {
+    const _k = toString(k)
+    if (!_data[`${localeMap.zh}_${_k}`]) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      _data[`${localeMap.zh}_${_k}`] = data[`${_k}`]
+    }
+  })
+
+  return _data
 }
 
 /**

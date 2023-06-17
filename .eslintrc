@@ -23,6 +23,7 @@
                 }
             }
         ],
+        "reportUnusedDisableDirectives": "off",
         "vue/component-name-in-template-casing": [
             "off",
             "kebab-case",

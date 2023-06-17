@@ -51,6 +51,7 @@ defineOptions({ name: 'BusinessCard' })
   height: 0;
   padding-bottom: 152%;
   color: var(--white);
+  border-radius: 4px;
 
   .item-content {
     @apply w-full p-6 bottom-0;

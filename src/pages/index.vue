@@ -2,6 +2,7 @@
 import { useChannelStore } from '~/store/channelState'
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const { data } = useFetch('/api/article/list', {
   method: 'post',
   body: {
@@ -36,10 +37,13 @@ if (!channelStore.channel) {
         <div class="carousel-desc">{{ record.abstract }}</div>
       </div>
 
-      <div class="absolute top-0 wh-full carousel-img">
+      <NuxtLink
+        :to="localePath(`/detail/${record.id}`)"
+        class="absolute top-0 wh-full carousel-img"
+      >
         <i class="block to-left-top wh-full image-cover z-1"></i>
         <AgImage class="to-left-top wh-full" :src="record.thumbnail" />
-      </div>
+      </NuxtLink>
     </SiteCarousel>
 
     <SiteHomeSectionAbout />

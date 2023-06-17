@@ -5,6 +5,7 @@ interface PropsType {
   channelTree: any
 }
 defineProps<PropsType>()
+const emit = defineEmits(['menuClick'])
 defineOptions({
   name: 'SiteHeader'
 })
@@ -17,13 +18,20 @@ const isActive = computed(() => {
     return routeArray.includes(code)
   }
 })
+
+function onMenuClick(navigate: any) {
+  navigate()
+  emit('menuClick')
+}
 </script>
 
 <template>
   <ul class="items-center head-mobile-menu">
     <li>
-      <NuxtLink class="block head-menu-item" :to="localePath('/')">
-        <span>{{ $t('site.home') }}</span>
+      <NuxtLink v-slot="{ navigate }" :to="localePath('/')" custom>
+        <span class="block head-menu-item" @click="onMenuClick(navigate)">
+          {{ $t('site.home') }}
+        </span>
       </NuxtLink>
     </li>
     <n-config-provider
@@ -52,17 +60,30 @@ const isActive = computed(() => {
             <div class="-mt-4 head-sub-menu">
               <li v-for="item in menu.children" :key="item.id">
                 <NuxtLink
-                  class="block head-menu-item"
+                  v-slot="{ navigate }"
+                  custom
                   :to="localePath(item.link)"
                 >
-                  {{ item.name }}
+                  <span
+                    class="block head-menu-item"
+                    @click="onMenuClick(navigate)"
+                  >
+                    {{ item.name }}
+                  </span>
                 </NuxtLink>
               </li>
             </div>
           </n-collapse-item>
           <li v-else>
-            <NuxtLink class="block head-menu-item" :to="localePath(menu.link)">
-              {{ menu.name }}
+            <NuxtLink
+              v-slot="{ navigate }"
+              custom
+              class="block head-menu-item"
+              :to="localePath(menu.link)"
+            >
+              <span class="block head-menu-item" @click="onMenuClick(navigate)">
+                {{ menu.name }}
+              </span>
             </NuxtLink>
           </li>
         </template>

@@ -21,8 +21,11 @@ defineOptions({ name: 'SiteLayoutNewEnergy' })
   --map-width: 100%;
   @apply relative;
 
-  height: 900px;
+  height: var(--map-height);
   margin: calc(0px - var(--padding-x)) calc(0px - var(--padding-y));
+  @media screen and (width <=767px) {
+    --map-height: 520px;
+  }
 
   //   background: radial-gradient(circle at 1px 1px, #000 2px, transparent 0);
   background: radial-gradient(63% 69% at 50% 52%, #fff 0%, #eff3ff 100%);

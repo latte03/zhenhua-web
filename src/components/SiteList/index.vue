@@ -10,8 +10,6 @@ defineOptions({ name: 'SiteList' })
 const router = useRouter()
 const localePath = useLocalePath()
 const modelPage = useVModel(props, 'page', emit)
-const isLargeScreen = useMediaQuery('(min-width: 768px)')
-const span = computed(() => (isLargeScreen.value ? 8 : 24))
 function onBackHome() {
   router.push(localePath('/'))
 }
@@ -20,11 +18,11 @@ function onBackHome() {
 <template>
   <div class="site-list">
     <template v-if="data?.length > 0">
-      <n-row>
-        <n-col v-for="d in data" :key="d.id" :span="span" class="site-new--col">
+      <ag-row :span="[8, 24]">
+        <ag-col v-for="d in data" :key="d.id" class="site-new--col">
           <SiteNewsCard :content="d" class="p-6" />
-        </n-col>
-      </n-row>
+        </ag-col>
+      </ag-row>
 
       <n-pagination
         v-model:page="modelPage"

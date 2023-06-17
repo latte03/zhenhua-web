@@ -36,7 +36,10 @@ function onMenuClick() {
       placement="right"
     >
       <n-drawer-content closable>
-        <SiteHeaderMobileMenu :channel-tree="channelTree" />
+        <SiteHeaderMobileMenu
+          :channel-tree="channelTree"
+          @menu-click="setActive(false)"
+        />
       </n-drawer-content>
     </n-drawer>
   </div>

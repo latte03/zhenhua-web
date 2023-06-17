@@ -10,9 +10,8 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
 </script>
 
 <template>
-  <SiteSection class="section-group">
+  <SiteSection v-motion class="section-group">
     <SiteSectionTitle
-      v-motion
       class="mb-6"
       title="集团子公司"
       en-title="GROUP SUBSIDIARY"

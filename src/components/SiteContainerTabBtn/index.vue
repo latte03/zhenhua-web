@@ -1,20 +1,25 @@
 <script lang="ts" setup>
+import { ArticleAttrs } from '~/server/api/article'
+
 interface PropsType {
   type?: 'prev' | 'next'
-  data?: {
-    name: string
-    link: string
-  }
+  data?: ArticleAttrs | null
 }
-const props = defineProps<PropsType>()
+defineProps<PropsType>()
 defineOptions({ name: 'SiteContainerTabBtn' })
+const localePath = useLocalePath()
 </script>
 
 <template>
   <div class="site-container-tab-btn">
-    <div class="tab-btn p-6" :class="`post-${type}`">
-      <NSpace class="tab-space" align="center">
-        <div class="arrow">
+    <NuxtLink
+      v-if="data"
+      :to="localePath(`/detail/${data.id}`)"
+      class="block p-6 tab-btn"
+      :class="`post-${type}`"
+    >
+      <div class="flex items-center tab-space">
+        <div class="flex-shrink-0 arrow">
           <Icon
             :name="
               type === 'prev'
@@ -34,10 +39,22 @@ defineOptions({ name: 'SiteContainerTabBtn' })
             size="16px"
           />
         </div>
-        <NDivider vertical />
-        <div>ddddddddd</div>
-      </NSpace>
-    </div>
+        <NDivider vertical class="flex-shrink-0" />
+
+        <n-ellipsis
+          class="w-0 flex-grow-1"
+          :tooltip="{
+            contentStyle: {
+              maxWidth: '30vw'
+            }
+          }"
+        >
+          {{ data?.title }}
+        </n-ellipsis>
+      </div>
+    </NuxtLink>
+
+    <div v-else class="p-6 tab-btn" :class="`post-${type}`">没有了</div>
   </div>
 </template>
 
@@ -67,6 +84,12 @@ defineOptions({ name: 'SiteContainerTabBtn' })
       }
     }
 
+    &.post-prev {
+      .tab-space {
+        text-align: left;
+      }
+    }
+
     &.post-next {
       --translate-x: calc(100% + 24px);
 
@@ -83,7 +106,8 @@ defineOptions({ name: 'SiteContainerTabBtn' })
       }
 
       .tab-space {
-        flex-flow: row-reverse wrap !important;
+        flex-flow: row-reverse !important;
+        text-align: right;
       }
     }
 

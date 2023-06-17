@@ -45,7 +45,7 @@ const { t, locale } = useLang()
       <div class="logo"><SiteLogo width="186px" height="46px" white /></div>
     </SiteContent>
     <SiteContent class="flex py-3 text-xs copy-right">
-      <span class="opacity-50">
+      <span class="text-xs opacity-50">
         镇华集团@2023 Zhenhua Group. All rights re­served. 备案号:xxxx
       </span>
     </SiteContent>

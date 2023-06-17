@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { Attrs } from '~/server/api/channel'
+import type { LocaleCode } from '~/utils/getLocaleData'
 
 export const useChannelStore = defineStore('channel', () => {
   const channel = useState<Attrs[] | null>('channel', () => null)
@@ -21,9 +22,17 @@ export const useChannelStore = defineStore('channel', () => {
 
     return {}
   }
+
+  const channelI18n = computed(() => {
+    const getDataByLocale = getLocaleData(locale.value as LocaleCode)
+
+    return channel.value?.map(c => {
+      return getDataByLocale(c)
+    })
+  })
   const channelTree = computed(() => {
-    return channel.value ? nest(channel.value) : []
+    return channelI18n.value ? nest(channelI18n.value) : []
   })
 
-  return { channel, channelTree, getChannel }
+  return { channel, channelTree, getChannel, channelI18n }
 })

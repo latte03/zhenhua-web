@@ -12,7 +12,21 @@ const id = computed(() => {
 })
 const { state } = useCommonPageStore()!
 const { data } = useFetch(`/api/article/detail/${id.value}`, {
-  query: { locale }
+  query: { locale },
+  onResponse({ response }) {
+    // console.log('%c Line:17 🧀 value', 'color:#33a5ff', value)
+
+    state.value.channel_id = response._data.channel_id
+  }
+})
+const { data: siblings } = useFetch(`/api/article/siblings/${id.value}`, {
+  query: { locale },
+  default() {
+    return {
+      prevRecord: null,
+      nextRecord: null
+    }
+  }
 })
 
 const stateName = computed(() => {
@@ -24,7 +38,10 @@ onMounted(() => {
 })
 
 useSeoMeta({
-  title: stateName
+  title: stateName,
+  description() {
+    return data.value?.abstract
+  }
 })
 </script>
 
@@ -48,12 +65,27 @@ useSeoMeta({
         </div>
         <div class="rich-content new-detail" v-html="data?.content"></div>
       </div>
+      <div class="flex w-full mt-4 md:mt-6">
+        <SiteContainerTabBtn
+          class="flex-grow w-1/2"
+          type="prev"
+          :data="siblings.prevRecord"
+        />
+        <SiteContainerTabBtn
+          class="flex-grow w-1/2"
+          type="next"
+          :data="siblings.nextRecord"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .page-detail {
+  max-width: 980px;
+  margin: 0 auto;
+
   // @apply pb-14 pt-20;
   margin-bottom: -24px;
   background-color: var(--color-fill-1);
@@ -71,10 +103,5 @@ useSeoMeta({
   @apply md:text-2xl text-xl;
 
   font-weight: bold;
-}
-
-.new-detail {
-  max-width: 720px;
-  margin: 0 auto;
 }
 </style>

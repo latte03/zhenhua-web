@@ -68,6 +68,7 @@ defineOptions({ name: 'SitePageHead' })
 .page-image {
   width: 100vw;
   height: 39vw;
+  background-position: center;
   background-size: cover;
   @media screen and (width <= 600px) {
     height: 50vh;

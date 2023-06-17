@@ -52,29 +52,6 @@ const eventPos = reactive({
 const show3D = ref(false)
 const currentSelect = ref<CurrentMap | undefined>(undefined)
 
-// {
-//   name: '河南省',
-//   adcode: '410000'
-// }
-// provide(THEME_KEY, 'dark')
-
-// onMounted(() => {
-//   console.log('map mounted')
-
-//   setTimeout(() => {
-//     data.value = [
-//       {
-//         name: '河南省',
-//         value: [113.665412, 34.757975],
-
-//         data: {
-//           adcode: '410000',
-//           value: 1
-//         }
-//       }
-//     ]
-//   }, 500)
-// })
 watch(
   [registered, energyData],
   async ([r, d]) => {

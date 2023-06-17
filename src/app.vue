@@ -35,8 +35,6 @@ useSeoMeta({
 <template>
   <Html :lang="locale">
     <Head>
-      <!-- <Title>{{ title }}</Title> -->
-
       <Meta name="keywords" :content="keywords" />
     </Head>
     <Body class="antialiased transition-colors duration-300 bg-white">
@@ -49,6 +47,7 @@ useSeoMeta({
         :breakpoints="{ xs: 0, s: 640, m: 768, l: 1024, xl: 1280, xxl: 1536 }"
       >
         <NuxtLayout>
+          <NuxtLoadingIndicator :throttle="100" />
           <NuxtPage />
         </NuxtLayout>
       </NConfigProvider>

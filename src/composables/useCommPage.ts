@@ -2,7 +2,8 @@ const [useProvidePageStore, useCommonPageStore] = createInjectionState(() => {
   const state = useState('commPageState', () => ({
     name: '',
     src: '',
-    topChannelCode: ''
+    topChannelCode: '',
+    channel_id: undefined
   }))
 
   return { state }

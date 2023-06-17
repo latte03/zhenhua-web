@@ -6,12 +6,12 @@ const props = defineProps<PropsType>()
 const emit = defineEmits(['update:show'])
 defineOptions({ name: 'SiteSearch' })
 const router = useRouter()
+const { t } = useLang()
 const showSearch = useVModel(props, 'show', emit)
 const value = ref('')
 const localPath = useLocalePath()
 
 function onSearch() {
-  console.log('object')
   router.push({
     path: localPath('/search'),
     query: {
@@ -28,7 +28,7 @@ function onSearch() {
       <n-input
         v-model:value="value"
         class="search-input"
-        placeholder="搜索相关资讯"
+        :placeholder="t('search-some-news')"
         size="large"
         @keyup.enter="onSearch"
       >

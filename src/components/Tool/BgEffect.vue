@@ -4,6 +4,7 @@ defineOptions({ name: 'ToolBgEffect' })
 
 <template>
   <svg
+    class="bg-effect"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     fill="none"
@@ -63,6 +64,13 @@ defineOptions({ name: 'ToolBgEffect' })
 
 <style lang="scss" scoped>
 .tool {
+}
+
+.bg-effect {
+  @media screen and (width <=767px) {
+    width: calc(100vw - 32px);
+    height: 400px;
+  }
 }
 
 @keyframes rotate {

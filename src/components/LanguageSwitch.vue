@@ -12,7 +12,12 @@ const langs = computed(() => {
     return {
       key: lang.iso,
       label: () => (
-        <NuxtLink to={switchLocalePath(lang.iso)}>
+        <NuxtLink
+          replace
+          to={{
+            path: switchLocalePath(lang.iso)
+          }}
+        >
           <span>{lang.name}</span>
         </NuxtLink>
       ),

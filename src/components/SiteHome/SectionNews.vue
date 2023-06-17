@@ -58,7 +58,7 @@ const swiper = computed(() => {
   })
 })
 
-const isLargeScreen = useMediaQuery('(min-width: 768px)')
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -76,12 +76,15 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
         class="relative flex-grow-0 flex-shrink-0 mr-6 overflow-hidden section-news-carousel"
         :data-source="swiper || []"
       >
-        <div class="wh-full">
+        <NuxtLink
+          :to="localePath(`/detail/${record.id}`)"
+          class="block wh-full"
+        >
           <AgImage
             class="absolute top-0 wh-full carousel-img"
             :src="record.thumbnail"
           />
-        </div>
+        </NuxtLink>
       </SiteCarousel>
       <div
         v-motion="{ delay: 2 }"
@@ -91,46 +94,52 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
           size="small"
           title="镇华动态"
           en-title="zhenhua NEWS"
-          class="mb-4"
+          class="mb-3 md:mb-4"
         />
         <SiteNews :data-source="zhenhua?.rows || []" class="w-full" />
       </div>
     </div>
-    <n-grid class="pt-12" :x-gap="24" :y-gap="24" responsive="screen">
-      <n-grid-item v-motion="{ delay: 1 }" :span="isLargeScreen ? 8 : 24">
+    <ag-row
+      class="pt-4 md:pt-12"
+      :x-gap="[48, 12]"
+      :y-gap="[24, 48]"
+      :span="[8, 24]"
+      responsive="screen"
+    >
+      <ag-col v-motion="{ delay: 1 }">
         <SiteSectionTitle
           size="small"
           title="行业资讯"
           en-title="Industry information"
-          class="mb-4"
+          class="mb-2 md:mb-4"
         />
         <SiteNews
           :data-source="industryInformation?.rows || []"
           class="w-full"
         />
-      </n-grid-item>
-      <n-grid-item v-motion="{ delay: 2 }" :span="isLargeScreen ? 8 : 24">
+      </ag-col>
+      <ag-col v-motion="{ delay: 2 }">
         <SiteSectionTitle
           size="small"
           title="现场风采"
           en-title="Scene elegant demeanor"
-          class="mb-4"
+          class="mb-2 md:mb-4"
         />
         <SiteNews
           :data-source="sceneElegantDemeanor?.rows || []"
           class="w-full"
         />
-      </n-grid-item>
-      <n-grid-item v-motion="{ delay: 3 }" :span="isLargeScreen ? 8 : 24">
+      </ag-col>
+      <ag-col v-motion="{ delay: 3 }">
         <SiteSectionTitle
           size="small"
           title="集团告示"
           en-title="Group Notice"
-          class="mb-4"
+          class="mb-2 md:mb-4"
         />
         <SiteNews :data-source="groupNotice?.rows || []" class="w-full" />
-      </n-grid-item>
-    </n-grid>
+      </ag-col>
+    </ag-row>
   </SiteSection>
 </template>
 

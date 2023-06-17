@@ -31,11 +31,6 @@ const { data } = useFetch('/api/new-energy', { query: { locale } })
   </SiteLayoutNewEnergy>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 /** */
-.new-energy {
-  --map-height: 900px;
-  --map-width: 100%;
-  @apply relative;
-}
 </style>

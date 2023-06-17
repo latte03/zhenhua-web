@@ -16,24 +16,41 @@ const topChannel = computed(() => {
   )
   return channel
 })
+
+const currentChannel = computed(() => {
+  console.log('%c Line:22 🥤', 'color:#4fff4B', state.value)
+  const channel = channelStore.channel?.find(
+    c => c.id === state.value.channel_id
+  )
+  console.log('%c Line:25 🥔 channel', 'color:#93c0a4', channel)
+  return channel
+})
+
 /**
  * 二级栏目的状态信息
  */
 const headState = computed(() => {
-  return {
-    name: state.value.name || topChannel.value?.name
+  const _state = {
+    name: '',
+    slogan: ''
   }
+  if (currentChannel.value?.name) {
+    _state.name = currentChannel.value?.name
+    _state.slogan = topChannel.value?.name || ''
+  } else {
+    _state.name = state.value.name || topChannel.value?.name || ''
+  }
+  return _state
 })
 </script>
 
 <template>
   <div class="web-site-main inner-page">
-    <NuxtLoadingIndicator />
     <SiteHeader />
     <div class="page-content">
       <SitePageHead :data="headState" :src="topChannel?.thumbnail" />
       <SiteContent class="relative z-10 page-container--wrap">
-        <div v-motion class="page-container">
+        <div v-motion class="container page-container">
           <slot></slot>
         </div>
       </SiteContent>
@@ -77,6 +94,7 @@ const headState = computed(() => {
     --padding-y: 40px;
     --padding-x: 56px;
 
+    margin: auto;
     padding: var(--padding-x) var(--padding-y);
     background-color: var(--color-bg-100);
 
