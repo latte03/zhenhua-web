@@ -8,7 +8,7 @@ interface PropsType {
 }
 defineProps<PropsType>()
 defineOptions({
-  name: 'SiteHeader'
+  name: 'SiteHeaderMenu'
 })
 const localePath = useLocalePath()
 const routePath = useBaseRoutePath()

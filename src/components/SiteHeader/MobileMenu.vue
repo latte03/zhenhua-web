@@ -7,7 +7,7 @@ interface PropsType {
 defineProps<PropsType>()
 const emit = defineEmits(['menuClick'])
 defineOptions({
-  name: 'SiteHeader'
+  name: 'SiteHeaderMobileMenu'
 })
 const localePath = useLocalePath()
 const routePath = useBaseRoutePath()

@@ -4,7 +4,7 @@ interface PropsType {
 }
 defineProps<PropsType>()
 defineOptions({
-  name: 'SiteHeader'
+  name: 'SiteHeaderMobileExtra'
 })
 
 const [active, setActive] = useToggle()

@@ -5,7 +5,7 @@ interface PropsType {
 withDefaults(defineProps<PropsType>(), {
   tag: 'div'
 })
-defineOptions({ name: 'SiteHeader' })
+defineOptions({ name: 'SiteHeaderSearch' })
 const [showSearch, toggleSearch] = useToggle()
 function onSearchClick() {
   toggleSearch(true)

@@ -23,11 +23,7 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
         v-if="isLargeScreen"
         :channel-tree="channelStore.channelTree"
       />
-      <SiteHeaderMobileExtra
-        v-else
-        :channel-tree="channelStore.channelTree"
-        class="flex items-center"
-      />
+      <SiteHeaderMobileExtra v-else :channel-tree="channelStore.channelTree" />
     </div>
   </div>
 </template>
