@@ -37,9 +37,13 @@ export interface ArticleAttrs {
    */
   title: string
   /**
-   * 类型，是否放到首页当轮播图链接
+   * 类型，
    */
   type?: string
+  /**
+   * 额外的链接
+   */
+  link?: string
   /**
    * 置顶
    */
