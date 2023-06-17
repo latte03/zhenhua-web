@@ -46,7 +46,14 @@
     "name": "业务板块"
   },
   "about": {
-    "name": "关于镇华"
+    "name": "关于镇华",
+    "establishment": "成立时间",
+    "registered-capital": "注册资金",
+    "ten-thousand-yuan": "万元",
+    "national-qualification": "国家级资质",
+    "employees": "现有员工",
+    "group-name": "镇华电力建设集团",
+    "subsidiary": "子公司"
   },
   "search-some-news": "搜索相关资讯",
   "back-home": "返回首页"

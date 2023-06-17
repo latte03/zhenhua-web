@@ -58,24 +58,24 @@ const infoOptions = computed(() => {
       value: groupStore.groupInfo.buildTime
         ? dayjs(groupStore.groupInfo.buildTime).format('YYYY')
         : '',
-      label: '成立时间',
+      label: t('about.establishment'),
       icon: 'BuildTime'
     },
     {
       value: numeral(groupStore.groupInfo.registeredCapital).format('0,000'),
-      unit: '万元',
-      label: '注册资金',
+      unit: t('about.ten-thousand-yuan'),
+      label: t('about.registered-capital'),
       icon: 'RegisteredCapital'
     },
     {
       value: groupStore.groupInfo.qualificationNum,
-      label: '国家级资质',
+      label: t('about.national-qualification'),
       icon: 'QualificationNum'
     },
     {
       value: groupStore.groupInfo.staffNum,
       unit: '+',
-      label: '现有员工',
+      label: t('about.employees'),
       icon: 'Staff'
     }
   ]
@@ -119,8 +119,8 @@ const infoOptions = computed(() => {
     </div>
     <div class="mt-6">
       <div class="text-center">
-        <div class="opacity-50">镇华电力建设集团</div>
-        <div class="text-lg font-bold">子公司</div>
+        <div class="opacity-50">{{ t('about.group-name') }}</div>
+        <div class="text-lg font-bold">{{ t('about.subsidiary') }}</div>
       </div>
       <ul class="flex-wrap gap-6 subsidiary flex-center">
         <li v-for="sub in subsidiaries" :key="sub.value">

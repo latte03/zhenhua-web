@@ -46,7 +46,14 @@
     "name": "business block"
   },
   "about": {
-    "name": "About ZhenHua"
+    "name": "About ZhenHua",
+    "establishment": "Establishment Time",
+    "registered-capital": "Registered Capital",
+    "ten-thousand-yuan": "x1000 yuan",
+    "national-qualification": "National Qualification",
+    "employees": "Employees",
+    "group-name": "Zhenhua Electric Power Construction Group",
+    "subsidiary": "subsidiary"
   },
   "search-some-news": "search some news",
   "back-home": "back home"
