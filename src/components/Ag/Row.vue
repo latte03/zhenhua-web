@@ -4,7 +4,7 @@ interface PropsType {
   yGap?: number[]
   span?: number[]
 }
-withDefaults(defineProps<PropsType>(), {
+const props = withDefaults(defineProps<PropsType>(), {
   xGap: () => [0, 0],
   yGap: () => [0, 0],
   span: () => [6, 12]
@@ -12,6 +12,24 @@ withDefaults(defineProps<PropsType>(), {
 defineOptions({
   name: 'AgRow'
 })
+
+const spanExtra = computed(() => {
+  return handleData(props.span)
+})
+const xGapExtra = computed(() => {
+  return handleData(props.xGap)
+})
+const yGapExtra = computed(() => {
+  return handleData(props.yGap)
+})
+
+function handleData(data: number[]) {
+  if (data.length === 3) {
+    return data
+  } else {
+    return [data[0], ...data]
+  }
+}
 </script>
 
 <template>
@@ -24,16 +42,22 @@ defineOptions({
 .ag-row {
   @apply flex flex-wrap;
 
-  --x-gap: v-bind(`${xGap[0]}px`);
-  --y-gap: v-bind(`${yGap[0]}px`);
-  --span: v-bind(span[0]);
+  --x-gap: v-bind(`${xGapExtra[0]}px`);
+  --y-gap: v-bind(`${yGapExtra[0]}px`);
+  --span: v-bind(spanExtra[0]);
 
   margin: 0 calc(var(--x-gap) / -2);
 
+  @media screen and (width <=1440px) {
+    --x-gap: v-bind(`${xGapExtra[1]}px`);
+    --y-gap: v-bind(`${yGapExtra[1]}px`);
+    --span: v-bind(spanExtra[1]);
+  }
+
   @media screen and (width <=767px) {
-    --x-gap: v-bind(`${xGap[1]}px`);
-    --y-gap: v-bind(`${yGap[1]}px`);
-    --span: v-bind(span[1]);
+    --x-gap: v-bind(`${xGapExtra[2]}px`);
+    --y-gap: v-bind(`${yGapExtra[2]}px`);
+    --span: v-bind(spanExtra[2]);
   }
 }
 </style>

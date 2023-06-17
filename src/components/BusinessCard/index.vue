@@ -19,11 +19,13 @@ defineOptions({ name: 'BusinessCard' })
 <template>
   <div class="cursor-pointer gi-item">
     <div class="absolute item-icon flex-center">
-      <AgImage :src="data.icon" class="w-6 h-6" />
+      <AgImage :src="data.icon" class="w-5 h-5 md:w-6 md:h-6" />
     </div>
     <div class="absolute z-10 item-content">
       <div>
-        <div class="text-lg text-center item-title">{{ data.name }}</div>
+        <div class="item-title">
+          {{ data.name }}
+        </div>
         <div class="text-center item-desc">{{ data.desc }}</div>
       </div>
       <NuxtLink
@@ -63,11 +65,11 @@ defineOptions({ name: 'BusinessCard' })
   }
 
   .item-title {
-    @apply mt-4;
+    @apply mt-6 md:mt-4 text-base text-center md:text-lg;
   }
 
   .item-icon {
-    @apply z-12 w-14 h-14 opacity-100;
+    @apply z-12 w-12 h-12  md:w-14 md:h-14 opacity-100;
 
     bottom: 0;
     left: calc(50% - 28px);
@@ -79,7 +81,7 @@ defineOptions({ name: 'BusinessCard' })
   }
 
   .item-button {
-    @apply transition-base opacity-0 flex bottom-6 px-6 py-3 rounded-full;
+    @apply transition-base opacity-0 flex bottom-6  px-4 py-2 md:px-6 md:py-3 rounded-full;
 
     left: 50%;
     align-items: center;
@@ -118,12 +120,12 @@ defineOptions({ name: 'BusinessCard' })
     .item-icon {
       // top: 3.8vw;
 
-      transform: translateY(calc(-24vw));
+      transform: translateY(calc(var(--span) * -4vw));
       transition: all 0.6s ease;
     }
 
     .item-desc {
-      @apply mt-4 opacity-70;
+      @apply mt-1 md:mt-4 opacity-70;
 
       transform: scale(1);
       transition: all 0.6s 0.3s ease;

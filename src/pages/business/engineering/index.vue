@@ -32,7 +32,12 @@ const channels = computed(() => {
 
 <template>
   <div class="business-page">
-    <ag-row class="ag-row" :x-gap="[32, 16]" :y-gap="[48, 16]" :span="[6, 12]">
+    <ag-row
+      class="ag-row"
+      :x-gap="[32, 16]"
+      :y-gap="[48, 16]"
+      :span="[4, 6, 12]"
+    >
       <ag-col v-for="(d, index) in channels" :key="d.id" class="ag-col">
         <BusinessCard
           v-motion="{ delay: index + 1 }"
