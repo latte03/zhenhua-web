@@ -71,7 +71,7 @@ const content = computed(() => {
 .about-culture {
   @apply m-auto;
 
-  width: max(60vw, 500px);
+  width: min(100%, 960px);
   line-height: 1.8;
 }
 
