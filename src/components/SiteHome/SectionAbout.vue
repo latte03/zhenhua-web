@@ -80,7 +80,6 @@ function onCanPlay() {
         >
           <video
             v-show="canPlay"
-            class="video-body"
             :src="transformURL(groupState.groupInfo.groupVideo || '')"
             controls
             @canplay="onCanPlay"
