@@ -38,7 +38,17 @@ const { t } = useLang()
       </li>
     </ul>
     <div v-else class="p-6">
-      <n-empty :description="t('no_data')" />
+      <n-config-provider
+        :theme-overrides="{
+          Empty: { iconSizeMedium: '100px' }
+        }"
+      >
+        <n-empty :description="t('no_data')">
+          <template #icon>
+            <Icon name="Empty" size="100px" />
+          </template>
+        </n-empty>
+      </n-config-provider>
     </div>
   </div>
 </template>

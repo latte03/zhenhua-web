@@ -40,13 +40,22 @@ function onBackHome() {
     </template>
 
     <div v-else class="px-5 py-8">
-      <n-empty size="huge">
-        <template #extra>
-          <n-button type="primary" tertiary @click="onBackHome">
-            返回首页
-          </n-button>
-        </template>
-      </n-empty>
+      <n-config-provider
+        :theme-overrides="{
+          Empty: { iconSizeHuge: '150px' }
+        }"
+      >
+        <n-empty size="huge">
+          <template #icon>
+            <Icon name="Empty" size="150px" />
+          </template>
+          <template #extra>
+            <n-button type="primary" tertiary @click="onBackHome">
+              返回首页
+            </n-button>
+          </template>
+        </n-empty>
+      </n-config-provider>
     </div>
   </div>
 </template>
