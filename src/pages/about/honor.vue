@@ -81,14 +81,14 @@ function next() {
       >
         <div class="wh-full">
           <AgImage
-            class="object-cover carousel-img wh-full"
+            class="object-contain carousel-img wh-full"
             :src="s.thumbnail"
           />
         </div>
       </NCarouselItem>
     </n-carousel>
     <div class="honor-base">
-      <AgImage :src="HonorBase" alt="" />
+      <AgImage preview :src="HonorBase" alt="" />
     </div>
 
     <div class="control-carousel--wrap">

@@ -4,6 +4,7 @@ import { transformURL } from '~/utils'
 
 interface PropsType {
   src?: string
+  preview?: boolean
 }
 const props = defineProps<PropsType>()
 
@@ -13,5 +14,11 @@ const _src = computed(() => {
 </script>
 
 <template>
-  <img :src="_src" class="ag-image" v-bind="$attrs" />
+  <n-image
+    lazy
+    :src="_src"
+    :preview-disabled="!preview"
+    class="ag-image"
+    v-bind="$attrs"
+  />
 </template>
