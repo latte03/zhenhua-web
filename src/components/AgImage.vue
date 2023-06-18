@@ -13,5 +13,5 @@ const _src = computed(() => {
 </script>
 
 <template>
-  <img :src="_src" class="object-cover ag-image" v-bind="$attrs" />
+  <img :src="_src" class="ag-image" v-bind="$attrs" />
 </template>

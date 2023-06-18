@@ -1,20 +1,34 @@
 <script lang="ts" setup>
-import { KeyValue } from '~/types'
+import { SiteSubsidiary } from '~/server/api/subsidiaries'
 
 interface PropsType {
-  data: KeyValue
+  data: SiteSubsidiary
 }
 defineProps<PropsType>()
 defineOptions({ name: 'SiteIntroduceSubsidiary' })
 </script>
 
 <template>
-  <div class="p-4 md:p-6 md:flex-col site-introduce flex-center">
-    <div class="mr-2 md:mb-1 logo"><AgImage :src="data.icon_url" alt="" /></div>
-    <div class="flex-col md:flex-center">
-      <div class="mb-2 font-bold md:mb-4">{{ data.value }}</div>
+  <div class="flex-col justify-start p-4 md:p-6 site-introduce flex-center">
+    <div class="mb-2 logo">
+      <AgImage
+        v-if="data.logo"
+        class="object-contain"
+        :src="data.logo"
+        alt=""
+      />
+      <div
+        v-else
+        class="h-full text-lg font-bold opacity-50 flex-center"
+        style="color: var(--primary-color)"
+      >
+        {{ data.title }}
+      </div>
+    </div>
+    <div class="flex-col flex-center">
+      <div class="mb-2 font-bold md:mb-4">{{ data.title }}</div>
       <div class="text-xs opacity-50">
-        {{ data.desc }}
+        {{ data.content }}
       </div>
     </div>
   </div>
@@ -25,7 +39,7 @@ defineOptions({ name: 'SiteIntroduceSubsidiary' })
   width: 274px;
   height: 274px;
   background: var(--color-fill-light);
-  border-radius: 16px;
+  border-radius: 8px;
   opacity: 1;
   @media screen and (width <= 767px) {
     width: 100%;
@@ -34,7 +48,11 @@ defineOptions({ name: 'SiteIntroduceSubsidiary' })
 }
 
 .logo {
-  width: 56px;
-  height: 56px;
+  width: 248px;
+  height: 80px;
+  @media screen and (width <= 767px) {
+    width: 100%;
+    height: auto;
+  }
 }
 </style>

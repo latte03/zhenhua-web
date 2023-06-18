@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs'
 import numeral from 'numeral'
+import { SiteSubsidiary } from '~/server/api/subsidiaries'
 import { useGroupState } from '~/store/groupState'
-import { KeyValue } from '~/types'
 
 defineOptions({ name: 'AboutIntroducePage' })
 definePageMeta({
@@ -21,7 +21,7 @@ useInnerPageContent({
 const groupStore = useGroupState()
 groupStore.getGroupInfo()
 const { data: subsidiaries } = useFetch('/api/subsidiaries', {
-  default: () => [] as KeyValue[],
+  default: () => [] as SiteSubsidiary[],
   query: { locale }
 })
 
@@ -123,7 +123,7 @@ const infoOptions = computed(() => {
         <div class="text-lg font-bold">{{ t('about.subsidiary') }}</div>
       </div>
       <ul class="flex-wrap gap-6 subsidiary flex-center">
-        <li v-for="sub in subsidiaries" :key="sub.value">
+        <li v-for="sub in subsidiaries" :key="sub.id">
           <SiteIntroduceSubsidiary :data="sub" />
         </li>
       </ul>
@@ -192,7 +192,7 @@ const infoOptions = computed(() => {
   .subsidiary {
     @apply m-auto mt-4;
 
-    max-width: 900px;
+    // max-width: 900px;
   }
 }
 </style>
