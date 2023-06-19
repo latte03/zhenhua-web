@@ -61,7 +61,12 @@ useSeoMeta({
       </div>
       <div class="container-main">
         <div class="text-center">
-          <AgImage class="w-1/2 m-auto mb-6" :src="data?.thumbnail" alt="" />
+          <AgImage
+            :preview="true"
+            class="w-1/2 m-auto mb-6"
+            :src="data?.thumbnail"
+            alt=""
+          />
         </div>
         <div class="rich-content new-detail" v-html="data?.content"></div>
       </div>
