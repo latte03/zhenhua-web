@@ -67,7 +67,10 @@ function handleRecord(record: ArticleAttrs) {
         class="absolute top-0 wh-full carousel-img"
       >
         <i class="block to-left-top wh-full image-cover z-1"></i>
-        <AgImage class="to-left-top wh-full" :src="record.thumbnail" />
+        <AgImage
+          class="object-cover to-left-top wh-full"
+          :src="record.thumbnail"
+        />
       </component>
     </SiteCarousel>
 

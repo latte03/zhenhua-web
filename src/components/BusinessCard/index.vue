@@ -19,7 +19,7 @@ defineOptions({ name: 'BusinessCard' })
 <template>
   <div class="cursor-pointer gi-item">
     <div class="absolute item-icon flex-center">
-      <AgImage :src="data.icon" class="w-5 h-5 md:w-6 md:h-6" />
+      <AgImage :src="data.icon" class="object-cover w-5 h-5 md:w-6 md:h-6" />
     </div>
     <div class="absolute z-10 item-content">
       <div>

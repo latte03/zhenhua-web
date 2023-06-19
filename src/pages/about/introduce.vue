@@ -91,7 +91,10 @@ const infoOptions = computed(() => {
         class="overflow-hidden about-carousel"
         :data-source="swiper"
       >
-        <AgImage class="ratio-img carousel-img" :src="record.thumbnail" />
+        <AgImage
+          class="object-cover ratio-img carousel-img"
+          :src="record.thumbnail"
+        />
       </SiteCarousel>
     </div>
     <div class="mt-6">

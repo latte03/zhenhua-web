@@ -25,7 +25,7 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
         draggable
       >
         <div v-for="d in data" :key="d.id" class="group-item flex-center">
-          <AgImage v-if="d.logo" :src="d.logo" />
+          <AgImage v-if="d.logo" class="object-contain" :src="d.logo" />
           <span v-else class="text">{{ d.title }}</span>
         </div>
       </n-carousel>

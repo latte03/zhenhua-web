@@ -81,7 +81,7 @@ const localePath = useLocalePath()
           class="block wh-full"
         >
           <AgImage
-            class="absolute top-0 wh-full carousel-img"
+            class="absolute top-0 object-cover wh-full carousel-img"
             :src="record.thumbnail"
           />
         </NuxtLink>
