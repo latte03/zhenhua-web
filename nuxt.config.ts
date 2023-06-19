@@ -4,8 +4,8 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }
+        { rel: 'icon', href: 'favicon.ico' },
+        { rel: 'apple-touch-icon', href: 'apple-touch-icon.png' }
       ],
       meta: [
         // <meta name="viewport" content="width=device-width, initial-scale=1">
