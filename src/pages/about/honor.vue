@@ -126,7 +126,7 @@ function next() {
       </NCarouselItem>
     </n-carousel>
     <div class="honor-base">
-      <AgImage class="wh-full" preview :src="HonorBase" alt="" />
+      <AgImage class="wh-full" :src="HonorBase" alt="" />
     </div>
 
     <div class="control-carousel--wrap">

@@ -51,29 +51,32 @@ function handleRecord(record: ArticleAttrs) {
 
 <template>
   <div class="home-page">
-    <SiteCarousel
-      v-slot="{ record }"
-      :data-source="data?.rows || []"
-      class="w-screen home-carousel"
-    >
-      <div class="absolute z-10 text-white carousel-info">
-        <div class="carousel-title">{{ record.title }}</div>
-        <div class="carousel-desc">{{ record.abstract }}</div>
-      </div>
-
-      <component
-        :is="record.link?.startsWith('http') ? 'a' : NuxtLink"
-        v-bind="handleRecord(record)"
-        class="absolute top-0 wh-full carousel-img"
+    <div class="w-screen home-carousel">
+      <SiteCarousel
+        v-slot="{ record }"
+        class="wh-full"
+        :data-source="data?.rows || []"
       >
-        <i class="block to-left-top wh-full image-cover z-1"></i>
-        <AgImage
-          class="to-left-top wh-full"
-          :src="record.thumbnail"
-          class-name="wh-full"
-        />
-      </component>
-    </SiteCarousel>
+        <div class="absolute z-10 text-white carousel-info">
+          <div class="carousel-title">{{ record.title }}</div>
+          <div class="carousel-desc">{{ record.abstract }}</div>
+        </div>
+
+        <component
+          :is="record.link?.startsWith('http') ? 'a' : NuxtLink"
+          v-bind="handleRecord(record)"
+          class="absolute top-0 wh-full carousel-img"
+        >
+          <i class="block to-left-top wh-full image-cover z-1"></i>
+          <AgImage
+            :lazy="false"
+            class="to-left-top wh-full"
+            :src="record.thumbnail"
+            class-name="wh-full"
+          />
+        </component>
+      </SiteCarousel>
+    </div>
 
     <SiteHomeSectionAbout />
     <SiteHomeSectionBusiness />

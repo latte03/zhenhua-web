@@ -13,14 +13,18 @@ const localePath = useLocalePath()
 
 <template>
   <div class="cursor-pointer site-new-card">
-    <div class="mb-8 rounded new-img ratio-16/9">
+    <NuxtLink
+      :to="localePath(`/detail/${content.id}`)"
+      class="block mb-8 rounded new-img ratio-16/9"
+    >
       <AgImage
         :src="content.thumbnail || defaultImage"
         alt=""
         class="ratio-img site-new-img transition-base"
         class-name="wh-full"
       />
-    </div>
+    </NuxtLink>
+
     <div class="new-info">
       <div class="mb-2 text-base font-bold new-title">
         <n-ellipsis
@@ -75,9 +79,28 @@ const localePath = useLocalePath()
 
 <style lang="scss">
 .site-new-card {
+  .new-more {
+    @apply transition-base;
+
+    --underline-offset: 0px;
+
+    text-underline-offset: var(--underline-offset);
+  }
+
   &:hover {
     .site-new-img {
       transform: scale(1.2);
+    }
+
+    .new-more {
+      --underline-offset: 8px;
+
+      color: var(--primary-color);
+      text-decoration: underline;
+
+      a {
+        @apply opacity-100;
+      }
     }
   }
 }

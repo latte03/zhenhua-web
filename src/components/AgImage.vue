@@ -6,11 +6,13 @@ import { transformURL } from '~/utils'
 interface PropsType {
   src?: string
   preview?: boolean
+  lazy?: boolean
   className?: string
   objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 }
 const props = withDefaults(defineProps<PropsType>(), {
-  objectFit: 'cover'
+  objectFit: 'cover',
+  lazy: true
 })
 
 const _src = computed(() => {
@@ -20,7 +22,7 @@ const _src = computed(() => {
 
 <template>
   <n-image
-    lazy
+    :lazy="lazy"
     :src="_src"
     :preview-disabled="!preview"
     class="ag-image"

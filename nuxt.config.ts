@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
+    '/': { swr: true },
     '/about/introduce': { swr: true },
     '/about/honor': { ssr: false },
     '/about/organizational': { static: true },
