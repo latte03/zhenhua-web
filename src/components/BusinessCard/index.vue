@@ -124,9 +124,14 @@ defineOptions({ name: 'BusinessCard' })
 
     .item-icon {
       // top: 3.8vw;
-
-      transform: translateY(calc(var(--span) * -4vw));
+      transform: translateY(-400px);
       transition: all 0.6s ease;
+      @media screen and (width <= 1440px) {
+        transform: translateY(calc(var(--span) * -3.2vw));
+      }
+      @media screen and (width <= 768px) {
+        transform: translateY(calc(var(--span) * -3.8vw));
+      }
     }
 
     .item-desc {

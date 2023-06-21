@@ -36,7 +36,7 @@ const channels = computed(() => {
       class="ag-row"
       :x-gap="[32, 16]"
       :y-gap="[48, 16]"
-      :span="[4, 6, 12]"
+      :span="[6, 6, 12]"
     >
       <ag-col v-for="(d, index) in channels" :key="d.id" class="ag-col">
         <BusinessCard
@@ -59,4 +59,12 @@ const channels = computed(() => {
 
 <style lang="scss" scoped>
 /** */
+
+.business-page {
+  width: 1440px;
+  margin: 0 auto;
+  @media screen and (width <= 1440px) {
+    width: 100%;
+  }
+}
 </style>
