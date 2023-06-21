@@ -24,7 +24,16 @@ function onSearch() {
 
 <template>
   <n-modal v-model:show="showSearch" class="search-modal">
-    <div style="width: 60vw">
+    <div
+      style="
+        position: fixed;
+        top: 100px;
+        right: 0;
+        left: 0;
+        width: 60vw;
+        margin: auto;
+      "
+    >
       <n-input
         v-model:value="value"
         class="search-input"
