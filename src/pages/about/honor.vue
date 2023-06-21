@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 // import { NCarousel } from '#components'
 import HonorBase from '@/assets/images/honor-base.svg'
+import { ArticleAttrs } from '~/server/api/article'
 
 defineOptions({ name: 'AboutHonor' })
 definePageMeta({
@@ -16,26 +17,38 @@ useInnerPageContent({
   topChannelCode: 'about',
   pageChannelCode: 'honor'
 })!
-
-const { data } = useFetch('/api/article/list', {
-  method: 'post',
-  body: {
+const pageIndex = ref(1)
+const requestBody = computed(() => {
+  return {
     pageInfo: {
-      pageIndex: 1,
-      pageSize: 100
+      pageIndex: pageIndex.value,
+      pageSize: 10
     },
     data: {
       channel_code: 'honor'
     }
-  },
-  query: {
-    locale
   }
 })
 
-const swiper = computed(() => {
-  return data.value?.rows || []
+const swiper = ref<ArticleAttrs[]>([])
+const { data } = useFetch('/api/article/list', {
+  method: 'post',
+  body: requestBody,
+  query: {
+    locale
+  },
+  onResponse(res) {
+    swiper.value.push(...res.response._data.rows)
+  }
 })
+
+const total = computed(() => {
+  return data.value?.count || 0
+})
+const totalPage = computed(() => {
+  return Math.ceil(total.value / 10)
+})
+
 const controlRef = ref<InstanceType<any> | null>(null)
 const viewerRef = ref<InstanceType<any> | null>(null)
 const currentIndex = ref(0)
@@ -44,11 +57,20 @@ function onCurrenChange(index: number) {
   currentIndex.value = index
   controlRef.value?.to(index)
   viewerRef.value?.to(index)
+
+  if (swiper.value.length === total.value) {
+    return
+  }
+  if (totalPage.value <= pageIndex.value) {
+    return
+  }
+  if (swiper.value.length - index < 5) {
+    pageIndex.value++
+  }
   // ...
 }
 
 function onCarouselItemClick(index: number) {
-  console.log('%c Line:48 🥔 index', 'color:#b03734', index)
   controlRef.value?.to(index)
 }
 
@@ -73,11 +95,11 @@ function next() {
       centered-slides
       draggable
       touchable
+      :current-index="currentIndex"
       prev-slide-style="transform: translateX(-200%) translateZ(-800px);"
       next-slide-style="transform: translateX(100%) translateZ(-800px);"
       class="honor-carousel"
       :show-dots="false"
-      @update-current-index="onCurrenChange"
     >
       <NCarouselItem
         v-for="(s, index) in swiper"
@@ -94,6 +116,9 @@ function next() {
             :src="s.thumbnail"
             preview
             style="height: calc(100% - 32px)"
+            :intersection-observer-options="{
+              root: '.honor-carousel'
+            }"
           />
 
           <div class="text-sm text-center opacity-60">{{ s.title }}</div>
@@ -131,6 +156,9 @@ function next() {
               class="h-full carousel-img"
               class-name="h-full"
               :src="s.thumbnail"
+              :intersection-observer-options="{
+                root: '.control-carousel'
+              }"
             />
           </div>
         </NCarouselItem>

@@ -18,8 +18,12 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
-    '/about/*': { swr: true },
-    '/contact': { swr: true },
+    '/about/introduce': { swr: true },
+    '/about/honor': { ssr: false },
+    '/about/organizational': { static: true },
+    '/about/culture': { static: true },
+    '/business/new-energy': { ssr: false },
+    '/contact': { static: true },
     '/public/recruitment': { swr: true }
   },
   vue: {

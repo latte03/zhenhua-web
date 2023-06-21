@@ -28,6 +28,9 @@ const _src = computed(() => {
       class: className
     }"
     :object-fit="objectFit"
+    :previewed-img-props="{
+      style: { border: '8px solid white', width: '60vw' }
+    }"
     v-bind="omit($attrs, 'class')"
   />
 </template>
