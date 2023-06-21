@@ -84,18 +84,21 @@ const infoOptions = computed(() => {
 
 <template>
   <div class="about-introduce">
-    <div class="swiper">
-      <SiteCarousel
-        v-slot="{ record }"
-        size="small"
-        class="overflow-hidden about-carousel"
-        :data-source="swiper"
-      >
-        <AgImage
-          class="object-cover ratio-img carousel-img"
-          :src="record.thumbnail"
-        />
-      </SiteCarousel>
+    <div class="relative p-6">
+      <div class="swiper">
+        <SiteCarousel
+          v-slot="{ record }"
+          size="small"
+          class="overflow-hidden about-carousel"
+          :data-source="swiper"
+        >
+          <AgImage
+            class="ratio-img carousel-img"
+            class-name="wh-full"
+            :src="record.thumbnail"
+          />
+        </SiteCarousel>
+      </div>
     </div>
     <div class="mt-6">
       <div class="flex flex-wrap w-full">
@@ -143,7 +146,13 @@ const infoOptions = computed(() => {
     @apply md:-mt-14 md:-mx-10 -m-4 ratio-16/9;
 
     height: 0;
-    padding-bottom: 36%;
+    padding-bottom: 28%;
+    @media screen and (width <= 1440px) {
+      padding-bottom: 32%;
+    }
+    @media screen and (width <= 1280px) {
+      padding-bottom: 36%;
+    }
     @media screen and (width <= 767px) {
       padding-bottom: 56%;
     }
@@ -195,7 +204,7 @@ const infoOptions = computed(() => {
   .subsidiary {
     @apply m-auto mt-4;
 
-    // max-width: 900px;
+    max-width: 900px;
   }
 }
 </style>

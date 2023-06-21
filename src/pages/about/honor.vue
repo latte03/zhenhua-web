@@ -81,14 +81,16 @@ function next() {
       >
         <div class="wh-full">
           <AgImage
-            class="object-contain carousel-img wh-full"
+            object-fit="contain"
+            class-name="wh-full"
+            class="carousel-img wh-full"
             :src="s.thumbnail"
           />
         </div>
       </NCarouselItem>
     </n-carousel>
     <div class="honor-base">
-      <AgImage class="object-cover" preview :src="HonorBase" alt="" />
+      <AgImage class="wh-full" preview :src="HonorBase" alt="" />
     </div>
 
     <div class="control-carousel--wrap">
@@ -114,7 +116,9 @@ function next() {
             :class="{ 'is-selected': currentIndex === index }"
           >
             <AgImage
-              class="object-contain carousel-img wh-full"
+              object-fit="contain"
+              class="carousel-img wh-full"
+              class-name="wh-full"
               :src="s.thumbnail"
             />
           </div>

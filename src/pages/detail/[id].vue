@@ -64,6 +64,7 @@ useSeoMeta({
           <AgImage
             :preview="true"
             class="w-1/2 m-auto mb-6"
+            class-name="wh-full"
             :src="data?.thumbnail"
             alt=""
           />

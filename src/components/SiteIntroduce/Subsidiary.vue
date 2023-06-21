@@ -11,12 +11,7 @@ defineOptions({ name: 'SiteIntroduceSubsidiary' })
 <template>
   <div class="flex-col justify-start p-4 md:p-6 site-introduce flex-center">
     <div class="mb-2 logo">
-      <AgImage
-        v-if="data.logo"
-        class="object-contain"
-        :src="data.logo"
-        alt=""
-      />
+      <AgImage v-if="data.logo" object-fit="contain" :src="data.logo" alt="" />
       <div
         v-else
         class="h-full text-lg font-bold opacity-50 flex-center"

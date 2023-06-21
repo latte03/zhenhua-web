@@ -47,7 +47,8 @@ const localePath = useLocalePath()
         <div class="absolute opacity-50 index z-2">0{{ index + 1 }}</div>
         <div class="to-left-top wh-full mask-cover z-1"></div>
         <AgImage
-          class="object-cover to-left-top wh-full transition-base img"
+          class="to-left-top wh-full transition-base img"
+          class-name="wh-full"
           :src="d.thumbnail"
           :alt="d.name"
         />
@@ -127,10 +128,6 @@ const localePath = useLocalePath()
       font-family: Montserrat-Bold, Montserrat, Arial, Helvetica, sans-serif;
       line-height: 44px;
       transition: all 0.3s ease;
-    }
-
-    .img {
-      object-fit: cover;
     }
 
     &:hover {

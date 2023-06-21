@@ -17,7 +17,8 @@ const localePath = useLocalePath()
       <AgImage
         :src="content.thumbnail || defaultImage"
         alt=""
-        class="object-cover ratio-img site-new-img transition-base"
+        class="ratio-img site-new-img transition-base"
+        class-name="wh-full"
       />
     </div>
     <div class="new-info">
