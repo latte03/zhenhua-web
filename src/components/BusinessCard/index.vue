@@ -120,17 +120,37 @@ defineOptions({ name: 'BusinessCard' })
       @apply h-full;
 
       padding-top: 7.08vw;
+      @media screen and (width < 1280px) {
+        padding-top: 70px;
+      }
+      @media screen and (width < 960px) {
+        padding-top: 60px;
+      }
+      @media screen and (width <= 768px) {
+        padding-top: 70px;
+      }
+      @media screen and (width <= 414px) {
+        padding-top: 50px;
+      }
     }
 
     .item-icon {
-      // top: 3.8vw;
-      transform: translateY(-400px);
+      transform: translateY(-350px);
       transition: all 0.6s ease;
       @media screen and (width <= 1440px) {
         transform: translateY(calc(var(--span) * -3.2vw));
       }
+      @media screen and (width < 1280px) {
+        transform: translateY(-208px);
+      }
+      @media screen and (width < 960px) {
+        transform: translateY(-18vw);
+      }
       @media screen and (width <= 768px) {
-        transform: translateY(calc(var(--span) * -3.8vw));
+        transform: translateY(-55vw);
+      }
+      @media screen and (width <= 414px) {
+        transform: translateY(-46vw);
       }
     }
 

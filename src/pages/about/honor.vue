@@ -37,14 +37,18 @@ const swiper = computed(() => {
   return data.value?.rows || []
 })
 const controlRef = ref<InstanceType<any> | null>(null)
+const viewerRef = ref<InstanceType<any> | null>(null)
 const currentIndex = ref(0)
 
 function onCurrenChange(index: number) {
   currentIndex.value = index
+  controlRef.value?.to(index)
+  viewerRef.value?.to(index)
   // ...
 }
 
 function onCarouselItemClick(index: number) {
+  console.log('%c Line:48 🥔 index', 'color:#b03734', index)
   controlRef.value?.to(index)
 }
 
@@ -61,31 +65,38 @@ function next() {
   <div class="about-honor min-h-100">
     <!--  -->
     <n-carousel
+      ref="viewerRef"
       effect="card"
       :space-between="30"
       :loop="false"
       slides-per-view="auto"
       centered-slides
       draggable
+      touchable
       prev-slide-style="transform: translateX(-200%) translateZ(-800px);"
       next-slide-style="transform: translateX(100%) translateZ(-800px);"
       class="honor-carousel"
       :show-dots="false"
-      :current-index="currentIndex"
+      @update-current-index="onCurrenChange"
     >
       <NCarouselItem
         v-for="(s, index) in swiper"
         :key="s.id"
         class="honor-carousel-item"
-        @click="onCarouselItemClick(index)"
       >
-        <div class="wh-full">
+        <div
+          class="text-center wh-full"
+          :class="{ 'is-selected': currentIndex === index }"
+        >
           <AgImage
             object-fit="contain"
-            class-name="wh-full"
-            class="carousel-img wh-full"
+            class="carousel-img"
             :src="s.thumbnail"
+            preview
+            style="height: calc(100% - 32px)"
           />
+
+          <div class="text-sm text-center opacity-60">{{ s.title }}</div>
         </div>
       </NCarouselItem>
     </n-carousel>
@@ -112,13 +123,13 @@ function next() {
           @click="onCarouselItemClick(index)"
         >
           <div
-            class="cursor-pointer wh-full"
+            class="text-center cursor-pointer wh-full"
             :class="{ 'is-selected': currentIndex === index }"
           >
             <AgImage
               object-fit="contain"
-              class="carousel-img wh-full"
-              class-name="wh-full"
+              class="h-full carousel-img"
+              class-name="h-full"
               :src="s.thumbnail"
             />
           </div>
@@ -160,8 +171,10 @@ function next() {
     margin-top: 160px;
 
     .control-carousel--item {
-      width: 160px;
-      height: 114px;
+      width: auto;
+      max-width: 160px;
+      height: auto;
+      max-height: 114px;
       @media screen and (width <= 767px) {
         width: 100px;
         height: 68px;
@@ -190,17 +203,23 @@ function next() {
   }
 }
 
+.carousel-img {
+  box-shadow: 0 0 12px #ddd;
+}
+
 .is-selected {
-  border: 4px solid var(--primary-color);
+  // border: 4px solid var(--primary-color);
 
   .carousel-img {
-    border: 1px solid var(--white);
+    border: 4px solid var(--primary-color);
   }
 }
 
 .honor-carousel {
-  --carousel-width: 420px;
-  --carousel-height: 300px;
+  @apply relative z-10;
+
+  --carousel-width: 480px;
+  --carousel-height: 320px;
 
   height: var(--carousel-height);
   @media screen and (width <= 767px) {

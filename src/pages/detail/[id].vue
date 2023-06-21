@@ -55,20 +55,13 @@ useSeoMeta({
         <NSpace class="py-4 opacity-50 container-extra" justify="center">
           <div>
             <span class="pr-1 text-sm">{{ t('release_time') }}:</span>
-            <span class="text-sm">{{ data?.release_time }}</span>
+            <span class="text-sm">
+              {{ formatDate(data?.release_time || '') }}
+            </span>
           </div>
         </NSpace>
       </div>
       <div class="container-main">
-        <div class="text-center">
-          <AgImage
-            :preview="true"
-            class="w-1/2 m-auto mb-6"
-            class-name="wh-full"
-            :src="data?.thumbnail"
-            alt=""
-          />
-        </div>
         <div class="rich-content new-detail" v-html="data?.content"></div>
       </div>
       <div class="flex w-full mt-4 md:mt-6">

@@ -17,6 +17,11 @@ export default defineNuxtConfig({
       ]
     }
   },
+  routeRules: {
+    '/about/*': { swr: true },
+    '/contact': { swr: true },
+    '/public/recruitment': { swr: true }
+  },
   vue: {
     compilerOptions: {
       directiveTransforms: {

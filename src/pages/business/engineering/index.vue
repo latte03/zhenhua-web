@@ -31,7 +31,7 @@ const channels = computed(() => {
 </script>
 
 <template>
-  <div class="business-page">
+  <div class="business-page media-container">
     <ag-row
       class="ag-row"
       :x-gap="[32, 16]"
@@ -61,10 +61,10 @@ const channels = computed(() => {
 /** */
 
 .business-page {
-  width: 1440px;
-  margin: 0 auto;
-  @media screen and (width <= 1440px) {
-    width: 100%;
-  }
+  // width: 1440px;
+  // margin: 0 auto;
+  // @media screen and (width <= 1440px) {
+  //   width: 100%;
+  // }
 }
 </style>

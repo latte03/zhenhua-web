@@ -54,7 +54,7 @@ function handleRecord(record: ArticleAttrs) {
     <SiteCarousel
       v-slot="{ record }"
       :data-source="data?.rows || []"
-      class="w-screen h-screen"
+      class="w-screen home-carousel"
     >
       <div class="absolute z-10 text-white carousel-info">
         <div class="carousel-title">{{ record.title }}</div>
@@ -89,7 +89,7 @@ function handleRecord(record: ArticleAttrs) {
   }
 
   &-info {
-    top: calc(100vh - 256px);
+    bottom: 180px;
     left: 10vw;
   }
 
@@ -111,5 +111,9 @@ function handleRecord(record: ArticleAttrs) {
       font-size: 16px;
     }
   }
+}
+
+.home-carousel {
+  height: 670px;
 }
 </style>

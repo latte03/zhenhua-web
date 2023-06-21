@@ -56,12 +56,7 @@ watchEffect(async () => {
         }
       }"
     >
-      <n-tabs
-        v-model:value="activeKey"
-        type="line"
-        animated
-        pane-style="display:none"
-      >
+      <n-tabs :value="activeKey" type="line" animated pane-style="display:none">
         <n-tab v-for="d in dataSource" :key="d.id" :name="d.code" :tab="d.name">
           <div
             class="cursor-pointer page-menu--item"

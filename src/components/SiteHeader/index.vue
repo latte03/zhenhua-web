@@ -19,11 +19,16 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
       <div class="logo">
         <SiteLogo width="150px" height="37px" :white="!isScroll" />
       </div>
-      <SiteHeaderMenu
-        v-if="isLargeScreen"
-        :channel-tree="channelStore.channelTree"
-      />
-      <SiteHeaderMobileExtra v-else :channel-tree="channelStore.channelTree" />
+      <ClientOnly>
+        <SiteHeaderMenu
+          v-if="isLargeScreen"
+          :channel-tree="channelStore.channelTree"
+        />
+        <SiteHeaderMobileExtra
+          v-else
+          :channel-tree="channelStore.channelTree"
+        />
+      </ClientOnly>
     </div>
   </div>
 </template>
@@ -32,19 +37,19 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
 .site-header {
   --text-color: var(--white);
   --border-color: var(--color-bg-20);
-  --bg-color: transparent;
+  --bg-color: rgba(0, 0, 0, 30%);
   --active-text-color: var(--color-text-1);
   --active-bg-color: var(--white);
 
   color: var(--text-color);
   background-color: var(--bg-color);
   border-bottom: 1px solid var(--border-color);
-  backdrop-filter: blur(0);
+  backdrop-filter: blur(5px);
   transition: all 1s ease;
 
   .head-menu-item {
     position: relative;
-    padding: 32px 24px;
+    padding: 18px 24px;
     font-size: 15px;
     cursor: pointer;
     opacity: 0.7;
@@ -101,6 +106,7 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
 
     .head-menu-item {
       padding: 16px 24px;
+      font-size: 14px;
     }
 
     .head-menu-icon-item {

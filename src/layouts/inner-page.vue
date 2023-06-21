@@ -97,6 +97,7 @@ function findPath(channel: ChannelAttrs) {
           <SiteBreadcrumb :data="breadcrumb" />
 
           <SitePageMenu
+            v-if="state.pageChannelCode"
             :active-key="state.pageChannelCode || ''"
             :data-source="channelChildren"
           />
@@ -116,6 +117,7 @@ function findPath(channel: ChannelAttrs) {
   background-color: var(--color-fill-light);
 
   .page-content {
+    width: 100%;
     padding-bottom: 56px;
   }
 

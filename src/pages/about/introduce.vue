@@ -83,8 +83,8 @@ const infoOptions = computed(() => {
 </script>
 
 <template>
-  <div class="about-introduce">
-    <div class="relative p-6">
+  <div class="about-introduce media-container">
+    <!-- <div class="relative p-6">
       <div class="swiper">
         <SiteCarousel
           v-slot="{ record }"
@@ -99,8 +99,8 @@ const infoOptions = computed(() => {
           />
         </SiteCarousel>
       </div>
-    </div>
-    <div class="mt-6">
+    </div> -->
+    <div class="-mt-4">
       <div class="flex flex-wrap w-full">
         <div
           v-for="info in infoOptions"
@@ -123,7 +123,7 @@ const infoOptions = computed(() => {
     <div class="opacity-75">
       <div class="rich-content" v-html="content?.content"></div>
     </div>
-    <div class="mt-6">
+    <!-- <div class="mt-6">
       <div class="text-center">
         <div class="opacity-50">{{ t('about.group-name') }}</div>
         <div class="text-lg font-bold">{{ t('about.subsidiary') }}</div>
@@ -133,7 +133,7 @@ const infoOptions = computed(() => {
           <SiteIntroduceSubsidiary :data="sub" />
         </li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 

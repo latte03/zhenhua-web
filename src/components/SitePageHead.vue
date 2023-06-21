@@ -30,7 +30,7 @@ defineOptions({ name: 'SitePageHead' })
       background-image: linear-gradient(
       0deg,
       rgba(0, 0, 0, 30%),
-      rgba(0, 0, 0, 30%)
+      rgba(0, 0, 0, 10%)
     )${src ? ',var(--background-image)' : ''};
       `"
       :alt="data.name"

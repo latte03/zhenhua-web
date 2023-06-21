@@ -104,7 +104,7 @@ const localePath = useLocalePath()
       class="pt-4 md:pt-12"
       :x-gap="[48, 12]"
       :y-gap="[24, 48]"
-      :span="[8, 24]"
+      :span="[24, 24]"
       responsive="screen"
     >
       <ag-col v-motion="{ delay: 1 }">
@@ -119,7 +119,7 @@ const localePath = useLocalePath()
           class="w-full"
         />
       </ag-col>
-      <ag-col v-motion="{ delay: 2 }">
+      <!-- <ag-col v-motion="{ delay: 2 }">
         <SiteSectionTitle
           size="small"
           title="现场风采"
@@ -139,7 +139,7 @@ const localePath = useLocalePath()
           class="mb-2 md:mb-4"
         />
         <SiteNews :data-source="groupNotice?.rows || []" class="w-full" />
-      </ag-col>
+      </ag-col> -->
     </ag-row>
   </SiteSection>
 </template>

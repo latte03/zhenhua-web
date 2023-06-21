@@ -21,8 +21,18 @@ function onCanPlay() {
   <SiteSection class="about">
     <SiteSectionTitle v-motion title="集团介绍" en-title="ABOUT" />
     <div v-motion class="about-container">
-      <div class="max-w-2xl opacity-50 md:mr-6">
-        {{ groupState.groupInfo?.groupMemo }}
+      <div class="max-w-2xl md:mr-6">
+        <div class="opacity-50">
+          {{ groupState.groupInfo?.groupMemo }}
+        </div>
+        <div>
+          <NuxtLink to="/about/introduce" class="item-button">
+            <span class="button-text">查看更多</span>
+            <ClientOnly>
+              <Icon name="solar:arrow-right-broken" size="24px" />
+            </ClientOnly>
+          </NuxtLink>
+        </div>
       </div>
       <div class="relative">
         <div class="relative zh video-wrap">
@@ -59,7 +69,10 @@ function onCanPlay() {
         </svg>
 
         <!-- SVG Reference -->
-        <Icon name="Play" class="absolute icon-play" @click="doVideoPlay" />
+        <div class="absolute play-position">
+          <Icon name="Play" class="icon-play" @click="doVideoPlay" />
+          <div class="play-text">查看视频</div>
+        </div>
       </div>
     </div>
     <n-config-provider
@@ -102,13 +115,30 @@ function onCanPlay() {
 }
 
 .icon-play {
-  top: 50%;
-  left: 50%;
   font-size: 48px;
   border: 1px solid #fff;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
   cursor: pointer;
+}
+
+.play-position {
+  @apply flex flex-col items-center;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .play-text {
+    @apply rounded px-2 py-1 mt-2;
+
+    color: var(--black);
+    font-size: 14px;
+    text-shadow: 0 0 1px #fff;
+    background-color: var(--color-bg-50);
+
+    // border: 1px solid var(--color-bg-80);
+    backdrop-filter: blur(10px);
+  }
 }
 
 .about-container {
@@ -137,6 +167,40 @@ function onCanPlay() {
 
     .video-body {
       transform: translateY(0%);
+    }
+  }
+}
+
+.item-button {
+  @apply transition-base  opacity-60  inline-flex   mt-6 px-4 py-2   rounded-full;
+
+  align-items: center;
+
+  // width: 64px;
+  font-size: 14px;
+  background: var(--color-bg-30);
+  border: 1px solid var(--color-black-bg-30);
+
+  // transform: translateX(-50%) scale(0);
+  transition: all 0.6s ease;
+
+  .button-text {
+    @apply mr-0 transition-base;
+  }
+
+  &:hover {
+    @apply opacity-100;
+
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+
+    .button-text {
+      @apply relative;
+
+      margin-right: 12px;
+      color: var(--primary-color);
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 }
