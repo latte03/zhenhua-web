@@ -61,7 +61,7 @@ const pageChannel = computed(() => {
   )
   return channel
 })
-
+provide('pageChannel', pageChannel)
 /**
  * 当前栏目路径
  */
