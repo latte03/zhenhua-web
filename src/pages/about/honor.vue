@@ -22,7 +22,7 @@ const requestBody = computed(() => {
   return {
     pageInfo: {
       pageIndex: pageIndex.value,
-      pageSize: 10
+      pageSize: 30
     },
     data: {
       channel_code: 'honor'

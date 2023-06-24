@@ -31,7 +31,7 @@ const _src = computed(() => {
     }"
     :object-fit="objectFit"
     :previewed-img-props="{
-      style: { border: '8px solid white', width: '60vw' }
+      style: { border: '8px solid white', maxWidth: '60vw' }
     }"
     v-bind="omit($attrs, 'class')"
   />
